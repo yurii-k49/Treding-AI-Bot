@@ -1,68 +1,111 @@
 # analysis/technical.py
-import numpy as np
 import pandas as pd
-from ta.trend import EMAIndicator, MACD
-from ta.momentum import RSIIndicator, StochasticOscillator
-from ta.volatility import BollingerBands, AverageTrueRange
+import numpy as np
+import logging
+from ta import trend, momentum, volatility, volume
 
 class TechnicalAnalyzer:
     def __init__(self, config):
         self.config = config
-        
+        self.logger = logging.getLogger('analysis.technical')
+
     async def analyze(self, data):
         """Run technical analysis"""
-        df = self._calculate_all_indicators(data)
-        signals = self._generate_signals(df)
-        patterns = self._detect_patterns(df)
-        
-        return {
-            'indicators': df,
-            'signals': signals,
-            'patterns': patterns
-        }
-        
-    def _calculate_all_indicators(self, df):
-        """Calculate all technical indicators"""
-        # Trend indicators
-        df['ema9'] = EMAIndicator(close=df['close'], window=9).ema_indicator()
-        df['ema21'] = EMAIndicator(close=df['close'], window=21).ema_indicator()
-        df['ema50'] = EMAIndicator(close=df['close'], window=50).ema_indicator()
-        df['ema200'] = EMAIndicator(close=df['close'], window=200).ema_indicator()
-        
-        # MACD
-        macd = MACD(close=df['close'])
-        df['macd'] = macd.macd()
-        df['macd_signal'] = macd.macd_signal()
-        
-        # RSI
-        df['rsi'] = RSIIndicator(close=df['close']).rsi()
-        
-        # Stochastic
-        stoch = StochasticOscillator(high=df['high'], low=df['low'], close=df['close'])
-        df['stoch_k'] = stoch.stoch()
-        df['stoch_d'] = stoch.stoch_signal()
-        
-        # Volatility
-        bb = BollingerBands(close=df['close'])
-        df['bb_upper'] = bb.bollinger_hband()
-        df['bb_lower'] = bb.bollinger_lband()
-        df['bb_middle'] = bb.bollinger_mavg()
-        
-        # ATR
-        df['atr'] = AverageTrueRange(high=df['high'], low=df['low'], close=df['close']).average_true_range()
-        
-        return df
-        
-    def _generate_signals(self, df):
+        try:
+            # Calculate all indicators
+            df = self.calculate_all_indicators(data)
+            
+            # Generate signals
+            signals = self.generate_signals(df)
+            
+            # Detect patterns
+            patterns = self.detect_patterns(df)
+            
+            # Calculate signal strength and confidence
+            signal_strength = self.calculate_signal_strength(signals)
+            confidence = self.calculate_confidence(signals, patterns)
+            
+            return {
+                'signals': signals,
+                'patterns': patterns,
+                'strength': signal_strength,
+                'confidence': confidence,
+                'indicators': df
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Error in technical analysis: {str(e)}")
+            return None
+
+    def calculate_all_indicators(self, df):
+        """Calculate technical indicators using ta library"""
+        try:
+            # Trend indicators
+            df['ema_9'] = trend.ema_indicator(df['close'], window=9)
+            df['ema_21'] = trend.ema_indicator(df['close'], window=21)
+            df['ema_50'] = trend.ema_indicator(df['close'], window=50)
+            df['ema_200'] = trend.ema_indicator(df['close'], window=200)
+            
+            # MACD
+            df['macd'] = trend.macd_diff(df['close'])
+            df['macd_signal'] = trend.macd_signal(df['close'])
+            
+            # Momentum indicators
+            df['rsi'] = momentum.rsi(df['close'])
+            df['stoch_k'] = momentum.stoch(df['high'], df['low'], df['close'])
+            df['stoch_d'] = momentum.stoch_signal(df['high'], df['low'], df['close'])
+            
+            # Volatility indicators
+            df['bb_upper'] = volatility.bollinger_hband(df['close'])
+            df['bb_middle'] = volatility.bollinger_mavg(df['close'])
+            df['bb_lower'] = volatility.bollinger_lband(df['close'])
+            df['atr'] = volatility.average_true_range(df['high'], df['low'], df['close'])
+            
+            # Volume indicators
+            df['volume_ema'] = volume.volume_weighted_average_price(df['high'], df['low'], df['close'], df['volume'])
+            
+            return df
+            
+        except Exception as e:
+            self.logger.error(f"Error calculating indicators: {str(e)}")
+            return df
+
+    def generate_signals(self, df):
         """Generate trading signals from indicators"""
+        try:
+            signals = {}
+            
+            # Trend signals
+            signals['trend'] = self._calculate_trend_signals(df)
+            
+            # Momentum signals
+            signals['momentum'] = self._calculate_momentum_signals(df)
+            
+            # Volatility signals
+            signals['volatility'] = self._calculate_volatility_signals(df)
+            
+            return signals
+            
+        except Exception as e:
+            self.logger.error(f"Error generating signals: {str(e)}")
+            return {}
+
+    def _calculate_trend_signals(self, df):
+        """Calculate trend based signals"""
         signals = {}
         
-        # Trend signals
-        signals['trend'] = np.where(df['ema9'] > df['ema21'], 1, 
-                                  np.where(df['ema9'] < df['ema21'], -1, 0))
+        # EMA crossovers
+        signals['ema_cross'] = np.where(df['ema_9'] > df['ema_21'], 1, 
+                                      np.where(df['ema_9'] < df['ema_21'], -1, 0))
         
         # MACD signals
         signals['macd'] = np.where(df['macd'] > df['macd_signal'], 1, -1)
+        
+        return signals
+
+    def _calculate_momentum_signals(self, df):
+        """Calculate momentum based signals"""
+        signals = {}
         
         # RSI signals
         signals['rsi'] = np.where(df['rsi'] < 30, 1, 
@@ -73,168 +116,94 @@ class TechnicalAnalyzer:
                                   np.where((df['stoch_k'] > 80) & (df['stoch_k'] < df['stoch_d']), -1, 0))
         
         return signals
+
+    def _calculate_volatility_signals(self, df):
+        """Calculate volatility based signals"""
+        signals = {}
         
-    def _detect_patterns(self, df):
+        # Bollinger Bands signals
+        signals['bb'] = np.where(df['close'] < df['bb_lower'], 1,
+                               np.where(df['close'] > df['bb_upper'], -1, 0))
+        
+        return signals
+
+    def detect_patterns(self, df):
         """Detect chart patterns"""
         patterns = {}
         
+        # Engulfing patterns
         patterns['engulfing'] = self._detect_engulfing(df)
+        
+        # Doji patterns
         patterns['doji'] = self._detect_doji(df)
-        patterns['hammer'] = self._detect_hammer(df)
         
         return patterns
 
-# analysis/fundamental.py
-import pandas as pd
-import numpy as np
-from datetime import datetime, timedelta
-import requests
-import yfinance as yf
+    def _detect_engulfing(self, df):
+        """Detect engulfing candlestick patterns"""
+        bullish_engulfing = (df['open'] < df['close']) & \
+                           (df['open'].shift(1) > df['close'].shift(1)) & \
+                           (df['open'] < df['close'].shift(1)) & \
+                           (df['close'] > df['open'].shift(1))
+                           
+        bearish_engulfing = (df['open'] > df['close']) & \
+                           (df['open'].shift(1) < df['close'].shift(1)) & \
+                           (df['open'] > df['close'].shift(1)) & \
+                           (df['close'] < df['open'].shift(1))
+                           
+        return np.where(bullish_engulfing, 1, np.where(bearish_engulfing, -1, 0))
 
-class FundamentalAnalyzer:
-    def __init__(self, config):
-        self.config = config
-        self.apis = {
-            'economic': config.ECONOMIC_API_KEY,
-            'news': config.NEWS_API_KEY,
-            'crypto': config.CRYPTO_API_KEY
-        }
+    def _detect_doji(self, df):
+        """Detect doji candlestick patterns"""
+        body_size = abs(df['close'] - df['open'])
+        total_size = df['high'] - df['low']
         
-    async def analyze(self, symbol):
-        """Run fundamental analysis"""
-        results = {}
-        
-        if self.config.MACRO_ANALYSIS:
-            results['macro'] = await self._analyze_macro_economics()
-            
-        if self.config.COMPANY_ANALYSIS:
-            results['company'] = await self._analyze_company(symbol)
-            
-        if self.config.SECTOR_ANALYSIS:
-            results['sector'] = await self._analyze_sector(symbol)
-            
-        return results
-        
-    async def _analyze_macro_economics(self):
-        """Analyze macroeconomic indicators"""
+        return np.where(body_size / total_size < 0.1, 1, 0)
+
+    def calculate_signal_strength(self, signals):
+        """Calculate overall signal strength"""
         try:
-            # Get economic data
-            inflation = await self._get_inflation_data()
-            interest_rates = await self._get_interest_rates()
-            gdp = await self._get_gdp_data()
-            employment = await self._get_employment_data()
+            all_signals = []
             
-            # Calculate economic score
-            economic_score = self._calculate_economic_score(
-                inflation, interest_rates, gdp, employment
-            )
+            # Combine all signals
+            for category in signals.values():
+                for signal in category.values():
+                    all_signals.append(signal[-1])  # Get latest signal
+                    
+            # Calculate average signal
+            avg_signal = np.mean(all_signals)
             
-            return {
-                'economic_score': economic_score,
-                'details': {
-                    'inflation': inflation,
-                    'interest_rates': interest_rates,
-                    'gdp': gdp,
-                    'employment': employment
-                }
-            }
+            # Normalize to [-1, 1]
+            return np.clip(avg_signal, -1, 1)
             
         except Exception as e:
-            logger.error(f"Error in macro analysis: {str(e)}")
-            return None
-            
-    async def _analyze_company(self, symbol):
-        """Analyze company fundamentals"""
+            self.logger.error(f"Error calculating signal strength: {str(e)}")
+            return 0
+
+    def calculate_confidence(self, signals, patterns):
+        """Calculate confidence level of signals"""
         try:
-            stock = yf.Ticker(symbol)
+            # Count confirming signals
+            confirming_signals = 0
+            total_signals = 0
             
-            # Get financial metrics
-            metrics = {
-                'pe_ratio': stock.info.get('forwardPE'),
-                'pb_ratio': stock.info.get('priceToBook'),
-                'debt_to_equity': stock.info.get('debtToEquity'),
-                'profit_margin': stock.info.get('profitMargins'),
-                'revenue_growth': stock.info.get('revenueGrowth'),
-                'roa': stock.info.get('returnOnAssets'),
-                'roe': stock.info.get('returnOnEquity')
-            }
+            # Check trend signals
+            trend_direction = np.sign(self.calculate_signal_strength(signals))
             
-            # Calculate company score
-            company_score = self._calculate_company_score(metrics)
-            
-            return {
-                'company_score': company_score,
-                'metrics': metrics
-            }
+            for category in signals.values():
+                for signal in category.values():
+                    if np.sign(signal[-1]) == trend_direction:
+                        confirming_signals += 1
+                    total_signals += 1
+                    
+            # Add pattern confirmation
+            for pattern in patterns.values():
+                if np.sign(pattern[-1]) == trend_direction:
+                    confirming_signals += 1
+                total_signals += 1
+                
+            return confirming_signals / total_signals if total_signals > 0 else 0
             
         except Exception as e:
-            logger.error(f"Error in company analysis: {str(e)}")
-            return None
-
-# analysis/sentiment.py
-from textblob import TextBlob
-import numpy as np
-import requests
-from datetime import datetime, timedelta
-
-class SentimentAnalyzer:
-    def __init__(self, config):
-        self.config = config
-        self.news_api_key = config.NEWS_API_KEY
-        
-    async def analyze(self, symbol):
-        """Run sentiment analysis"""
-        try:
-            # Get news data
-            news = await self._get_news(symbol)
-            social_media = await self._get_social_media_data(symbol)
-            market_sentiment = await self._get_market_sentiment(symbol)
-            
-            # Analyze sentiment
-            news_sentiment = await self._analyze_news_sentiment(news)
-            social_sentiment = await self._analyze_social_sentiment(social_media)
-            
-            # Combine all sentiments
-            combined_sentiment = self._combine_sentiments(
-                news_sentiment,
-                social_sentiment,
-                market_sentiment
-            )
-            
-            return {
-                'overall_sentiment': combined_sentiment,
-                'details': {
-                    'news': news_sentiment,
-                    'social': social_sentiment,
-                    'market': market_sentiment
-                }
-            }
-            
-        except Exception as e:
-            logger.error(f"Error in sentiment analysis: {str(e)}")
-            return None
-            
-    async def _get_news(self, symbol, days=7):
-        """Get news articles for the symbol"""
-        endpoint = "https://newsapi.org/v2/everything"
-        
-        params = {
-            'q': symbol,
-            'from': (datetime.now() - timedelta(days=days)).strftime('%Y-%m-%d'),
-            'sortBy': 'relevancy',
-            'apiKey': self.news_api_key
-        }
-        
-        response = requests.get(endpoint, params=params)
-        return response.json().get('articles', [])
-        
-    async def _analyze_news_sentiment(self, articles):
-        """Analyze sentiment of news articles"""
-        sentiments = []
-        
-        for article in articles:
-            text = f"{article['title']} {article['description']}"
-            blob = TextBlob(text)
-            sentiments.append(blob.sentiment.polarity)
-            
-        return np.mean(sentiments) if sentiments else 0
+            self.logger.error(f"Error calculating confidence: {str(e)}")
+            return 0

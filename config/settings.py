@@ -1,19 +1,21 @@
 # config/settings.py
 import os
+import logging
 from dotenv import load_dotenv
 
 load_dotenv()
 
+
 class Config:
-    # MT5 sozlamalari
+  # MT5 settings
     MT5_LOGIN = os.getenv('MT5_LOGIN')
     MT5_PASSWORD = os.getenv('MT5_PASSWORD')
     MT5_SERVER = os.getenv('MT5_SERVER')
-    MODE = os.getenv('MODE', 'demo')  # demo yoki real
-
-    # Trading parametrlari
+    MODE = os.getenv('MODE', 'demo')
+    
+    # Trading settings
     SYMBOL = os.getenv('SYMBOL', 'EURUSD')
-    TIMEFRAME = os.getenv('TIMEFRAME', 'TIMEFRAME_H1')
+    TIMEFRAME = os.getenv('TIMEFRAME', 'H1')  # M1, M5, M15, M30, H1, H4, D1, W1, MN1
     LOT_SIZE = float(os.getenv('LOT_SIZE', '0.01'))
     
     # API kalitlari

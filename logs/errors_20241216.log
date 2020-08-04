@@ -1,0 +1,21 @@
+2024-12-16 14:23:21,507 - trading - ERROR - Initialization error: name 'logging' is not defined
+2024-12-16 14:29:05,974 - trading - ERROR - Initialization error: name 'logger' is not defined
+2024-12-16 14:34:13,949 - trading - ERROR - Error in main loop: Failed to get market data
+2024-12-16 14:35:13,952 - trading - ERROR - Error in main loop: Failed to get market data
+2024-12-16 14:36:13,955 - trading - ERROR - Error in main loop: Failed to get market data
+2024-12-16 14:36:42,468 - trading - ERROR - Component initialization error: MT5 initialization failed
+2024-12-16 14:36:42,468 - trading - ERROR - Initialization error: MT5 initialization failed
+2024-12-16 14:37:42,471 - trading - ERROR - Error in main loop: 'DataLoader' object has no attribute 'get_fundamental_data'
+2024-12-16 14:38:42,572 - trading - ERROR - Error in main loop: 'DataLoader' object has no attribute 'get_fundamental_data'
+2024-12-16 14:39:42,626 - trading - ERROR - Error in main loop: 'DataLoader' object has no attribute 'get_fundamental_data'
+2024-12-16 14:40:42,683 - trading - ERROR - Error in main loop: 'DataLoader' object has no attribute 'get_fundamental_data'
+2024-12-16 14:41:43,078 - analysis.technical - ERROR - Error calculating indicators: 'close'
+2024-12-16 14:41:43,078 - analysis.technical - ERROR - Error generating signals: 'ema_9'
+2024-12-16 14:41:43,078 - analysis.technical - ERROR - Error in technical analysis: 'open'
+2024-12-16 14:41:43,079 - analysis.fundamental - ERROR - Error in macro analysis: 'FundamentalAnalyzer' object has no attribute '_get_interest_rates'
+2024-12-16 14:41:43,079 - analysis.fundamental - ERROR - Error in forex analysis: 'NoneType' object is not subscriptable
+2024-12-16 14:41:43,079 - analysis.fundamental - ERROR - Error in fundamental analysis: 'Config' object has no attribute 'USE_NEWS_ANALYSIS'
+2024-12-16 14:41:43,080 - analysis.sentiment - ERROR - Error in news sentiment analysis: 'SentimentAnalyzer' object has no attribute '_fetch_news'
+2024-12-16 14:41:43,080 - analysis.sentiment - ERROR - Error in social sentiment analysis: 'SentimentAnalyzer' object has no attribute '_fetch_social_posts'
+2024-12-16 14:41:43,080 - analysis.sentiment - ERROR - Error in market sentiment analysis: 'SentimentAnalyzer' object has no attribute '_fetch_market_indicators'
+2024-12-16 14:41:43,081 - trading - ERROR - Error in main loop: 'technical'

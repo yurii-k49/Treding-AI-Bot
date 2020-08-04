@@ -5,7 +5,9 @@ from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from datetime import datetime
 import logging
 
+
 class DataPreprocessor:
+    
     def __init__(self, config):
         self.config = config
         self.logger = logging.getLogger('utils.preprocessor')
@@ -112,7 +114,7 @@ class DataPreprocessor:
         df = df.drop_duplicates()
         
         # Handle missing values
-        df = df.fillna(method='ffill').fillna(method='bfill')
+        df = df.ffill().bfill()
         
         # Remove outliers
         df = self._remove_outliers(df)
@@ -157,3 +159,5 @@ class DataPreprocessor:
             
         except Exception as e:
             self.logger.error(f"Error saving scalers: {str(e)}")
+
+            
