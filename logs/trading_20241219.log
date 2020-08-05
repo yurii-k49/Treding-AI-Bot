@@ -1,0 +1,119 @@
+2024-12-19 00:55:06,054 - trading - ERROR - Component initialization error: MT5 initialization failed
+2024-12-19 00:55:06,055 - trading - ERROR - Initialization error: MT5 initialization failed
+2024-12-19 01:15:54,471 - model.fundamental - INFO - Fundamental models initialized successfully
+2024-12-19 01:15:54,472 - model.sentiment - INFO - Sentiment model initialized: Traditional ML
+2024-12-19 01:15:54,476 - model.manager - INFO - All models initialized successfully
+2024-12-19 01:15:54,477 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 01:15:54,503 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 01:15:54,504 - trading - INFO - All components initialized successfully
+2024-12-19 01:15:54,505 - trading - INFO - Trading bot initialized successfully
+2024-12-19 01:15:54,507 - trading - INFO - Starting model training
+2024-12-19 01:15:54,508 - trading - ERROR - Error in model training: 'DataLoader' object has no attribute 'get_training_data'
+2024-12-19 01:15:54,510 - trading.broker - INFO - MT5 connection closed
+2024-12-19 01:15:54,511 - trading - INFO - Cleanup completed successfully
+2024-12-19 01:20:30,589 - model.fundamental - INFO - Fundamental models initialized successfully
+2024-12-19 01:20:30,590 - model.sentiment - INFO - Sentiment model initialized: Traditional ML
+2024-12-19 01:20:30,591 - model.manager - INFO - All models initialized successfully
+2024-12-19 01:20:30,592 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 01:20:30,610 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 01:20:30,610 - trading - INFO - All components initialized successfully
+2024-12-19 01:20:30,611 - trading - INFO - Trading bot initialized successfully
+2024-12-19 01:20:30,612 - trading - INFO - Starting model training
+2024-12-19 01:20:30,614 - trading - ERROR - Error in model training: Failed to get training data
+2024-12-19 01:20:30,616 - trading.broker - INFO - MT5 connection closed
+2024-12-19 01:20:30,616 - trading - INFO - Cleanup completed successfully
+2024-12-19 01:21:57,966 - model.fundamental - INFO - Fundamental models initialized successfully
+2024-12-19 01:21:57,967 - model.sentiment - INFO - Sentiment model initialized: Traditional ML
+2024-12-19 01:21:57,969 - model.manager - INFO - All models initialized successfully
+2024-12-19 01:21:57,971 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 01:21:57,993 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 01:21:57,994 - trading - INFO - All components initialized successfully
+2024-12-19 01:21:57,995 - trading - INFO - Trading bot initialized successfully
+2024-12-19 01:21:57,996 - trading - INFO - Starting model training
+2024-12-19 01:21:58,028 - trading - ERROR - Error in model training: 'DataPreprocessor' object has no attribute 'prepare_sentiment_features'
+2024-12-19 01:21:58,030 - trading.broker - INFO - MT5 connection closed
+2024-12-19 01:21:58,030 - trading - INFO - Cleanup completed successfully
+2024-12-19 01:22:27,829 - model.fundamental - INFO - Fundamental models initialized successfully
+2024-12-19 01:22:27,830 - model.sentiment - INFO - Sentiment model initialized: Traditional ML
+2024-12-19 01:22:27,833 - model.manager - INFO - All models initialized successfully
+2024-12-19 01:22:27,834 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 01:22:27,854 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 01:22:27,855 - trading - INFO - All components initialized successfully
+2024-12-19 01:22:27,856 - trading - INFO - Trading bot initialized successfully
+2024-12-19 01:22:27,858 - trading - INFO - Starting model training
+2024-12-19 01:22:27,898 - trading - ERROR - Error in model training: 'DataPreprocessor' object has no attribute 'prepare_sentiment_features'
+2024-12-19 01:22:27,899 - trading.broker - INFO - MT5 connection closed
+2024-12-19 01:22:27,900 - trading - INFO - Cleanup completed successfully
+2024-12-19 01:30:10,355 - model.fundamental - INFO - Fundamental models initialized successfully
+2024-12-19 01:30:10,356 - model.sentiment - INFO - Sentiment model initialized: Traditional ML
+2024-12-19 01:30:10,358 - model.manager - INFO - All models initialized successfully
+2024-12-19 01:30:10,362 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 01:30:10,383 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 01:30:10,384 - trading - INFO - All components initialized successfully
+2024-12-19 01:30:10,385 - trading - INFO - Trading bot initialized successfully
+2024-12-19 01:30:10,387 - trading - INFO - Starting model training
+2024-12-19 01:30:10,495 - trading - ERROR - Error in model training: 'ModelManager' object has no attribute 'train_all_models'
+2024-12-19 01:30:10,497 - trading.broker - INFO - MT5 connection closed
+2024-12-19 01:30:10,500 - trading - INFO - Cleanup completed successfully
+2024-12-19 01:31:40,166 - model.fundamental - INFO - Fundamental models initialized successfully
+2024-12-19 01:31:40,167 - model.sentiment - INFO - Sentiment model initialized: Traditional ML
+2024-12-19 01:31:40,168 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 01:31:40,187 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 01:31:40,187 - trading - INFO - All components initialized successfully
+2024-12-19 01:31:40,188 - trading - INFO - Trading bot initialized successfully
+2024-12-19 01:31:40,189 - trading - INFO - Starting model training
+2024-12-19 01:31:40,263 - trading - ERROR - Error in model training: 'TechnicalModel' object has no attribute 'train'
+2024-12-19 01:31:40,267 - trading.broker - INFO - MT5 connection closed
+2024-12-19 01:31:40,269 - trading - INFO - Cleanup completed successfully
+2024-12-19 01:32:11,210 - model.fundamental - INFO - Fundamental models initialized successfully
+2024-12-19 01:32:11,210 - model.sentiment - INFO - Sentiment model initialized: Traditional ML
+2024-12-19 01:32:11,212 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 01:32:11,240 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 01:32:11,243 - trading - INFO - All components initialized successfully
+2024-12-19 01:32:11,248 - trading - INFO - Trading bot initialized successfully
+2024-12-19 01:32:11,250 - trading - INFO - Starting model training
+2024-12-19 01:32:11,348 - trading - ERROR - Error in model training: 'TechnicalModel' object has no attribute 'train'
+2024-12-19 01:32:11,350 - trading.broker - INFO - MT5 connection closed
+2024-12-19 01:32:11,351 - trading - INFO - Cleanup completed successfully
+2024-12-19 01:33:39,550 - model.fundamental - INFO - Fundamental models initialized successfully
+2024-12-19 01:33:39,551 - model.sentiment - INFO - Sentiment model initialized: Traditional ML
+2024-12-19 01:33:39,553 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 01:33:39,570 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 01:33:39,571 - trading - INFO - All components initialized successfully
+2024-12-19 01:33:39,572 - trading - INFO - Trading bot initialized successfully
+2024-12-19 01:33:39,573 - trading - INFO - Starting model training
+2024-12-19 01:33:39,650 - model.fundamental - ERROR - Error training models: 'FundamentalModel' object has no attribute '_prepare_macro_data'
+2024-12-19 01:33:39,651 - model.sentiment - ERROR - Error training sentiment model: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2024-12-19 01:33:39,652 - trading - ERROR - Error in model training: No training data provided
+2024-12-19 01:33:39,654 - trading.broker - INFO - MT5 connection closed
+2024-12-19 01:33:39,655 - trading - INFO - Cleanup completed successfully
+2024-12-19 01:46:55,769 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 01:46:55,793 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 01:46:55,793 - trading - INFO - All components initialized successfully
+2024-12-19 01:46:55,793 - trading - INFO - Trading bot initialized successfully
+2024-12-19 01:46:55,795 - trading - INFO - Starting model training
+2024-12-19 01:46:55,809 - trading - INFO - Got training data, preprocessing...
+2024-12-19 01:46:55,967 - trading - ERROR - Error in model training: name 'pd' is not defined
+2024-12-19 01:46:55,970 - trading.broker - INFO - MT5 connection closed
+2024-12-19 01:46:55,971 - trading - INFO - Cleanup completed successfully
+2024-12-19 01:49:12,663 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 01:49:12,683 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 01:49:12,684 - trading - INFO - All components initialized successfully
+2024-12-19 01:49:12,685 - trading - INFO - Trading bot initialized successfully
+2024-12-19 01:49:12,687 - trading - INFO - Starting model training
+2024-12-19 01:49:12,699 - trading - INFO - Got training data, preprocessing...
+2024-12-19 01:49:12,846 - trading - ERROR - Error in model training: name 'pd' is not defined
+2024-12-19 01:49:12,848 - trading.broker - INFO - MT5 connection closed
+2024-12-19 01:49:12,850 - trading - INFO - Cleanup completed successfully
+2024-12-19 01:50:04,430 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 01:50:04,453 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 01:50:04,454 - trading - INFO - All components initialized successfully
+2024-12-19 01:50:04,454 - trading - INFO - Trading bot initialized successfully
+2024-12-19 01:50:04,456 - trading - INFO - Starting model training
+2024-12-19 01:50:04,481 - trading - INFO - Got training data, preprocessing...
+2024-12-19 01:50:04,637 - trading - INFO - technical data shape: (10000, 21)
+2024-12-19 01:50:04,638 - trading - INFO - fundamental data shape: (365, 6)
+2024-12-19 01:50:04,639 - trading - INFO - sentiment data shape: (365, 6)
+2024-12-19 01:50:09,000 - trading - ERROR - Error in model training: Failed to prepare training data
+2024-12-19 01:50:09,002 - trading.broker - INFO - MT5 connection closed
+2024-12-19 01:50:09,003 - trading - INFO - Cleanup completed successfully
