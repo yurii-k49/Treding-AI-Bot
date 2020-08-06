@@ -117,3 +117,15 @@
 2024-12-19 01:50:09,000 - trading - ERROR - Error in model training: Failed to prepare training data
 2024-12-19 01:50:09,002 - trading.broker - INFO - MT5 connection closed
 2024-12-19 01:50:09,003 - trading - INFO - Cleanup completed successfully
+2024-12-19 02:00:58,751 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 02:00:58,783 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 02:00:58,786 - trading - INFO - All components initialized successfully
+2024-12-19 02:00:58,786 - trading - INFO - Trading bot initialized successfully
+2024-12-19 02:00:58,789 - trading - INFO - Starting model training
+2024-12-19 02:00:58,812 - trading - INFO - Got training data, preprocessing...
+2024-12-19 02:00:58,963 - trading - INFO - technical data shape: (10000, 21)
+2024-12-19 02:00:58,963 - trading - INFO - fundamental data shape: (365, 6)
+2024-12-19 02:00:58,965 - trading - INFO - sentiment data shape: (365, 6)
+2024-12-19 02:01:03,242 - trading - ERROR - Error in model training: Failed to prepare training data
+2024-12-19 02:01:03,243 - trading.broker - INFO - MT5 connection closed
+2024-12-19 02:01:03,246 - trading - INFO - Cleanup completed successfully
