@@ -129,3 +129,197 @@
 2024-12-19 02:01:03,242 - trading - ERROR - Error in model training: Failed to prepare training data
 2024-12-19 02:01:03,243 - trading.broker - INFO - MT5 connection closed
 2024-12-19 02:01:03,246 - trading - INFO - Cleanup completed successfully
+2024-12-19 22:30:17,674 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 22:30:17,688 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 22:30:17,688 - trading - INFO - All components initialized successfully
+2024-12-19 22:30:17,689 - trading - INFO - Trading bot initialized successfully
+2024-12-19 22:30:17,691 - trading - INFO - Starting model training
+2024-12-19 22:30:17,731 - trading - INFO - Got training data, preprocessing...
+2024-12-19 22:30:17,921 - trading - INFO - technical data shape: (10000, 21)
+2024-12-19 22:30:17,922 - trading - INFO - fundamental data shape: (365, 6)
+2024-12-19 22:30:17,922 - trading - INFO - sentiment data shape: (365, 6)
+2024-12-19 22:30:22,421 - trading - ERROR - Error in model training: Failed to prepare training data
+2024-12-19 22:30:22,424 - trading.broker - INFO - MT5 connection closed
+2024-12-19 22:30:22,425 - trading - INFO - Cleanup completed successfully
+2024-12-19 22:40:15,856 - trading - ERROR - Component initialization error: DataLoader.__init__() missing 1 required positional argument: 'timeframe'
+2024-12-19 22:40:15,856 - trading - ERROR - Initialization error: DataLoader.__init__() missing 1 required positional argument: 'timeframe'
+2024-12-19 22:43:06,450 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 22:43:06,476 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 22:43:06,476 - trading - INFO - All components initialized successfully
+2024-12-19 22:43:06,476 - trading - INFO - Trading bot initialized successfully
+2024-12-19 22:43:06,478 - trading - INFO - Starting model training
+2024-12-19 22:43:06,478 - trading - ERROR - Error in model training: DataLoader.get_training_data() got an unexpected keyword argument 'symbol'
+2024-12-19 22:43:06,482 - trading.broker - INFO - MT5 connection closed
+2024-12-19 22:43:06,483 - trading - INFO - Cleanup completed successfully
+2024-12-19 22:48:32,034 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 22:48:32,050 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 22:48:32,050 - trading - INFO - All components initialized successfully
+2024-12-19 22:48:32,051 - trading - INFO - Trading bot initialized successfully
+2024-12-19 22:48:32,053 - trading - INFO - Starting model training
+2024-12-19 22:48:32,053 - trading - ERROR - Error in model training: DataLoader.get_training_data() got an unexpected keyword argument 'symbol'
+2024-12-19 22:48:32,055 - trading.broker - INFO - MT5 connection closed
+2024-12-19 22:48:32,055 - trading - INFO - Cleanup completed successfully
+2024-12-19 22:58:49,158 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 22:58:49,182 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 22:58:49,182 - trading - INFO - All components initialized successfully
+2024-12-19 22:58:49,182 - trading - INFO - Trading bot initialized successfully
+2024-12-19 22:58:49,184 - trading - INFO - Starting model training
+2024-12-19 22:58:49,184 - trading - ERROR - Error in model training: DataLoader.get_training_data() got an unexpected keyword argument 'symbol'
+2024-12-19 22:58:49,187 - trading.broker - INFO - MT5 connection closed
+2024-12-19 22:58:49,187 - trading - INFO - Cleanup completed successfully
+2024-12-19 23:01:13,692 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 23:01:13,717 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 23:01:13,720 - trading - INFO - All components initialized successfully
+2024-12-19 23:01:13,722 - trading - INFO - Trading bot initialized successfully
+2024-12-19 23:01:13,723 - trading - INFO - Starting model training
+2024-12-19 23:01:13,724 - trading - ERROR - Error in model training: 'DataLoader' object has no attribute 'get_training_data'
+2024-12-19 23:01:13,726 - trading.broker - INFO - MT5 connection closed
+2024-12-19 23:01:13,727 - trading - INFO - Cleanup completed successfully
+2024-12-19 23:02:24,039 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 23:02:24,058 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 23:02:24,063 - trading - INFO - All components initialized successfully
+2024-12-19 23:02:24,064 - trading - INFO - Trading bot initialized successfully
+2024-12-19 23:02:24,066 - trading - INFO - Starting model training
+2024-12-19 23:02:24,071 - trading - ERROR - Error in model training: <built-in function copy_rates_from_pos> returned a result with an exception set
+2024-12-19 23:02:24,073 - trading.broker - INFO - MT5 connection closed
+2024-12-19 23:02:24,073 - trading - INFO - Cleanup completed successfully
+2024-12-19 23:09:36,620 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 23:09:36,642 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 23:09:36,642 - trading - INFO - All components initialized successfully
+2024-12-19 23:09:36,643 - trading - INFO - Trading bot initialized successfully
+2024-12-19 23:09:36,645 - trading - INFO - Starting model training
+2024-12-19 23:09:36,657 - trading - ERROR - Error in model training: Tarixiy ma'lumotlarni ololmadik
+2024-12-19 23:09:36,659 - trading.broker - INFO - MT5 connection closed
+2024-12-19 23:09:36,660 - trading - INFO - Cleanup completed successfully
+2024-12-19 23:33:07,689 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 23:33:07,713 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 23:33:07,713 - trading - INFO - All components initialized successfully
+2024-12-19 23:33:07,713 - trading - INFO - Trading bot initialized successfully
+2024-12-19 23:33:07,715 - trading - INFO - Starting model training
+2024-12-19 23:33:07,772 - trading - INFO - Got training data, preprocessing...
+2024-12-19 23:33:07,773 - trading - INFO - Historical data shape: (10000, 8)
+2024-12-19 23:33:07,774 - trading - ERROR - Error in model training: 'fundamental'
+2024-12-19 23:33:07,776 - trading.broker - INFO - MT5 connection closed
+2024-12-19 23:33:07,777 - trading - INFO - Cleanup completed successfully
+2024-12-19 23:35:53,107 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 23:35:53,130 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 23:35:53,130 - trading - INFO - All components initialized successfully
+2024-12-19 23:35:53,131 - trading - INFO - Trading bot initialized successfully
+2024-12-19 23:35:53,133 - trading - INFO - Starting model training
+2024-12-19 23:35:53,180 - trading - INFO - Got training data, preprocessing...
+2024-12-19 23:35:53,181 - trading - INFO - Historical data shape: (10000, 8)
+2024-12-19 23:35:53,288 - trading - INFO - Processed historical data shape: (10000, 21)
+2024-12-19 23:35:53,289 - trading - INFO - Processed market data shape: (10000, 5)
+2024-12-19 23:35:58,145 - trading - ERROR - Error in model training: 'ModelManager' object has no attribute 'market_model'
+2024-12-19 23:35:58,147 - trading.broker - INFO - MT5 connection closed
+2024-12-19 23:35:58,148 - trading - INFO - Cleanup completed successfully
+2024-12-19 23:38:15,673 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 23:38:15,695 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 23:38:15,696 - trading - INFO - All components initialized successfully
+2024-12-19 23:38:15,696 - trading - INFO - Trading bot initialized successfully
+2024-12-19 23:38:15,698 - trading - INFO - Starting model training
+2024-12-19 23:38:15,746 - trading - INFO - Got training data, preprocessing...
+2024-12-19 23:38:15,747 - trading - INFO - Historical data shape: (10000, 8)
+2024-12-19 23:38:15,842 - trading - INFO - Processed historical data shape: (10000, 21)
+2024-12-19 23:38:15,842 - trading - INFO - Processed market data shape: (10000, 5)
+2024-12-19 23:38:25,568 - trading - INFO - Model training completed successfully
+2024-12-19 23:38:25,568 - trading - INFO - technical model score: 0.8328
+2024-12-19 23:38:25,570 - trading - INFO - market model score: 0.9441
+2024-12-19 23:38:25,573 - trading - INFO - Starting model validation
+2024-12-19 23:38:25,573 - trading - ERROR - Error in model validation: 'DataLoader' object has no attribute 'get_validation_data'
+2024-12-19 23:38:25,574 - trading.broker - INFO - MT5 connection closed
+2024-12-19 23:38:25,575 - trading - INFO - Cleanup completed successfully
+2024-12-19 23:41:26,914 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 23:41:26,933 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 23:41:26,935 - trading - INFO - All components initialized successfully
+2024-12-19 23:41:26,936 - trading - INFO - Trading bot initialized successfully
+2024-12-19 23:41:26,937 - trading - INFO - Starting model training
+2024-12-19 23:41:26,987 - trading - INFO - Got training data, preprocessing...
+2024-12-19 23:41:26,988 - trading - INFO - Historical data shape: (10000, 8)
+2024-12-19 23:41:27,095 - trading - INFO - Processed historical data shape: (10000, 21)
+2024-12-19 23:41:27,095 - trading - INFO - Processed market data shape: (10000, 5)
+2024-12-19 23:41:36,995 - trading - INFO - Model training completed successfully
+2024-12-19 23:41:36,995 - trading - INFO - technical model score: 0.8328
+2024-12-19 23:41:36,997 - trading - INFO - market model score: 0.9439
+2024-12-19 23:41:37,002 - trading - INFO - Starting model validation
+2024-12-19 23:41:37,097 - trading - INFO - Processed validation historical shape: (1000, 21)
+2024-12-19 23:41:37,121 - trading - INFO - Validation results:
+2024-12-19 23:41:37,121 - trading - INFO - - technical model score: 0.5025
+2024-12-19 23:48:33,673 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 23:48:33,692 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 23:48:33,693 - trading - INFO - All components initialized successfully
+2024-12-19 23:48:33,693 - trading - INFO - Trading bot initialized successfully
+2024-12-19 23:48:33,695 - trading - INFO - Starting model training
+2024-12-19 23:48:33,744 - trading - INFO - Got training data, preprocessing...
+2024-12-19 23:48:33,744 - trading - INFO - Historical data shape: (10000, 8)
+2024-12-19 23:48:33,777 - trading - INFO - Processed historical data shape: (10000, 18)
+2024-12-19 23:48:33,777 - trading - INFO - Processed market data shape: (10000, 5)
+2024-12-19 23:48:33,780 - trading - ERROR - Error in model training: Failed to prepare training data
+2024-12-19 23:48:33,784 - trading.broker - INFO - MT5 connection closed
+2024-12-19 23:48:33,784 - trading - INFO - Cleanup completed successfully
+2024-12-19 23:51:27,554 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 23:51:27,575 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 23:51:27,576 - trading - INFO - All components initialized successfully
+2024-12-19 23:51:27,576 - trading - INFO - Trading bot initialized successfully
+2024-12-19 23:51:27,580 - trading - INFO - Starting model training
+2024-12-19 23:51:27,633 - trading - INFO - Got training data, preprocessing...
+2024-12-19 23:51:27,633 - trading - INFO - Historical data shape: (10000, 8)
+2024-12-19 23:51:27,661 - trading - INFO - Processed historical data shape: (10000, 18)
+2024-12-19 23:51:27,661 - trading - INFO - Processed market data shape: (10000, 5)
+2024-12-19 23:51:38,386 - trading - INFO - Model training completed successfully
+2024-12-19 23:51:38,387 - trading - INFO - technical model score: 0.5974
+2024-12-19 23:51:38,388 - trading - INFO - market model score: 0.2185
+2024-12-19 23:51:38,392 - trading - INFO - Starting model validation
+2024-12-19 23:51:38,442 - trading - INFO - Processed validation historical shape: (1000, 18)
+2024-12-19 23:54:24,744 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 23:54:24,767 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 23:54:24,768 - trading - INFO - All components initialized successfully
+2024-12-19 23:54:24,769 - trading - INFO - Trading bot initialized successfully
+2024-12-19 23:54:24,771 - trading - INFO - Starting model training
+2024-12-19 23:54:24,817 - trading - INFO - Got training data, preprocessing...
+2024-12-19 23:54:24,817 - trading - INFO - Historical data shape: (10000, 8)
+2024-12-19 23:54:24,847 - trading - INFO - Processed historical data shape: (10000, 18)
+2024-12-19 23:54:24,847 - trading - INFO - Processed market data shape: (10000, 5)
+2024-12-19 23:54:35,600 - trading - INFO - Model training completed successfully
+2024-12-19 23:54:35,600 - trading - ERROR - Error in model training: unsupported format string passed to NoneType.__format__
+2024-12-19 23:54:35,603 - trading.broker - INFO - MT5 connection closed
+2024-12-19 23:54:35,604 - trading - INFO - Cleanup completed successfully
+2024-12-19 23:56:23,535 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 23:56:23,555 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 23:56:23,555 - trading - INFO - All components initialized successfully
+2024-12-19 23:56:23,556 - trading - INFO - Trading bot initialized successfully
+2024-12-19 23:56:23,557 - trading - INFO - Starting model training
+2024-12-19 23:56:23,607 - trading - INFO - Got training data, preprocessing...
+2024-12-19 23:56:23,607 - trading - INFO - Historical data shape: (10000, 8)
+2024-12-19 23:56:23,636 - trading - INFO - Processed historical data shape: (10000, 18)
+2024-12-19 23:56:23,637 - trading - INFO - Processed market data shape: (10000, 5)
+2024-12-19 23:56:34,711 - trading - INFO - Model training completed successfully
+2024-12-19 23:56:34,711 - trading - ERROR - Error in model training: unsupported format string passed to NoneType.__format__
+2024-12-19 23:56:34,714 - trading.broker - INFO - MT5 connection closed
+2024-12-19 23:56:34,715 - trading - INFO - Cleanup completed successfully
+2024-12-19 23:57:09,849 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 23:57:09,872 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 23:57:09,872 - trading - INFO - All components initialized successfully
+2024-12-19 23:57:09,873 - trading - INFO - Trading bot initialized successfully
+2024-12-19 23:57:09,878 - trading - INFO - Starting model training
+2024-12-19 23:57:09,930 - trading - INFO - Got training data, preprocessing...
+2024-12-19 23:57:09,930 - trading - INFO - Historical data shape: (10000, 8)
+2024-12-19 23:57:09,962 - trading - INFO - Processed historical data shape: (10000, 18)
+2024-12-19 23:57:09,963 - trading - INFO - Processed market data shape: (10000, 5)
+2024-12-19 23:57:20,742 - trading - INFO - Model training completed successfully
+2024-12-19 23:57:20,742 - trading - ERROR - Error in model training: unsupported format string passed to dict.__format__
+2024-12-19 23:57:20,745 - trading.broker - INFO - MT5 connection closed
+2024-12-19 23:57:20,745 - trading - INFO - Cleanup completed successfully
+2024-12-19 23:59:19,556 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-19 23:59:19,583 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-19 23:59:19,584 - trading - INFO - All components initialized successfully
+2024-12-19 23:59:19,584 - trading - INFO - Trading bot initialized successfully
+2024-12-19 23:59:19,585 - trading - INFO - Starting model training
+2024-12-19 23:59:19,638 - trading - INFO - Got training data, preprocessing...
+2024-12-19 23:59:19,639 - trading - INFO - Historical data shape: (10000, 8)
+2024-12-19 23:59:19,668 - trading - INFO - Processed historical data shape: (10000, 18)
+2024-12-19 23:59:19,669 - trading - INFO - Processed market data shape: (10000, 5)
+2024-12-19 23:59:31,351 - trading - INFO - Model training completed successfully
+2024-12-19 23:59:31,351 - trading - ERROR - Error in model training: unsupported format string passed to dict.__format__
+2024-12-19 23:59:31,356 - trading.broker - INFO - MT5 connection closed
+2024-12-19 23:59:31,356 - trading - INFO - Cleanup completed successfully

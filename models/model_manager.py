@@ -1,118 +1,186 @@
 # models/model_manager.py
+import numpy as np
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.metrics import mean_squared_error, mean_absolute_error
 import logging
-import asyncio
+import joblib
+import os
 from datetime import datetime
-from models.technical_model import TechnicalModel
-from models.fundamental_model import FundamentalModel
-from models.sentiment_model import SentimentModel
+
+from .technical_model import TechnicalModel
+from .fundamental_model import FundamentalModel
+from .sentiment_model import SentimentModel
 
 class ModelManager:
     def __init__(self, config):
         self.config = config
         self.logger = logging.getLogger('models.manager')
-        self.last_update = None
-        self.setup_models()
-
-    def setup_models(self):
-        """Initialize all models"""
+        
+        # Modellarni yaratish
+        self.technical_model = TechnicalModel(config)
+        self.fundamental_model = FundamentalModel(config)
+        self.sentiment_model = SentimentModel(config)
+        self.market_model = self._create_market_model()
+        
+        self.scaler = StandardScaler()
+        
+    def _create_market_model(self):
+        """Market model yaratish"""
+        return GradientBoostingRegressor(
+            n_estimators=100,
+            learning_rate=0.1,
+            max_depth=5,
+            random_state=42
+        )
+        
+    async def train_all_models(self, data):
+        """Train all models"""
         try:
-            self.technical_model = TechnicalModel(self.config)
-            self.fundamental_model = FundamentalModel(self.config)
-            self.sentiment_model = SentimentModel(self.config)
-            self.logger.info("All models initialized successfully")
-        except Exception as e:
-            self.logger.error(f"Error initializing models: {str(e)}")
-            raise
-
-    async def train_all_models(self, training_data):
-        """Train all models with provided data"""
-        try:
-            self.logger.info("Starting models training...")
+            if data["historical"] is None or data["historical"].empty:
+                raise ValueError("Historical data is not available")
+                
+            results = {}
             
-            # Train models in parallel
-            await asyncio.gather(
-                self.technical_model.train(training_data['technical']),
-                self.fundamental_model.train(training_data['fundamental']),
-                self.sentiment_model.train(training_data['sentiment'])
-            )
+            # Train technical model
+            self.logger.info("Training technical model...")
+            await self.technical_model.train(data["historical"])
+            tech_metrics = await self.technical_model.validate(data["historical"])
+            if tech_metrics:
+                results["technical"] = tech_metrics
+                self.logger.info("Technical Model Training Metrics:")
+                for metric, value in tech_metrics.items():
+                    self.logger.info(f"- {metric}: {value:.4f}")
             
-            # Save trained models
-            self._save_models()
+            # Train market model
+            if data.get("market") is not None and not data["market"].empty:
+                self.logger.info("Training market model...")
+                try:
+                    X = data["market"].values[:-1]
+                    y = data["historical"]["returns"].values[1:]
+                    
+                    self.market_model.fit(X, y)
+                    predictions = self.market_model.predict(X)
+                    
+                    market_metrics = {
+                        "r2_score": self.market_model.score(X, y),
+                        "rmse": float(np.sqrt(mean_squared_error(y, predictions))),
+                        "mae": float(mean_absolute_error(y, predictions))
+                    }
+                    
+                    results["market"] = market_metrics
+                    self.logger.info("Market Model Training Metrics:")
+                    for metric, value in market_metrics.items():
+                        self.logger.info(f"- {metric}: {value:.4f}")
+                    
+                except Exception as e:
+                    self.logger.error(f"Error training market model: {str(e)}")
             
-            self.last_update = datetime.now()
+            # Save models
+            self.save_models()
+            
             self.logger.info("All models trained successfully")
+            return results
             
         except Exception as e:
             self.logger.error(f"Error training models: {str(e)}")
             raise
-
-    async def update_if_needed(self):
-        """Check and update models if necessary"""
+    
+    async def validate_models(self, validation_data):
+        """Model validation"""
         try:
-            current_time = datetime.now()
-            
-            # Check if update is needed
-            if (self.last_update is None or 
-                (current_time - self.last_update).total_seconds() > 
-                self.config.MODEL_UPDATE_INTERVAL * 3600):
+            if not validation_data:
+                raise ValueError("No validation data provided")
                 
-                self.logger.info("Models update needed")
-                await self.train_all_models()
-                self.last_update = current_time
-                
-        except Exception as e:
-            self.logger.error(f"Error checking model updates: {str(e)}")
-
-    async def predict(self, data):
-        """Get predictions from all models"""
-        try:
-            # Get predictions in parallel
-            technical_pred, fundamental_pred, sentiment_pred = await asyncio.gather(
-                self.technical_model.predict(data['technical']),
-                self.fundamental_model.predict(data['fundamental']),
-                self.sentiment_model.predict(data['sentiment'])
-            )
+            results = {}
             
-            return {
-                'technical': technical_pred,
-                'fundamental': fundamental_pred,
-                'sentiment': sentiment_pred
-            }
+            # Technical model validation
+            if validation_data.get("historical") is not None:
+                self.logger.info("Validating technical model...")
+                tech_metrics = await self.technical_model.validate(validation_data["historical"])
+                if tech_metrics:
+                    results["technical"] = tech_metrics
+                    self.logger.info("Technical Model Validation Metrics:")
+                    for metric, value in tech_metrics.items():
+                        self.logger.info(f"- {metric}: {value:.4f}")
+            
+            # Market model validation
+            if validation_data.get("market") is not None and not validation_data["market"].empty:
+                self.logger.info("Validating market model...")
+                try:
+                    X_val = validation_data["market"].values[:-1]
+                    y_val = validation_data["historical"]["returns"].values[1:]
+                    
+                    predictions = self.market_model.predict(X_val)
+                    
+                    market_metrics = {
+                        "r2_score": float(self.market_model.score(X_val, y_val)),
+                        "rmse": float(np.sqrt(mean_squared_error(y_val, predictions))),
+                        "mae": float(mean_absolute_error(y_val, predictions))
+                    }
+                    
+                    results["market"] = market_metrics
+                    self.logger.info("Market Model Validation Metrics:")
+                    for metric, value in market_metrics.items():
+                        self.logger.info(f"- {metric}: {value:.4f}")
+                    
+                except Exception as e:
+                    self.logger.error(f"Error validating market model: {str(e)}")
+            
+            return results
             
         except Exception as e:
-            self.logger.error(f"Error getting predictions: {str(e)}")
-            return None
-
-    def _save_models(self):
-        """Save all models to disk"""
+            self.logger.error(f"Error in model validation: {str(e)}")
+            raise
+            
+    def save_models(self):
+        """Save all models"""
         try:
+            models_dir = 'data/models'
+            os.makedirs(models_dir, exist_ok=True)
+            
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            
+            # Technical model
             self.technical_model.save_model()
-            self.fundamental_model.save_model()
+            
+            # Market model
+            if hasattr(self, 'market_model'):
+                joblib.dump(self.market_model, 
+                          f'{models_dir}/market_model_{timestamp}.joblib')
+            
+            # Fundamental model
+            if self.config.USE_FUNDAMENTAL_ANALYSIS:
+                self.fundamental_model.save_model()
+            
+            # Sentiment model
             self.sentiment_model.save_model()
+            
+            # Scaler
+            joblib.dump(self.scaler, f'{models_dir}/scaler_{timestamp}.joblib')
+            
             self.logger.info("All models saved successfully")
+            
         except Exception as e:
             self.logger.error(f"Error saving models: {str(e)}")
 
-    async def validate_models(self, validation_data):
-        """Validate all models"""
+
+    def _calculate_market_metrics(self, predictions, validation_data):
+        """Calculate detailed market model metrics"""
         try:
-            # Validate models in parallel
-            technical_score, fundamental_score, sentiment_score = await asyncio.gather(
-                self.technical_model.validate(validation_data['technical']),
-                self.fundamental_model.validate(validation_data['fundamental']),
-                self.sentiment_model.validate(validation_data['sentiment'])
-            )
+            actual = validation_data["historical"]["close"].pct_change().fillna(0)
+            rmse = np.sqrt(np.mean((predictions - actual) ** 2))
+            mae = np.mean(np.abs(predictions - actual))
             
-            validation_results = {
-                'technical_score': technical_score,
-                'fundamental_score': fundamental_score,
-                'sentiment_score': sentiment_score,
-                'combined_score': (technical_score + fundamental_score + sentiment_score) / 3
+            # Direction accuracy
+            direction_accuracy = np.mean((predictions > 0) == (actual > 0))
+            
+            return {
+                "rmse": rmse,
+                "mae": mae,
+                "direction_accuracy": direction_accuracy
             }
-            
-            self.logger.info(f"Validation results: {validation_results}")
-            return validation_results
-            
         except Exception as e:
-            self.logger.error(f"Error validating models: {str(e)}")
-            return None
+            self.logger.error(f"Error calculating market metrics: {str(e)}")
+            return {}

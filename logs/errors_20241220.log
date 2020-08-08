@@ -1,0 +1,2 @@
+2024-12-20 00:01:41,808 - trading - ERROR - Error in model validation: unsupported format string passed to dict.__format__
+2024-12-20 00:01:41,809 - trading - ERROR - Error in model training: unsupported format string passed to dict.__format__

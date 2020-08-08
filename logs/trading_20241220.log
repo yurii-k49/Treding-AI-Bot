@@ -1,0 +1,21 @@
+2024-12-20 00:34:11,590 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-20 00:34:11,610 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-20 00:34:11,611 - trading - INFO - All components initialized successfully
+2024-12-20 00:34:11,611 - trading - INFO - Trading bot initialized successfully
+2024-12-20 00:34:11,612 - trading - INFO - Starting model training
+2024-12-20 00:34:11,661 - trading - INFO - Got training data, preprocessing...
+2024-12-20 00:34:11,661 - trading - INFO - Historical data shape: (10000, 8)
+2024-12-20 00:34:11,689 - trading - INFO - Processed historical data shape: (10000, 18)
+2024-12-20 00:34:11,689 - trading - INFO - Processed market data shape: (10000, 5)
+2024-12-20 00:34:11,690 - trading - INFO - Training models...
+2024-12-20 00:34:21,755 - trading - INFO - 
+=== Training Results ===
+2024-12-20 00:34:21,756 - trading - INFO - Technical Model:
+2024-12-20 00:34:21,757 - trading - INFO - - accuracy: 0.5987
+2024-12-20 00:34:21,758 - trading - INFO - - precision: 0.6016
+2024-12-20 00:34:21,758 - trading - INFO - - recall: 0.6481
+2024-12-20 00:34:21,759 - trading - INFO - - f1: 0.6240
+2024-12-20 00:34:21,759 - trading - INFO - Market Model:
+2024-12-20 00:34:21,760 - trading - INFO - - r2_score: 0.2501
+2024-12-20 00:34:21,760 - trading - INFO - - rmse: 0.0015
+2024-12-20 00:34:21,761 - trading - INFO - - mae: 0.0010

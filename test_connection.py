@@ -1,39 +1,62 @@
-# test_connection.py
 import MetaTrader5 as mt5
-import os
-from dotenv import load_dotenv
+import time
 
-def test_connection():
-    # .env dan ma'lumotlarni olish
-    load_dotenv()
-    login = int(os.getenv('MT5_LOGIN', '313025394'))
-    password = os.getenv('MT5_PASSWORD', '5579187Er@')
-    server = os.getenv('MT5_SERVER', 'XMGlobal-MT5 7')
-    
-    # MT5 ni ishga tushirish
-    if not mt5.initialize():
-        print("MT5 initialization failed")
-        return False
+def test_mt5_connection():
+    try:
+        # MT5 ni ishga tushirish
+        if not mt5.initialize():
+            print(f"MT5 ishga tushirilmadi, xato kodi: {mt5.last_error()}")
+            return False
+            
+        # Terminal ma'lumotlarini olish
+        terminal_info = mt5.terminal_info()
+        if terminal_info is None:
+            print(f"Terminal ma'lumotlarini ololmadik, xato kodi: {mt5.last_error()}")
+            return False
+            
+        print("\nMT5 Terminal ma'lumotlari:")
+        print(f"Terminal nomi: {terminal_info.name}")
+        print(f"Terminal versiyasi: {terminal_info.version}")
+        print(f"Terminal papkasi: {terminal_info.path}")
+        print(f"Trading serveri: {terminal_info.connected}")
         
-    # Hisobga kirish
-    if not mt5.login(login=login, password=password, server=server):
-        print("Login failed")
-        return False
-        
-    # Hisob ma'lumotlarini olish
-    account_info = mt5.account_info()
-    if account_info is not None:
-        print("\nConnection successful!")
+        # Account ma'lumotlarini olish
+        account_info = mt5.account_info()
+        if account_info is None:
+            print(f"Account ma'lumotlarini ololmadik, xato kodi: {mt5.last_error()}")
+            return False
+            
+        print("\nAccount ma'lumotlari:")
         print(f"Login: {account_info.login}")
         print(f"Server: {account_info.server}")
         print(f"Balance: {account_info.balance}")
-        print(f"Equity: {account_info.equity}")
-    else:
-        print("Failed to get account info")
+        print(f"Currency: {account_info.currency}")
+        
+        # Test uchun EURUSD ma'lumotlarini olish
+        symbol = "EURUSD"
+        timeframe = mt5.TIMEFRAME_D1
+        
+        rates = mt5.copy_rates_from_pos(symbol, timeframe, 0, 1)
+        if rates is None:
+            print(f"Ma'lumotlarni ololmadik {symbol}, xato kodi: {mt5.last_error()}")
+            return False
+            
+        print(f"\n{symbol} oxirgi ma'lumoti:")
+        print(rates[0])
+        
+        return True
+        
+    except Exception as e:
+        print(f"Xatolik yuz berdi: {e}")
         return False
         
-    mt5.shutdown()
-    return True
+    finally:
+        mt5.shutdown()
 
 if __name__ == "__main__":
-    test_connection()
+    print("MT5 bilan bog'lanishni tekshirish...")
+    if test_mt5_connection():
+        print("\nMT5 bilan bog'lanish muvaffaqiyatli!")
+    else:
+        print("\nMT5 bilan bog'lanishda xatolik!")
+    time.sleep(5)  # Natijalarni ko'rish uchun 5 sekund kutish
