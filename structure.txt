@@ -9,7 +9,9 @@
 │   ├── requirements.txt
 │   ├── structure.txt
 │   ├── test_connection.py
+│   ├── test_data_loader.py
 │   ├── test_mt5.py
+│   ├── trading_history_generator.py
 │   ├── .git/
 │   │   ├── COMMIT_EDITMSG
 │   │   ├── config
@@ -46,9 +48,17 @@
 │   │   │   │   │   │   ├── main
 │   │   ├── objects/
 │   │   │   ├── 03/
+│   │   │   │   ├── 270ea99cafb4228862cd897af58b71275305d4
 │   │   │   │   ├── e1458690ba76082611ef98cd1126f66b0dbfa9
 │   │   │   ├── 07/
 │   │   │   │   ├── 9a3dc66539182ea066a6d6d558c206945482b6
+│   │   │   ├── 09/
+│   │   │   │   ├── 3bbfd91a913fe816d3890b8dc4094b39b086fb
+│   │   │   ├── 0c/
+│   │   │   │   ├── 6ed0ecd1edb02e5b57fcfc451f8fa819d61294
+│   │   │   ├── 0e/
+│   │   │   │   ├── 7632cf22d4a16b608a0d1f96ba83f360eb86a4
+│   │   │   │   ├── 86e80ec3b9503a92aa46aa80265f549e3883fe
 │   │   │   ├── 0f/
 │   │   │   │   ├── a1f5e7f8a72e00b04ebfa38c18fc5f858b209d
 │   │   │   ├── 10/
@@ -57,8 +67,11 @@
 │   │   │   │   ├── 19b55395205ff9e42e2db1bdb27e5bc98e1d51
 │   │   │   ├── 14/
 │   │   │   │   ├── 6e1e777567265e240e406a55435c1e434061ab
+│   │   │   ├── 16/
+│   │   │   │   ├── cdc048bbbf521667b5d2235d1dd70791838605
 │   │   │   ├── 17/
 │   │   │   │   ├── db212ff3c506929c64a65f227e61d3d8208787
+│   │   │   │   ├── eec1ffb3ca51e4301033a33c133936cfc1eba1
 │   │   │   ├── 18/
 │   │   │   │   ├── 6a12c8b8ed99e5b831f108324cd1d71c8e8fae
 │   │   │   ├── 19/
@@ -68,42 +81,67 @@
 │   │   │   ├── 1e/
 │   │   │   │   ├── 52304dc777e205ca216a201d93fc10a0927172
 │   │   │   ├── 28/
+│   │   │   │   ├── 735ae82c5b568249acf03f261cda7f1024be7d
 │   │   │   │   ├── 9a1250c98f50aeeb132fc8c6a5ee1c3023b8fc
+│   │   │   ├── 30/
+│   │   │   │   ├── 2a1b951c8ac02a90ff44aa48cc4a5a8d5149f9
 │   │   │   ├── 35/
+│   │   │   │   ├── 33e0d662fae7943b8cd1759b380b8908a17112
 │   │   │   │   ├── 6e56c1c5ea09919353e5d495a8a51ef319b4fc
 │   │   │   ├── 3a/
 │   │   │   │   ├── c095adc3c54f132d51476f8f97c3f408f1b1e1
+│   │   │   ├── 3d/
+│   │   │   │   ├── 3673dedc17cee637eb0e3855db8e262fe39211
 │   │   │   ├── 40/
+│   │   │   │   ├── 380c214adb89e880365823c939ea75ece1f16f
 │   │   │   │   ├── f461a9efebf384116ab227a22b66407488043d
+│   │   │   ├── 42/
+│   │   │   │   ├── 63738e6844a30a588b773b40f0bdab58036098
 │   │   │   ├── 4f/
+│   │   │   │   ├── 83753e4db7bf5e1d2344b1df8bf39f831cd1ca
 │   │   │   │   ├── bb5935f6c744e230dc4ea2c3ecdfc6261238be
 │   │   │   ├── 55/
 │   │   │   │   ├── 71fd5152d6fe6e1d269409ef59c5bc6dcac099
 │   │   │   ├── 5a/
 │   │   │   │   ├── 5a4ecae147bec5a234b4c558aec5b476b5b4db
+│   │   │   ├── 5b/
+│   │   │   │   ├── 8139cdeadfaf2548c6424e5ccc1ead69d961aa
 │   │   │   ├── 5c/
 │   │   │   │   ├── fa912487081b967877dc44dd3a593c52c0ad59
 │   │   │   ├── 5d/
+│   │   │   │   ├── 61363f1483d502cf9c5aa7878fcaa6787fa186
 │   │   │   │   ├── e9d7164cfdd7a1f72daed3506d6d6e31e30170
 │   │   │   ├── 5f/
 │   │   │   │   ├── 1d7a1b965851e515791f03ce317beafb79fc4b
 │   │   │   ├── 62/
 │   │   │   │   ├── b72bfd54dd06fd12a453ca1abdfda285b681ef
+│   │   │   ├── 67/
+│   │   │   │   ├── 1ee04414a1f207aa1567a7fe6b2ee71c4923cb
 │   │   │   ├── 68/
 │   │   │   │   ├── b2d24054dacb9db48d1c9edd5303f6456332e8
 │   │   │   ├── 6e/
 │   │   │   │   ├── 633adece8b76653dc4809ec639854558e0e0f4
 │   │   │   ├── 70/
+│   │   │   │   ├── 3717c5312c8fa4bfdc06811f26eb9339a2e8dc
 │   │   │   │   ├── 804d52f11d38cac582917040f021dc97cebe34
 │   │   │   ├── 74/
 │   │   │   │   ├── 76d62f77f67c3224afb940cd94df4d532ec1f4
 │   │   │   ├── 79/
+│   │   │   │   ├── d3ea183e7b59710a36cb2271a504b19eeb43e6
 │   │   │   │   ├── d69f776b1ed3500d83b9c7eb9bd4543429b8d0
+│   │   │   ├── 7c/
+│   │   │   │   ├── ccd2885642b6a9c58d267f082d454693b51319
+│   │   │   ├── 81/
+│   │   │   │   ├── 387ce6f34daa4f4ef878122d316dbdb3653712
+│   │   │   ├── 85/
+│   │   │   │   ├── 61a9abcbecd7f8c5cd5dbd174e609ea197fae3
 │   │   │   ├── 87/
 │   │   │   │   ├── 5151509b4b16f03191ed3ee391ae34b085b519
 │   │   │   │   ├── d96a44d7441a0f7f8af2aef046d5db5b7c011e
 │   │   │   ├── 8b/
 │   │   │   │   ├── 8f1063834a165ce614dc4f279fdaa5dc844733
+│   │   │   ├── 93/
+│   │   │   │   ├── d057a35d1336d6932b345d2f2cad99bed33fc0
 │   │   │   ├── 99/
 │   │   │   │   ├── 4ca1f0e9a17792ce9c800ea940d85f6f179097
 │   │   │   │   ├── f3cb85b641dcf09c8352236a2cc8cf483913b9
@@ -119,14 +157,25 @@
 │   │   │   ├── b1/
 │   │   │   │   ├── e44bfe34365170a62d19e2a9ecc0957ad420be
 │   │   │   │   ├── ef07f518e6f6f27ad5bec5cf6b723c679e0c0b
+│   │   │   ├── b2/
+│   │   │   │   ├── 5bd44580c6b96748d4f0d410592cc08bb300b6
 │   │   │   ├── b6/
 │   │   │   │   ├── 8b62f75821e1fc6f94bc8f2cbb4b912f871579
 │   │   │   │   ├── e13a2f5efe93cedec8cf475f96d464b4064e0a
 │   │   │   ├── be/
 │   │   │   │   ├── 6d730501d9ab26235d6d6f2eb345fc7afdab36
+│   │   │   │   ├── d35ceb4d6e5761882c832a14934a0c2e350d2a
 │   │   │   │   ├── e5296818d6e3049991ece6d129c588c0c36f86
+│   │   │   ├── c1/
+│   │   │   │   ├── 00eec915330bf6d6a77c9d7b8ceb27352a517c
 │   │   │   ├── c3/
 │   │   │   │   ├── c313520221a83a113be2e3e4c962f3f6a659d4
+│   │   │   ├── c4/
+│   │   │   │   ├── 59dd1c448e46ae81af67f1b539256c04975626
+│   │   │   ├── c9/
+│   │   │   │   ├── 87349013a9895f00d1cf190eea30f6ee2ece21
+│   │   │   ├── ca/
+│   │   │   │   ├── ae056c3d2a993710b59a9886a495572ba3c9fb
 │   │   │   ├── cb/
 │   │   │   │   ├── f44423cec534fb2ef1b6c8bd2b0cb5d4a9ceee
 │   │   │   ├── cd/
@@ -140,8 +189,14 @@
 │   │   │   │   ├── 5ea12efba6849146c32f5208f6902797bffbe5
 │   │   │   ├── de/
 │   │   │   │   ├── 3b1ff45aaf4279c94616b9e80528ab8a29e5b2
+│   │   │   ├── e0/
+│   │   │   │   ├── 1a51dbfb0f80adc2dda9ea814f410e7b03ab89
+│   │   │   ├── e3/
+│   │   │   │   ├── e61969a0765997b3533694044600ef27abda1c
 │   │   │   ├── e7/
 │   │   │   │   ├── 132945a20a991203778ca68806df581b723a01
+│   │   │   ├── ef/
+│   │   │   │   ├── a20daae21214641fa99b377413fb32166b9e80
 │   │   │   ├── f1/
 │   │   │   │   ├── 71fa8c41ac18b22537974b44236c60556c1b48
 │   │   │   ├── f6/
@@ -179,12 +234,24 @@
 │   │   │   ├── settings.cpython-311.pyc
 │   ├── data/
 │   │   ├── historical/
+│   │   ├── history/
 │   │   ├── models/
+│   │   │   ├── fundamental_model.joblib
+│   │   │   ├── market_model_20241221_172622.joblib
+│   │   │   ├── scaler_20241221_172622.joblib
+│   │   │   ├── sentiment_model.joblib
+│   │   │   ├── technical_model.joblib
+│   ├── frontend/
+│   │   ├── index.html
 │   ├── logs/
 │   │   ├── errors_20241216.log
 │   │   ├── errors_20241219.log
+│   │   ├── errors_20241220.log
+│   │   ├── errors_20241221.log
 │   │   ├── trading_20241216.log
 │   │   ├── trading_20241219.log
+│   │   ├── trading_20241220.log
+│   │   ├── trading_20241221.log
 │   ├── models/
 │   │   ├── fundamental_model.py
 │   │   ├── model_manager.py
@@ -209,3 +276,5 @@
 │   │   ├── __pycache__/
 │   │   │   ├── data_loader.cpython-311.pyc
 │   │   │   ├── preprocessing.cpython-311.pyc
+│   ├── __pycache__/
+│   │   ├── trading_history_generator.cpython-311.pyc

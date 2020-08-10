@@ -1,0 +1,12 @@
+2024-12-21 17:51:56,601 - trading - ERROR - Error starting web server: 'frontend/build/static' does not exist
+2024-12-21 17:52:30,328 - trading - ERROR - Error starting web server: 'frontend/build/static' does not exist
+2024-12-21 18:16:49,879 - trading - ERROR - Error serving trading history: [Errno 2] No such file or directory: 'data/history/trading_history.json'
+2024-12-21 18:17:49,081 - trading - ERROR - Error serving trading history: [Errno 2] No such file or directory: 'data/history/trading_history.json'
+2024-12-21 18:40:02,669 - trading - ERROR - Error generating history: Failed to prepare training data
+2024-12-21 18:43:21,907 - trading - ERROR - Error generating history: 'TechnicalModel' object has no attribute 'predict'
+2024-12-21 18:43:40,588 - trading - ERROR - Error generating history: 'TechnicalModel' object has no attribute 'predict'
+2024-12-21 18:44:48,032 - trading - ERROR - Component initialization error: name 'logging' is not defined
+2024-12-21 18:44:48,032 - trading - ERROR - Initialization error: name 'logging' is not defined
+2024-12-21 18:44:53,784 - trading - ERROR - Component initialization error: name 'logging' is not defined
+2024-12-21 18:44:53,785 - trading - ERROR - Initialization error: name 'logging' is not defined
+2024-12-21 18:45:59,157 - trading - ERROR - Error generating history: Failed to prepare training data

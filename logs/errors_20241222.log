@@ -1,0 +1,11 @@
+2024-12-22 18:05:24,416 - trading - ERROR - Component initialization error: name 'NeuralModel' is not defined
+2024-12-22 18:05:24,417 - trading - ERROR - Initialization error: name 'NeuralModel' is not defined
+2024-12-22 18:20:16,227 - trading - ERROR - Error starting web server: 'ModelManager' object has no attribute 'load_models'
+2024-12-22 18:26:59,407 - trading - ERROR - Error in model training: object bool can't be used in 'await' expression
+2024-12-22 18:28:56,940 - trading - ERROR - Error in model training: object bool can't be used in 'await' expression
+2024-12-22 18:36:14,548 - trading - ERROR - Error in model training: 'ModelManager' object has no attribute 'train_all_models'
+2024-12-22 19:34:41,839 - trading - ERROR - Error generating history: Failed to prepare training data
+2024-12-22 19:34:41,840 - trading - ERROR - Error serving trading history: Failed to prepare training data
+2024-12-22 19:39:42,227 - trading - ERROR - Error generating history: Failed to prepare training data
+2024-12-22 19:39:42,229 - trading - ERROR - Error serving trading history: Failed to prepare training data
+2024-12-22 19:51:14,873 - trading - ERROR - Error starting web server: 'frontend/static' does not exist
