@@ -1,0 +1,10 @@
+2025-01-04 03:09:36,449 - INFO - Successfully loaded 8640 bars of historical data
+2025-01-04 03:09:36,451 - INFO - Starting episode 1
+2025-01-04 03:11:38,555 - INFO - Position closed with profit: $-4.20
+2025-01-04 03:12:36,355 - INFO - Position closed with profit: $1.50
+2025-01-04 03:13:38,172 - INFO - Position closed with profit: $2.10
+2025-01-04 03:13:46,718 - INFO - Position closed with profit: $-6.30
+2025-01-04 03:14:22,520 - INFO - Position closed with profit: $3.00
+2025-01-04 03:20:10,889 - ERROR - Error in episode 1: 'HistoricalTrader' object has no attribute '_print_episode_summary'
+2025-01-04 03:20:10,890 - INFO - Starting episode 2
+2025-01-04 03:27:25,001 - INFO - Position closed with profit: $2.30

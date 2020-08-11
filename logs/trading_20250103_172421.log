@@ -1,0 +1,201 @@
+2025-01-03 17:24:21,637 - INFO - Successfully loaded 8640 bars of historical data
+2025-01-03 17:24:21,643 - INFO - Starting episode 1
+2025-01-03 17:24:21,645 - ERROR - Error in episode 1: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,647 - INFO - Starting episode 2
+2025-01-03 17:24:21,647 - ERROR - Error in episode 2: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,648 - INFO - Starting episode 3
+2025-01-03 17:24:21,649 - ERROR - Error in episode 3: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,650 - INFO - Starting episode 4
+2025-01-03 17:24:21,651 - ERROR - Error in episode 4: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,652 - INFO - Starting episode 5
+2025-01-03 17:24:21,652 - ERROR - Error in episode 5: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,654 - INFO - Starting episode 6
+2025-01-03 17:24:21,654 - ERROR - Error in episode 6: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,657 - INFO - Starting episode 7
+2025-01-03 17:24:21,657 - ERROR - Error in episode 7: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,658 - INFO - Starting episode 8
+2025-01-03 17:24:21,659 - ERROR - Error in episode 8: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,659 - INFO - Starting episode 9
+2025-01-03 17:24:21,660 - ERROR - Error in episode 9: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,660 - INFO - Starting episode 10
+2025-01-03 17:24:21,661 - ERROR - Error in episode 10: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,661 - INFO - Starting episode 11
+2025-01-03 17:24:21,662 - ERROR - Error in episode 11: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,663 - INFO - Starting episode 12
+2025-01-03 17:24:21,663 - ERROR - Error in episode 12: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,664 - INFO - Starting episode 13
+2025-01-03 17:24:21,664 - ERROR - Error in episode 13: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,664 - INFO - Starting episode 14
+2025-01-03 17:24:21,665 - ERROR - Error in episode 14: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,665 - INFO - Starting episode 15
+2025-01-03 17:24:21,665 - ERROR - Error in episode 15: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,666 - INFO - Starting episode 16
+2025-01-03 17:24:21,666 - ERROR - Error in episode 16: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,666 - INFO - Starting episode 17
+2025-01-03 17:24:21,667 - ERROR - Error in episode 17: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,667 - INFO - Starting episode 18
+2025-01-03 17:24:21,667 - ERROR - Error in episode 18: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,667 - INFO - Starting episode 19
+2025-01-03 17:24:21,668 - ERROR - Error in episode 19: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,668 - INFO - Starting episode 20
+2025-01-03 17:24:21,668 - ERROR - Error in episode 20: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,669 - INFO - Starting episode 21
+2025-01-03 17:24:21,669 - ERROR - Error in episode 21: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,669 - INFO - Starting episode 22
+2025-01-03 17:24:21,670 - ERROR - Error in episode 22: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,670 - INFO - Starting episode 23
+2025-01-03 17:24:21,671 - ERROR - Error in episode 23: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,674 - INFO - Starting episode 24
+2025-01-03 17:24:21,674 - ERROR - Error in episode 24: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,675 - INFO - Starting episode 25
+2025-01-03 17:24:21,675 - ERROR - Error in episode 25: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,677 - INFO - Starting episode 26
+2025-01-03 17:24:21,677 - ERROR - Error in episode 26: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,678 - INFO - Starting episode 27
+2025-01-03 17:24:21,679 - ERROR - Error in episode 27: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,679 - INFO - Starting episode 28
+2025-01-03 17:24:21,680 - ERROR - Error in episode 28: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,680 - INFO - Starting episode 29
+2025-01-03 17:24:21,681 - ERROR - Error in episode 29: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,681 - INFO - Starting episode 30
+2025-01-03 17:24:21,682 - ERROR - Error in episode 30: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,682 - INFO - Starting episode 31
+2025-01-03 17:24:21,683 - ERROR - Error in episode 31: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,683 - INFO - Starting episode 32
+2025-01-03 17:24:21,684 - ERROR - Error in episode 32: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,684 - INFO - Starting episode 33
+2025-01-03 17:24:21,685 - ERROR - Error in episode 33: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,685 - INFO - Starting episode 34
+2025-01-03 17:24:21,686 - ERROR - Error in episode 34: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,688 - INFO - Starting episode 35
+2025-01-03 17:24:21,689 - ERROR - Error in episode 35: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,689 - INFO - Starting episode 36
+2025-01-03 17:24:21,690 - ERROR - Error in episode 36: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,690 - INFO - Starting episode 37
+2025-01-03 17:24:21,691 - ERROR - Error in episode 37: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,691 - INFO - Starting episode 38
+2025-01-03 17:24:21,692 - ERROR - Error in episode 38: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,692 - INFO - Starting episode 39
+2025-01-03 17:24:21,693 - ERROR - Error in episode 39: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,694 - INFO - Starting episode 40
+2025-01-03 17:24:21,694 - ERROR - Error in episode 40: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,695 - INFO - Starting episode 41
+2025-01-03 17:24:21,695 - ERROR - Error in episode 41: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,696 - INFO - Starting episode 42
+2025-01-03 17:24:21,696 - ERROR - Error in episode 42: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,697 - INFO - Starting episode 43
+2025-01-03 17:24:21,697 - ERROR - Error in episode 43: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,698 - INFO - Starting episode 44
+2025-01-03 17:24:21,698 - ERROR - Error in episode 44: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,699 - INFO - Starting episode 45
+2025-01-03 17:24:21,699 - ERROR - Error in episode 45: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,700 - INFO - Starting episode 46
+2025-01-03 17:24:21,701 - ERROR - Error in episode 46: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,701 - INFO - Starting episode 47
+2025-01-03 17:24:21,702 - ERROR - Error in episode 47: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,705 - INFO - Starting episode 48
+2025-01-03 17:24:21,705 - ERROR - Error in episode 48: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,707 - INFO - Starting episode 49
+2025-01-03 17:24:21,707 - ERROR - Error in episode 49: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,708 - INFO - Starting episode 50
+2025-01-03 17:24:21,708 - ERROR - Error in episode 50: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,709 - INFO - Starting episode 51
+2025-01-03 17:24:21,709 - ERROR - Error in episode 51: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,709 - INFO - Starting episode 52
+2025-01-03 17:24:21,710 - ERROR - Error in episode 52: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,710 - INFO - Starting episode 53
+2025-01-03 17:24:21,711 - ERROR - Error in episode 53: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,711 - INFO - Starting episode 54
+2025-01-03 17:24:21,712 - ERROR - Error in episode 54: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,713 - INFO - Starting episode 55
+2025-01-03 17:24:21,713 - ERROR - Error in episode 55: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,714 - INFO - Starting episode 56
+2025-01-03 17:24:21,714 - ERROR - Error in episode 56: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,715 - INFO - Starting episode 57
+2025-01-03 17:24:21,715 - ERROR - Error in episode 57: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,715 - INFO - Starting episode 58
+2025-01-03 17:24:21,716 - ERROR - Error in episode 58: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,717 - INFO - Starting episode 59
+2025-01-03 17:24:21,717 - ERROR - Error in episode 59: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,718 - INFO - Starting episode 60
+2025-01-03 17:24:21,718 - ERROR - Error in episode 60: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,721 - INFO - Starting episode 61
+2025-01-03 17:24:21,722 - ERROR - Error in episode 61: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,722 - INFO - Starting episode 62
+2025-01-03 17:24:21,723 - ERROR - Error in episode 62: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,724 - INFO - Starting episode 63
+2025-01-03 17:24:21,724 - ERROR - Error in episode 63: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,725 - INFO - Starting episode 64
+2025-01-03 17:24:21,725 - ERROR - Error in episode 64: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,726 - INFO - Starting episode 65
+2025-01-03 17:24:21,727 - ERROR - Error in episode 65: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,727 - INFO - Starting episode 66
+2025-01-03 17:24:21,728 - ERROR - Error in episode 66: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,728 - INFO - Starting episode 67
+2025-01-03 17:24:21,729 - ERROR - Error in episode 67: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,730 - INFO - Starting episode 68
+2025-01-03 17:24:21,731 - ERROR - Error in episode 68: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,731 - INFO - Starting episode 69
+2025-01-03 17:24:21,732 - ERROR - Error in episode 69: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,732 - INFO - Starting episode 70
+2025-01-03 17:24:21,733 - ERROR - Error in episode 70: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,735 - INFO - Starting episode 71
+2025-01-03 17:24:21,736 - ERROR - Error in episode 71: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,736 - INFO - Starting episode 72
+2025-01-03 17:24:21,737 - ERROR - Error in episode 72: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,737 - INFO - Starting episode 73
+2025-01-03 17:24:21,738 - ERROR - Error in episode 73: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,738 - INFO - Starting episode 74
+2025-01-03 17:24:21,739 - ERROR - Error in episode 74: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,739 - INFO - Starting episode 75
+2025-01-03 17:24:21,740 - ERROR - Error in episode 75: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,740 - INFO - Starting episode 76
+2025-01-03 17:24:21,741 - ERROR - Error in episode 76: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,741 - INFO - Starting episode 77
+2025-01-03 17:24:21,742 - ERROR - Error in episode 77: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,742 - INFO - Starting episode 78
+2025-01-03 17:24:21,743 - ERROR - Error in episode 78: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,743 - INFO - Starting episode 79
+2025-01-03 17:24:21,744 - ERROR - Error in episode 79: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,744 - INFO - Starting episode 80
+2025-01-03 17:24:21,745 - ERROR - Error in episode 80: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,745 - INFO - Starting episode 81
+2025-01-03 17:24:21,746 - ERROR - Error in episode 81: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,746 - INFO - Starting episode 82
+2025-01-03 17:24:21,747 - ERROR - Error in episode 82: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,747 - INFO - Starting episode 83
+2025-01-03 17:24:21,748 - ERROR - Error in episode 83: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,748 - INFO - Starting episode 84
+2025-01-03 17:24:21,749 - ERROR - Error in episode 84: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,752 - INFO - Starting episode 85
+2025-01-03 17:24:21,752 - ERROR - Error in episode 85: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,753 - INFO - Starting episode 86
+2025-01-03 17:24:21,753 - ERROR - Error in episode 86: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,754 - INFO - Starting episode 87
+2025-01-03 17:24:21,754 - ERROR - Error in episode 87: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,755 - INFO - Starting episode 88
+2025-01-03 17:24:21,755 - ERROR - Error in episode 88: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,756 - INFO - Starting episode 89
+2025-01-03 17:24:21,756 - ERROR - Error in episode 89: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,757 - INFO - Starting episode 90
+2025-01-03 17:24:21,757 - ERROR - Error in episode 90: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,758 - INFO - Starting episode 91
+2025-01-03 17:24:21,759 - ERROR - Error in episode 91: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,759 - INFO - Starting episode 92
+2025-01-03 17:24:21,760 - ERROR - Error in episode 92: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,760 - INFO - Starting episode 93
+2025-01-03 17:24:21,761 - ERROR - Error in episode 93: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,761 - INFO - Starting episode 94
+2025-01-03 17:24:21,762 - ERROR - Error in episode 94: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,762 - INFO - Starting episode 95
+2025-01-03 17:24:21,763 - ERROR - Error in episode 95: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,763 - INFO - Starting episode 96
+2025-01-03 17:24:21,764 - ERROR - Error in episode 96: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,764 - INFO - Starting episode 97
+2025-01-03 17:24:21,765 - ERROR - Error in episode 97: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,767 - INFO - Starting episode 98
+2025-01-03 17:24:21,768 - ERROR - Error in episode 98: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,769 - INFO - Starting episode 99
+2025-01-03 17:24:21,769 - ERROR - Error in episode 99: 'HistoricalTrader' object has no attribute 'get_current_market_data'
+2025-01-03 17:24:21,770 - INFO - Starting episode 100
+2025-01-03 17:24:21,770 - ERROR - Error in episode 100: 'HistoricalTrader' object has no attribute 'get_current_market_data'
