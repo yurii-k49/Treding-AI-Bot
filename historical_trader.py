@@ -8,33 +8,49 @@ import logging
 from typing import Optional, Dict, List, Tuple, Any
 import json
 import time
+import random
 
 class HistoricalTrader(TradingModel):
+    """Trading bot that trains on historical data with optimized performance"""
+    
     def __init__(self, symbol: str = "EURUSD", timeframe: int = mt5.TIMEFRAME_M5):
+        """Initialize the trader with optimized parameters"""
         super().__init__(symbol, timeframe)
+        
+        # Core trading parameters
         self.historical_data = None
         self.current_index = 50
         self.initial_balance = 100.0
         self.virtual_balance = self.initial_balance
+        self.gamma = 0.95  # Added gamma parameter for Q-learning
+        
+        # Performance optimization parameters
+        self.batch_size = 128  # Increased for faster training
+        self.data_window_size = 1000  # Process data in chunks
+        self.update_interval = 10  # Market update frequency
+        self.market_state_cache = {}  # Cache for market states
+        self.precomputed_indicators = {}
+        
+        # Trading state tracking
         self.open_positions: List[Dict] = []
         self.trade_history: List[Dict] = []
         self.logger = self._setup_logger()
         
-        # Strategiya parametrlari optimallashtirildi
+        # Strategy configurations with optimized parameters
         self.strategies = {
-           'Scalping': {
+            'Scalping': {
                 'interval': 12,
                 'max_orders': 2,
-                'tp_multiplier': 2.5,  # Ko'proq foyda
+                'tp_multiplier': 2.5,
                 'sl_multiplier': 1.0,
-                'risk_percent': 2.0,  # Risk oshirildi
-                'min_volume': 0.05,  # Min lot oshirildi
-                'max_volume': 0.2   # Max lot oshirildi
+                'risk_percent': 2.0,
+                'min_volume': 0.05,
+                'max_volume': 0.2
             },
             'Breakout': {
                 'interval': 8,
                 'max_orders': 2,
-                'tp_multiplier': 2.5,  # TP/SL=2.5 (25/10 punkt)
+                'tp_multiplier': 2.5,
                 'sl_multiplier': 1.0,
                 'risk_percent': 1.2,
                 'min_volume': 0.01,
@@ -43,13 +59,15 @@ class HistoricalTrader(TradingModel):
             'OrderBlock': {
                 'interval': 12,
                 'max_orders': 2,
-                'tp_multiplier': 3.0,  # TP/SL=3 (30/10 punkt)
+                'tp_multiplier': 3.0,
                 'sl_multiplier': 1.0,
                 'risk_percent': 1.5,
                 'min_volume': 0.01,
                 'max_volume': 0.1
             }
         }
+        
+        # State tracking
         self.last_order_times = {strat: 0 for strat in self.strategies}
         self.market_conditions = {
             'trend_strength': 0,
@@ -58,10 +76,10 @@ class HistoricalTrader(TradingModel):
             'volume_ratio': 0,
             'atr': 0
         }
-
+    
     @staticmethod
     def _setup_logger() -> logging.Logger:
-        """Trading bot uchun logger sozlash"""
+        """Configure logging with optimized settings"""
         logger = logging.getLogger('HistoricalTrader')
         logger.setLevel(logging.INFO)
         
@@ -77,9 +95,9 @@ class HistoricalTrader(TradingModel):
         logger.addHandler(fh)
         
         return logger
-
+    
     def load_historical_data(self, days: int = 30) -> bool:
-        """Tarixiy ma'lumotlarni yuklash"""
+        """Load and preprocess historical data efficiently"""
         print("\n=== LOADING HISTORICAL DATA ===")
         
         try:
@@ -100,6 +118,9 @@ class HistoricalTrader(TradingModel):
                 
             self.historical_data = np.array(rates)
             
+            # Precompute base indicators after loading data
+            self._precompute_base_indicators()
+            
             print(f"✅ Loaded: {len(rates)} bars")
             print(f"📅 First date: {datetime.fromtimestamp(rates[0]['time'])}")
             print(f"📅 Last date: {datetime.fromtimestamp(rates[-1]['time'])}")
@@ -110,682 +131,443 @@ class HistoricalTrader(TradingModel):
         except Exception as e:
             self.logger.error(f"Error loading historical data: {str(e)}")
             return False
-        
+
+    def _precompute_base_indicators(self) -> None:
+        """Pre-compute all base technical indicators for faster access"""
+        print("\nPre-computing base technical indicators...")
+        try:
+            closes = self.historical_data['close']
+            highs = self.historical_data['high']
+            lows = self.historical_data['low']
+            volumes = self.historical_data['tick_volume']
+            
+            # Initialize arrays
+            n = len(closes)
+            highs_20 = np.zeros(n)
+            lows_20 = np.zeros(n)
+            volume_sma = np.zeros(n)
+            momentum = np.zeros(n)
+            
+            # Calculate rolling indicators
+            window = 20
+            for i in range(window, n):
+                highs_20[i] = np.max(highs[i-window:i])
+                lows_20[i] = np.min(lows[i-window:i])
+                volume_sma[i] = np.mean(volumes[i-window:i])
+            
+            # Fill initial values
+            highs_20[:window] = highs_20[window]
+            lows_20[:window] = lows_20[window]
+            volume_sma[:window] = volume_sma[window]
+            
+            # Calculate momentum (5-period)
+            for i in range(5, n):
+                momentum[i] = closes[i] - closes[i-5]
+            
+            # Store all indicators
+            self.precomputed_indicators = {
+                'ema20': self.calculate_ema(closes, 20),
+                'ema50': self.calculate_ema(closes, 50),
+                'ema200': self.calculate_ema(closes, 200),
+                'rsi': self.calculate_rsi(closes),
+                'atr': self.calculate_atr(self.historical_data),
+                'highs_20': highs_20,
+                'lows_20': lows_20,
+                'volume_sma': volume_sma,
+                'momentum': momentum
+            }
+            
+            print("✅ Base indicators pre-computed successfully")
+            
+        except Exception as e:
+            self.logger.error(f"Error pre-computing indicators: {str(e)}")
+            raise
+
+    def _update_market_conditions(self) -> None:
+        """Update market conditions based on current market state"""
+        try:
+            # Get current window for analysis
+            window_start = max(0, self.current_index - 50)
+            window = self.historical_data[window_start:self.current_index]
+            
+            # Get indicator values at current index
+            current_idx = self.current_index
+            ema20 = self.precomputed_indicators['ema20'][current_idx]
+            ema50 = self.precomputed_indicators['ema50'][current_idx]
+            ema200 = self.precomputed_indicators['ema200'][current_idx]
+            rsi = self.precomputed_indicators['rsi'][current_idx]
+            atr = self.precomputed_indicators['atr'][current_idx]
+            
+            # Calculate volume metrics
+            current_volume = window[-1]['tick_volume']
+            avg_volume = np.mean(window['tick_volume'])
+            volume_ratio = current_volume / avg_volume if avg_volume > 0 else 1.0
+            
+            # Analyze trend strength
+            if ema20 > ema50 > ema200 and volume_ratio > 1.2:
+                trend_strength = 1  # Strong uptrend
+            elif ema20 < ema50 < ema200 and volume_ratio > 1.2:
+                trend_strength = -1  # Strong downtrend
+            else:
+                trend_strength = 0  # No clear trend
+            
+            # Analyze volatility
+            atr_mean = np.mean(self.precomputed_indicators['atr'][window_start:current_idx])
+            atr_std = np.std(self.precomputed_indicators['atr'][window_start:current_idx])
+            
+            if atr > atr_mean + 2 * atr_std:
+                volatility = 2  # High volatility
+            elif atr > atr_mean + atr_std:
+                volatility = 1  # Medium volatility
+            else:
+                volatility = 0  # Low volatility
+            
+            # Determine session activity based on volatility and volume
+            if volatility >= 1 and volume_ratio > 1.5:
+                session_activity = 2  # High activity
+            elif volatility >= 1 or volume_ratio > 1.2:
+                session_activity = 1  # Medium activity
+            else:
+                session_activity = 0  # Low activity
+            
+            # Update market conditions
+            self.market_conditions = {
+                'trend_strength': trend_strength,
+                'volatility': volatility,
+                'session_activity': session_activity,
+                'volume_ratio': volume_ratio,
+                'atr': atr,
+                'rsi': rsi
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Error updating market conditions: {str(e)}")
+            # Set default values in case of error
+            self.market_conditions = {
+                'trend_strength': 0,
+                'volatility': 0,
+                'session_activity': 0,
+                'volume_ratio': 1.0,
+                'atr': 0.0,
+                'rsi': 50.0
+            }
+
     def train_on_historical(self, episodes: int = 100) -> None:
-        """Trade botni tarixiy ma'lumotlarda o'qitish"""
+        """Main training loop with strategy optimization"""
         if not os.path.exists('models'):
             os.makedirs('models')
-            
+                
         print("\n=== STARTING TRAINING ===")
         print(f"📊 Total bars: {len(self.historical_data)}")
         print(f"🔄 Episodes: {episodes}")
         print(f"💰 Initial balance: ${self.initial_balance:,.2f}\n")
         
-        # O'qitish parametrlari
+        # Pre-compute indicators once for all episodes
+        self._precompute_base_indicators()
+        
+        # Training parameters
         epsilon = 1.0
         epsilon_min = 0.01
         epsilon_decay = 0.995
+        batch_size = self.batch_size
+        gamma = self.gamma
         memory = deque(maxlen=2000)
-        batch_size = 64
-        gamma = 0.95
         
+        # Performance tracking
         best_profit = float('-inf')
         best_episode = -1
         episodes_without_improvement = 0
         max_episodes_without_improvement = 10
         
+        # Strategy performance history
+        strategy_history = {
+            strategy: {
+                'win_rates': [],
+                'profits': []
+            } for strategy in self.strategies.keys()
+        }
+        
         for episode in range(episodes):
-            # Episode uchun yangi holat
-            self.virtual_balance = self.initial_balance
-            self.current_index = 50
-            self.open_positions.clear()
-            self.trade_history.clear()
-            trades_this_episode = 0
-            
-            print(f"\n=== EPISODE {episode + 1}/{episodes} ===")
             self.logger.info(f"Starting episode {episode + 1}")
-            episode_start = time.time()
             
-            try:
-                while self.current_index < len(self.historical_data) - 50:
-                    if self.virtual_balance <= 0:
-                        print(f"❌ Margin Call! Balance: ${self.virtual_balance:.2f}")
-                        self.logger.warning(f"Margin call at episode {episode + 1}")
-                        break
-                        
-                    if trades_this_episode >= 100:
-                        break
-                        
-                    # Get state
-                    window = self.historical_data[self.current_index-50:self.current_index]
-                    self.analyze_market_conditions(window)
-                    current_state = self._process_market_data(window)
-                    current_state = np.expand_dims(current_state, axis=0)
-                    
-                    # Get action
-                    if np.random.random() < epsilon:
-                        action = np.random.choice(len(self.strategies))
-                    else:
-                        q_values = self.model.predict(current_state, verbose=0)[0]
-                        action = np.argmax(q_values)
-                        
-                    # Execute trade and get reward    
-                    trade_result = self.execute_trade(action)
-                    reward = self._calculate_reward(trade_result)
-                    
-                    # Get next state
-                    next_window = self.historical_data[self.current_index-49:self.current_index+1]
-                    next_state = self._process_market_data(next_window)
-                    next_state = np.expand_dims(next_state, axis=0)
-                    
-                    # Store experience
-                    memory.append((current_state, action, reward, next_state))
-                    
-                    # Train on batch
-                    if len(memory) >= batch_size:
-                        batch = np.random.choice(len(memory), batch_size, replace=False)
-                        states = []
-                        targets = []
-                        
-                        for idx in batch:
-                            s, a, r, n_s = memory[idx]
-                            target = self.model.predict(s, verbose=0)[0]
-                            Q_future = np.max(self.model.predict(n_s, verbose=0)[0])
-                            target[a] = r + gamma * Q_future
-                            states.append(s[0])
-                            targets.append(target)
-                            
-                        states_array = np.array(states)
-                        self.model.fit(states_array, np.array(targets), 
-                                        epochs=1, verbose=0, batch_size=batch_size)
-                    
-                    # Check positions
-                    position_result = self.check_positions()
-                    if position_result != 0:
-                        self.logger.info(f"Position closed with profit: ${position_result:.2f}")
-                    
-                    trades_this_episode = len(self.trade_history)
-                    self.current_index += 1
-                
-                # Episode results
-                episode_time = time.time() - episode_start
+            # Run episode and get stats
+            episode_stats = self._run_training_episode(
+                episode, epsilon, memory, batch_size, gamma
+            )
+            
+            if episode_stats:
+                # Update strategy history
                 episode_profit = self.virtual_balance - self.initial_balance
-                win_trades = len([t for t in self.trade_history if t['profit'] > 0])
-                total_trades = len(self.trade_history)
-                win_rate = (win_trades/total_trades*100) if total_trades > 0 else 0
                 
-                print(f"\n{'='*50}")
-                print(f"📊 EPISODE {episode + 1} RESULTS:")
-                print(f"⏱️ Time: {episode_time:.1f}s")
-                print(f"💰 Balance: ${self.virtual_balance:.2f}")
-                print(f"📈 Profit: ${episode_profit:.2f}")
-                print(f"🎯 Trades: {total_trades} (Win Rate: {win_rate:.1f}%)")
+                for strategy, stats in episode_stats.items():
+                    if stats['trades'] > 0:
+                        win_rate = (stats['wins'] / stats['trades']) * 100
+                        strategy_history[strategy]['win_rates'].append(win_rate)
+                        strategy_history[strategy]['profits'].append(stats['profit'])
                 
-                # Check improvement
+                # Update best model if improved
                 if episode_profit > best_profit:
-                    print("✨ New best profit!")
                     best_profit = episode_profit
                     best_episode = episode + 1
                     episodes_without_improvement = 0
-                    self.save_model(f'models/best_model_episode_{episode + 1}.keras')
+                    
+                    # Save best model
+                    model_path = f'models/best_model_episode_{episode + 1}.keras'
+                    self.save_model(model_path)
+                    print(f"\n✨ New best profit! Model saved: {model_path}")
+                    
+                    # Adjust strategy parameters based on performance
+                    self._optimize_strategy_parameters(strategy_history)
                 else:
                     episodes_without_improvement += 1
-                    
+                
+                # Early stopping check
                 if episodes_without_improvement >= max_episodes_without_improvement:
-                    print(f"\n🛑 Stopping - No improvement for {max_episodes_without_improvement} episodes")
+                    print("\n⚠️ Stopping early due to no improvement")
                     break
-                    
+                
+                # Update epsilon for exploration
                 epsilon = max(epsilon_min, epsilon * epsilon_decay)
                 
-            except Exception as e:
-                self.logger.error(f"Error in episode {episode + 1}: {str(e)}")
-                continue
-            
+                # Log episode results
+                trades = len(self.trade_history)
+                if trades > 0:
+                    win_trades = len([t for t in self.trade_history if t['profit'] > 0])
+                    win_rate = (win_trades/trades) * 100
+                    self.logger.info(
+                        f"Episode {episode + 1} completed - "
+                        f"Balance: ${self.virtual_balance:.2f}, "
+                        f"Profit: ${episode_profit:.2f}, "
+                        f"Trades: {trades}, "
+                        f"Win Rate: {win_rate:.1f}%"
+                    )
+                else:
+                    self.logger.info(
+                        f"Episode {episode + 1} completed - "
+                        f"No trades executed, Balance: ${self.virtual_balance:.2f}"
+                    )
+        
+        # Training completion summary
         print("\n=== TRAINING COMPLETED ===")
-        print(f"Best Model: Episode {best_episode}")
-        print(f"Best Profit: ${best_profit:.2f}")
+        print(f"{'='*50}")
+        print(f"🏆 Best Episode: {best_episode}")
+        print(f"💰 Best Profit: ${best_profit:.2f}")
+        print(f"📈 Final Epsilon: {epsilon:.4f}")
+        
+        # Strategy performance summary
+        print("\n📊 STRATEGY PERFORMANCE SUMMARY:")
+        for strategy, history in strategy_history.items():
+            if history['win_rates']:
+                avg_win_rate = np.mean(history['win_rates'])
+                avg_profit = np.mean(history['profits'])
+                print(f"\n{strategy}:")
+                print(f"  Average Win Rate: {avg_win_rate:.1f}%")
+                print(f"  Average Profit: ${avg_profit:.2f}")
+        
+        # Save final model
+        final_model_path = 'models/final_model.keras'
+        self.save_model(final_model_path)
+        print(f"\n💾 Final model saved: {final_model_path}")
 
-    def _process_market_data(self, window: np.ndarray) -> np.ndarray:
-        """Process market data into correct shape for LSTM"""
-        processed = np.column_stack((
-            window['open'],
-            window['high'],
-            window['low'],
-            window['close'],
-            self.calculate_ema(window['close'], 50),
-            self.calculate_rsi(window['close']),
-            self.calculate_atr(window),
-            self.calculate_ema(window['close'], 200)
-        ))
-        return np.nan_to_num(processed, nan=0.0)  # Returns shape (50, 8)
-
-    def _get_strategy_weights(self) -> np.ndarray:
-        """Strategiyalar uchun dinamik vaznlarni hisoblash"""
-        volatility = self.market_conditions['volatility']
-        trend = abs(self.market_conditions['trend_strength'])
-        volume = self.market_conditions['volume_ratio']
-        
-        weights = {
-            'Scalping': 0.5 if volatility < 2 and volume > 1.2 else 0.2,
-            'Breakout': 0.3 if volatility >= 2 else 0.2,
-            'OrderBlock': 0.2 if trend == 1 else 0.1
-        }
-        
-        # Normalize weights
-        values = np.array(list(weights.values()))
-        return values / np.sum(values)
-        
-    def _get_state(self, window: np.ndarray) -> np.ndarray:
-        """Market state'ni model input formatiga o'tkazish"""
-        processed = np.column_stack((
-            window['open'],
-            window['high'],
-            window['low'],
-            window['close'],
-            self.calculate_ema(window['close'], 50),
-            self.calculate_rsi(window['close']),
-            self.calculate_atr(window),
-            self.calculate_ema(window['close'], 200)
-        ))
-        
-        # Reshape to match model's expected input shape (None, 50, 8)
-        processed = np.nan_to_num(processed, nan=0.0)
-        return processed.reshape(1, 50, 8)
-    
-    def _calculate_reward(self, trade_result: float) -> float:
-        """Savdo natijasi uchun reward hisoblash"""
-        if trade_result > 0:
-            return 1.0  # Foydali savdo
-        elif trade_result < 0:
-            return -1.0  # Zarali savdo
-        return -0.1  # Savdo bo'lmagan holatda
-        
-
-    def _get_action(self, state):
-        # Market holatini analiz qilish
-        volatility = self.market_conditions['volatility']
-        trend = abs(self.market_conditions['trend_strength'])
-        volume = self.market_conditions['volume_ratio']
-        
-        # Strategy weights - har bir strategiya uchun vazn
-        weights = {
-            'Scalping': 0.4 if volatility < 2 and volume > 1.2 else 0.1,
-            'Breakout': 0.3 if volatility >= 2 else 0.2,
-            'OrderBlock': 0.3 if trend == 1 else 0.2
-        }
-        
-        # Strategy tanlash - weighted random
-        strategies = list(self.strategies.keys())
-        probs = [weights[s] for s in strategies]
-        probs = np.array(probs) / sum(probs)  # Normalize
-        
-        return np.random.choice(len(strategies), p=probs)
-
-    def _get_current_state(self) -> Optional[np.ndarray]:
-        """Joriy market holatini olish"""
-        if self.current_index >= len(self.historical_data):
-            return None
-            
+    def _run_training_episode(self, episode: int, epsilon: float, memory: deque,
+                            batch_size: int, gamma: float) -> Dict:
+        """Run single training episode with strategy optimization"""
         try:
-            window = self.historical_data[self.current_index-50:self.current_index]
+            # Reset episode state
+            self.virtual_balance = self.initial_balance
+            self.current_index = 50
+            self.open_positions = []
+            self.trade_history = []
+            trades_this_episode = 0
+            last_market_update = 0
             
-            closes = window['close']
-            processed = np.column_stack((
-                window['open'],
-                window['high'],
-                window['low'],
-                closes,
-                self.calculate_ema(closes, 50),
-                self.calculate_rsi(closes),
-                self.calculate_atr(window),
-                self.calculate_ema(closes, 200)
-            ))
-            
-            return np.nan_to_num(processed, nan=0.0)
-            
-        except Exception as e:
-            self.logger.error(f"Error getting current state: {str(e)}")
-            return None
-
-    def execute_trade(self, action: int) -> float:
-        """Savdo bajarish"""
-        if self.current_index >= len(self.historical_data):
-            return 0
-            
-        # Strategiyani tanlash - action asosida
-        strategies = list(self.strategies.keys())
-        if action >= len(strategies):
-            self.logger.error(f"Invalid action: {action}")
-            return 0
-            
-        strategy = strategies[action]
-        if not self.can_open_new_order(strategy):
-            return 0
-            
-        try:
-            window = self.historical_data[self.current_index-50:self.current_index]
-            current_price = self.historical_data[self.current_index]['close']
-            trade_time = datetime.fromtimestamp(self.historical_data[self.current_index]['time'])
-            
-            # Texnik indikatorlar
-            ema_fast = self.calculate_ema(window['close'], 20)[-1]
-            ema_slow = self.calculate_ema(window['close'], 50)[-1]
-            rsi = self.calculate_rsi(window['close'])[-1]
-            atr = self.calculate_atr(window)[-1]
-            
-            # Savdo signalini olish
-            trade_type = self._get_trade_type(strategy, current_price, rsi, ema_fast, ema_slow, window)
-            if not trade_type:
-                return 0
-
-            # TP/SL hisoblash
-            tp_points, sl_points = self.get_dynamic_tp_sl(strategy, atr)
-            
-            # Lot hajmini hisoblash
-            volume = self.calculate_position_size(strategy, sl_points)
-            if volume <= 0:
-                return 0
-                
-            point_value = self.point_value if self.point_value > 0 else 0.0001
-            
-            # Pozitsiya parametrlari
-            position = {
-                'ticket': len(self.open_positions) + 1,
-                'type': trade_type,
-                'volume': volume,
-                'price': current_price,
-                'sl': current_price - (sl_points * point_value) if trade_type == 'buy' else current_price + (sl_points * point_value),
-                'tp': current_price + (tp_points * point_value) if trade_type == 'buy' else current_price - (tp_points * point_value),
-                'strategy': strategy,
-                'open_time': trade_time,
-                'risk_amount': self.virtual_balance * (self.strategies[strategy]['risk_percent'] / 100)
+            # Strategy performance tracking
+            strategy_stats = {
+                strategy: {
+                    'trades': 0,
+                    'wins': 0,
+                    'losses': 0,
+                    'profit': 0.0
+                } for strategy in self.strategies.keys()
             }
             
-            # Savdo ma'lumotlarini chiqarish
-            print(f"\n{'='*50}")
-            print(f"🔄 NEW ORDER #{position['ticket']} | {trade_time}")
-            print(f"🎯 Strategy: {strategy}")
-            print(f"📈 Type: {trade_type.upper()}")
-            print(f"📦 Volume: {volume:.2f} lot")
-            print(f"💰 Entry: {current_price:.5f}")
-            print(f"🎯 Take Profit: {position['tp']:.5f} ({tp_points} points)")
-            print(f"🛑 Stop Loss: {position['sl']:.5f} ({sl_points} points)")
-            print(f"💵 Risk Amount: ${position['risk_amount']:.2f} ({self.strategies[strategy]['risk_percent']}%)")
-            print(f"⚖️ Current Balance: ${self.virtual_balance:.2f}")
-            print(f"📊 Market Conditions:")
-            print(f"   Trend: {self.market_conditions['trend_strength']}")
-            print(f"   Volatility: {self.market_conditions['volatility']}")
-            print(f"   Session: {self.market_conditions['session_activity']}")
+            episode_start = time.time()
+            print(f"\n=== EPISODE {episode + 1} ===")
             
-            self.open_positions.append(position)
-            self.last_order_times[strategy] = self.current_index
-            
-            expected_profit = (position['tp'] - current_price) * volume * 100000 if trade_type == 'buy' else (current_price - position['tp']) * volume * 100000
-            return expected_profit
-            
-        except Exception as e:
-            self.logger.error(f"Error executing trade: {str(e)}")
-            return 0
-        
-    def check_positions(self) -> float:
-        """Ochiq pozitsiyalarni tekshirish"""
-        if not self.open_positions:
-            return 0
-            
-        total_profit = 0
-        current_price = self.historical_data[self.current_index]['close']
-        current_time = datetime.fromtimestamp(self.historical_data[self.current_index]['time'])
-        positions_to_close = []
-        
-        for pos in self.open_positions:
-            profit = self._calculate_position_profit(pos, current_price)
-            close_reason = self._check_close_conditions(pos, current_price)
-            
-            if close_reason:
-                total_profit += profit
-                self.virtual_balance += profit
-                positions_to_close.append(pos)
+            while self.current_index < len(self.historical_data) - 50:
+                # Early stopping conditions
+                if self.virtual_balance <= 0:
+                    print("❌ Account balance depleted")
+                    break
+                if trades_this_episode >= 100:
+                    print("✋ Maximum trades reached")
+                    break
+                    
+                # Update market conditions periodically
+                if self.current_index - last_market_update >= 20:
+                    self._update_market_conditions()
+                    last_market_update = self.current_index
                 
-                roi = (profit / pos['risk_amount']) * 100
+                # Try each strategy
+                for strategy in self.strategies.keys():
+                    # Get current state
+                    current_state = self._get_market_state()
+                    
+                    # Use epsilon-greedy for trading decision
+                    if np.random.random() < epsilon:
+                        should_trade = True
+                    else:
+                        # Use model prediction
+                        q_values = self.model.predict(
+                            current_state.reshape(1, 50, 8), 
+                            verbose=0
+                        )[0]
+                        should_trade = np.max(q_values) > 0.5
+                    
+                    # Execute trade if conditions are met
+                    if should_trade and self.can_open_new_order(strategy):
+                        window = self.historical_data[self.current_index-50:self.current_index]
+                        current_price = self.historical_data[self.current_index]['close']
+                        
+                        # Get trade parameters
+                        trade_type = self._get_trade_type(strategy, current_price, window)
+                        if trade_type:
+                            trades_this_episode += 1
+                            strategy_stats[strategy]['trades'] += 1
+                            
+                            # Execute trade and track result
+                            result = self.execute_trade(strategy, trade_type)
+                            if result > 0:
+                                strategy_stats[strategy]['wins'] += 1
+                                strategy_stats[strategy]['profit'] += result
+                            else:
+                                strategy_stats[strategy]['losses'] += 1
+                                strategy_stats[strategy]['profit'] += result
+                            
+                            # Store experience
+                            next_state = self._get_market_state()
+                            memory.append({
+                                'state': current_state,
+                                'action': list(self.strategies.keys()).index(strategy),
+                                'reward': result,
+                                'next_state': next_state
+                            })
+                
+                # Check and update open positions
+                if self.open_positions:
+                    self._handle_closed_positions(
+                        self.historical_data[self.current_index]['close'],
+                        datetime.fromtimestamp(self.historical_data[self.current_index]['time'])
+                    )
+                
+                # Train model periodically
+                if len(memory) >= batch_size:
+                    self._train_on_batch(memory, batch_size, gamma)
+                
+                self.current_index += 1
+            
+            # Episode summary
+            total_trades = sum(s['trades'] for s in strategy_stats.values())
+            if total_trades > 0:
+                total_profit = sum(s['profit'] for s in strategy_stats.values())
+                total_wins = sum(s['wins'] for s in strategy_stats.values())
+                win_rate = (total_wins / total_trades) * 100
                 
                 print(f"\n{'='*50}")
-                print(f"📍 ORDER #{pos['ticket']} CLOSED | {current_time}")
-                print(f"📊 Strategy: {pos['strategy']}")
-                print(f"📈 Type: {pos['type'].upper()}")
-                print(f"📦 Volume: {pos['volume']:.2f} lot")
-                print(f"💰 Entry → Exit: {pos['price']:.5f} → {current_price:.5f}")
-                print(f"💵 P/L: ${profit:.2f} ({roi:.1f}% ROI)")
-                print(f"❗ Reason: {close_reason}")
-                print(f"⚖️ New Balance: ${self.virtual_balance:.2f}")
-                print(f"⏱️ Duration: {current_time - pos['open_time']}")
+                print(f"📊 EPISODE {episode + 1} RESULTS:")
+                print(f"⏱️ Time: {time.time() - episode_start:.1f}s")
+                print(f"💰 Final Balance: ${self.virtual_balance:.2f}")
+                print(f"📈 Net Profit: ${total_profit:.2f}")
+                print(f"🎯 Total Trades: {total_trades}")
+                print(f"✅ Win Rate: {win_rate:.1f}%\n")
                 
-                self.trade_history.append({
-                    **pos,
-                    'close_price': current_price,
-                    'close_time': current_time,
-                    'profit': profit,
-                    'roi': roi,
-                    'close_reason': close_reason
-                })
-        
-        for pos in positions_to_close:
-            self.open_positions.remove(pos)
-            
-        return total_profit
-
-    def _get_trade_type(self, strategy: str, price: float, rsi: float, 
-                       ema_fast: float, ema_slow: float, window: np.ndarray) -> Optional[str]:
-        """Savdo signalini aniqlash"""
-        try:
-            atr = self.calculate_atr(window)[-1]
-            volume_avg = np.mean(window['tick_volume'][-20:])
-            current_volume = window['tick_volume'][-1]
-            momentum = window['close'][-1] - window['close'][-5]
-            ema200 = self.calculate_ema(window['close'], 200)[-1]
-            
-            if strategy == 'Scalping':
-                if (rsi < 30 and 
-                    ema_fast > ema_slow and
-                    price > ema200 and
-                    momentum > 0 and
-                    current_volume > volume_avg):
-                    return 'buy'
-                elif (rsi > 70 and 
-                      ema_fast < ema_slow and
-                      price < ema200 and
-                      momentum < 0 and
-                      current_volume > volume_avg):
-                    return 'sell'
-                    
-            elif strategy == 'Breakout':
-                highs = window['high'][-20:]
-                lows = window['low'][-20:]
-                resistance = np.max(highs[:-1])
-                support = np.min(lows[:-1])
+                # Strategy breakdown
+                print("📊 STRATEGY PERFORMANCE:")
+                for strategy, stats in strategy_stats.items():
+                    if stats['trades'] > 0:
+                        s_win_rate = (stats['wins'] / stats['trades']) * 100
+                        print(f"\n{strategy}:")
+                        print(f"  Trades: {stats['trades']}")
+                        print(f"  Win Rate: {s_win_rate:.1f}%")
+                        print(f"  Profit: ${stats['profit']:.2f}")
                 
-                if (price > resistance + atr * 0.5 and
-                    current_volume > volume_avg * 1.2 and
-                    momentum > 0):
-                    return 'buy'
-                elif (price < support - atr * 0.5 and
-                      current_volume > volume_avg * 1.2 and
-                      momentum < 0):
-                    return 'sell'
-                    
-            elif strategy == 'OrderBlock':
-                if (price > ema200 and
-                    ema_fast > ema_slow and
-                    rsi > 40 and rsi < 75 and
-                    momentum > 0 and
-                    current_volume > volume_avg and
-                    self.market_conditions['trend_strength'] == 1):
-                    return 'buy'
-                elif (price < ema200 and
-                      ema_fast < ema_slow and
-                      rsi > 25 and rsi < 60 and
-                      momentum < 0 and
-                      current_volume > volume_avg and
-                      self.market_conditions['trend_strength'] == -1):
-                    return 'sell'
-                    
-            return None
+            return strategy_stats
             
         except Exception as e:
-            self.logger.error(f"Error in trade type calculation: {str(e)}")
+            self.logger.error(f"Error in episode {episode + 1}: {str(e)}")
+            return None
+
+    def _get_cached_state(self) -> np.ndarray:
+        """Get market state with caching"""
+        try:
+            # Check if state exists in cache
+            if self.current_index in self.market_state_cache:
+                return self.market_state_cache[self.current_index]
+            
+            # Calculate new state
+            state = self._get_market_state()
+            
+            # Cache the state
+            self.market_state_cache[self.current_index] = state
+            
+            # Clear old cache entries periodically
+            if len(self.market_state_cache) > 1000:
+                self.market_state_cache = {k: v for k, v in self.market_state_cache.items() 
+                                        if k > self.current_index - 100}
+            
+            return state
+        
+        except Exception as e:
+            self.logger.error(f"Error getting cached state: {str(e)}")
+            return np.zeros((50, 8))
+
+    def _execute_episode_trade(self, state: np.ndarray, epsilon: float) -> Optional[Tuple]:
+        """Execute trade during training episode with exploration"""
+        try:
+            if np.random.random() < epsilon:
+                action = np.random.choice(len(self.strategies))
+            else:
+                q_values = self.model.predict(state.reshape(1, -1, 8), verbose=0)[0]
+                action = np.argmax(q_values)
+            
+            reward = self.execute_trade(action)
+            
+            if reward != 0:
+                current_state = self._get_market_state()
+                next_state = self._get_cached_state()
+                
+                return (current_state, action, reward, next_state)
+            
             return None
         
-    def analyze_market_conditions(self, rates: np.ndarray) -> None:
-        """Bozor holatini tahlil qilish"""
-        try:
-            closes = rates['close']
-            highs = rates['high']
-            lows = rates['low']
-            volumes = rates['tick_volume']
+        except Exception as e:
+            self.logger.error(f"Error executing episode trade: {str(e)}")
+            return None
 
-            # Trend tahlili
-            ema20 = self.calculate_ema(closes, 20)
-            ema50 = self.calculate_ema(closes, 50)
-            ema200 = self.calculate_ema(closes, 200)
-            atr = self.calculate_atr(rates)
+    def _update_model(self, state: np.ndarray, trade_result: Tuple,
+                    gamma: float, memory: deque, batch_size: int) -> None:
+        """Update model with new experience"""
+        try:
+            current_state, action, reward, next_state = trade_result
             
-            # Kengaytirilgan volatillik
-            true_range = np.maximum(
-                highs - lows,
-                np.maximum(
-                    np.abs(highs - np.roll(closes, 1)),
-                    np.abs(lows - np.roll(closes, 1))
-                )
-            )
-            atr_standard = np.mean(true_range[-20:])
-            current_volatility = true_range[-1] / atr_standard
+            # Store experience
+            memory.append({
+                'state': current_state,
+                'action': action,
+                'reward': reward,
+                'next_state': next_state
+            })
             
-            # Hajm tahlili
-            volume_sma = np.mean(volumes[-20:])
-            volume_ratio = volumes[-1] / volume_sma
-            
-            # Sessiya vaqti
-            current_hour = datetime.now().hour
-            
-            # Trend kuchi
-            if ema20[-1] > ema50[-1] > ema200[-1] and volume_ratio > 1.1:
-                trend = 1  # Kuchli yuqoriga
-            elif ema20[-1] < ema50[-1] < ema200[-1] and volume_ratio > 1.1:
-                trend = -1  # Kuchli pastga
-            else:
-                trend = 0  # Aniq trend yo'q
-                
-            # Volatillik darajasi
-            if current_volatility > 1.5:
-                volatility = 2  # Yuqori
-            elif current_volatility > 1.0:
-                volatility = 1  # O'rta
-            else:
-                volatility = 0  # Past
-                
-            # Sessiya faolligi
-            if 8 <= current_hour <= 16:  # London/NY
-                session = 2 if volume_ratio > 1.2 else 1
-            elif 3 <= current_hour <= 7 or 17 <= current_hour <= 22:  # Tokyo/Sydney
-                session = 1 if volume_ratio > 1.0 else 0
-            else:
-                session = 0
-                
-            self.market_conditions = {
-                'trend_strength': trend,
-                'volatility': volatility,
-                'session_activity': session,
-                'volume_ratio': volume_ratio,
-                'atr': atr[-1]
-            }
+            # Train on batch if enough samples
+            if len(memory) >= batch_size:
+                self._train_on_batch(memory, batch_size, gamma)
             
         except Exception as e:
-            self.logger.error(f"Error analyzing market: {str(e)}")
+            self.logger.error(f"Error updating model: {str(e)}")
 
-    def get_dynamic_tp_sl(self, strategy: str, atr: float) -> Tuple[float, float]:
-        """Vaziyatga qarab dinamik TP/SL hisoblash"""
-        try:
-            strategy_params = self.strategies[strategy]
-            
-            # Market holatini analiz
-            trend_strength = abs(self.market_conditions['trend_strength'])
-            volatility = self.market_conditions['volatility']
-            volume_ratio = self.market_conditions['volume_ratio']
-            
-            # Bazaviy multiplikatorlar
-            base_tp = strategy_params['tp_multiplier']
-            base_sl = strategy_params['sl_multiplier']
-            
-            # Trend kuchiga qarab
-            if trend_strength == 1:  # Kuchli trend
-                tp_mult = base_tp * 2.0  # Kattaroq target
-                sl_mult = base_sl * 0.8  # Yaqinroq stop
-            else:  # Trend yo'q
-                tp_mult = base_tp * 1.2
-                sl_mult = base_sl * 1.0
-                
-            # Volatillikka qarab
-            if volatility == 2:  # Yuqori
-                tp_mult *= 1.5
-                sl_mult *= 1.2
-            elif volatility == 1:  # O'rta
-                tp_mult *= 1.2
-                sl_mult *= 1.0
-            else:  # Past
-                tp_mult *= 1.0
-                sl_mult *= 0.8
-                
-            # Hajmga qarab
-            volume_factor = min(volume_ratio, 2.0)
-            tp_mult *= volume_factor
-            sl_mult *= volume_factor
-            
-            # Risk/Reward nisbatini hisoblash
-            tp_points = int(atr * tp_mult)
-            sl_points = int(atr * sl_mult)
-            risk_reward = tp_points / sl_points if sl_points > 0 else 0
-            
-            # Minimal masofalar
-            min_points = 15  # Minimal 15 punkt
-            tp_points = max(tp_points, min_points)
-            sl_points = max(sl_points, min_points)
-            
-            return tp_points, sl_points
-            
-        except Exception as e:
-            self.logger.error(f"Error calculating TP/SL: {str(e)}")
-            return 30, 20  # Default qiymatlar
-        
-
-    def calculate_position_size(self, strategy: str, sl_points: float) -> float:
-        """Vaziyatga qarab pozitsiya hajmini hisoblash"""
-        try:
-            strategy_params = self.strategies[strategy]
-            
-            # Bazaviy risk
-            base_risk = strategy_params['risk_percent'] / 100
-            
-            # Market holatiga qarab riskni sozlash
-            market = self.market_conditions
-            trend_strength = abs(market['trend_strength'])
-            volatility = market['volatility']
-            volume_ratio = market['volume_ratio']
-            session = market['session_activity']
-            
-            # Trend va sessiyaga qarab riskni o'zgartirish
-            if trend_strength == 1 and session > 1:
-                risk_mult = 1.5  # 1:1.5 risk/reward
-            elif trend_strength == 1 or session > 1:
-                risk_mult = 1.2  # 1:1.2 risk/reward
-            else:
-                risk_mult = 1.0  # 1:1 risk/reward
-                
-            # Volatillikka qarab
-            if volatility == 2:
-                risk_mult *= 0.7  # Risk kamaytiriladi
-            elif volatility == 1:
-                risk_mult *= 0.9
-                
-            # Hajmga qarab
-            if volume_ratio > 1.5:
-                risk_mult *= 1.2
-                
-            # Yakuniy risk
-            adjusted_risk = base_risk * risk_mult
-            
-            # Joriy pozitsiyalarni tekshirish
-            open_risk = sum(pos['risk_amount'] for pos in self.open_positions)
-            max_risk = self.virtual_balance * 0.1  # Maksimal 10% risk
-            
-            if open_risk + adjusted_risk > max_risk:
-                adjusted_risk = max(0, max_risk - open_risk)
-                
-            # Lot hajmini hisoblash
-            point_value = self.point_value if self.point_value > 0 else 0.0001
-            volume = round((self.virtual_balance * adjusted_risk) / (sl_points * point_value * 10), 2)
-            
-            # Min/max chegaralar
-            volume = max(strategy_params['min_volume'], 
-                        min(volume, strategy_params['max_volume']))
-            
-            return volume
-            
-        except Exception as e:
-            self.logger.error(f"Error calculating position size: {str(e)}")
-            return 0.01  # Minimal lot
-
-    def _calculate_position_profit(self, position: Dict, current_price: float) -> float:
-        """Pozitsiya foydasini hisoblash"""
-        if position['type'] == 'buy':
-            points = current_price - position['price']
-        else:
-            points = position['price'] - current_price
-            
-        return points * position['volume'] * 100000
-
-    def _check_close_conditions(self, position: Dict, current_price: float) -> Optional[str]:
-        """Pozitsiyani yopish shartlarini tekshirish"""
-        if position['type'] == 'buy':
-            if current_price >= position['tp']:
-                return 'TP'
-            elif current_price <= position['sl']:
-                return 'SL'
-        else:
-            if current_price <= position['tp']:
-                return 'TP'
-            elif current_price >= position['sl']:
-                return 'SL'
-        return None
-    
-
-    def can_open_new_order(self, strategy: str) -> bool:
-        """Yangi order ochish mumkinligini tekshirish"""
-        try:
-            # Asosiy tekshiruvlar
-            strategy_positions = [pos for pos in self.open_positions 
-                                if pos['strategy'] == strategy]
-            if len(strategy_positions) >= self.strategies[strategy]['max_orders']:
-                return False
-                
-            # Vaqt intervali
-            if self.current_index - self.last_order_times[strategy] < self.strategies[strategy]['interval']:
-                return False
-                
-            # Margin tekshiruvi
-            total_risk = sum(pos['risk_amount'] for pos in self.open_positions)
-            max_risk_percent = 30  # Maksimal risk 30%
-            if total_risk >= self.virtual_balance * (max_risk_percent / 100):
-                return False
-                
-            # Strategiyaga xos shartlar
-            market = self.market_conditions
-            volume_condition = market['volume_ratio'] > 1.0
-            
-            if strategy == 'Scalping':
-                return (market['volatility'] < 2 and  # Past volatillik
-                       market['session_activity'] > 0 and  # Faol sessiya
-                       volume_condition and  # Yetarli hajm
-                       abs(market['trend_strength']) > 0)  # Aniq trend
-                       
-            elif strategy == 'Breakout':
-                return (market['volatility'] > 0 and  # O'rta/yuqori volatillik
-                       market['session_activity'] > 1 and  # Juda faol sessiya
-                       volume_condition and  # Yetarli hajm
-                       market['volume_ratio'] > 1.5)  # Kuchli hajm o'sishi
-                       
-            elif strategy == 'OrderBlock':
-                return (abs(market['trend_strength']) == 1 and  # Kuchli trend
-                       market['session_activity'] > 0 and  # Faol sessiya
-                       volume_condition and  # Yetarli hajm
-                       market['volatility'] < 2)  # Past/o'rta volatillik
-                       
-            return True
-            
-        except Exception as e:
-            self.logger.error(f"Error checking order conditions: {str(e)}")
-            return False
-        
-    def _print_episode_summary(self, episode: int, best_profit: float, best_episode: int) -> None:
-        """Episode yakunini chiqarish"""
+    def _print_episode_summary(self, episode: int, best_profit: float, 
+                            best_episode: int) -> None:
+        """Print detailed episode summary with all statistics"""
         try:
             profit = self.virtual_balance - self.initial_balance
             total_trades = len(self.trade_history)
@@ -815,7 +597,8 @@ class HistoricalTrader(TradingModel):
                 print(f"\n📊 STRATEGY PERFORMANCE")
                 print(f"{'='*50}")
                 for strategy in self.strategies.keys():
-                    strategy_trades = [t for t in self.trade_history if t['strategy'] == strategy]
+                    strategy_trades = [t for t in self.trade_history 
+                                    if t['strategy'] == strategy]
                     if strategy_trades:
                         s_total = len(strategy_trades)
                         s_wins = len([t for t in strategy_trades if t['profit'] > 0])
@@ -833,22 +616,626 @@ class HistoricalTrader(TradingModel):
             else:
                 print("\n⚠️ No trades executed in this episode")
             
-            # Log ma'lumotlarni yozish
-            if total_trades > 0:
-                win_trades = len([t for t in self.trade_history if t['profit'] > 0])
-                self.logger.info(
-                    f"Episode {episode + 1} completed - "
-                    f"Balance: ${self.virtual_balance:.2f}, "
-                    f"Profit: ${profit:.2f}, "
-                    f"Trades: {total_trades}, "
-                    f"Win Rate: {win_trades/total_trades*100:.1f}%"
-                )
-            else:
-                self.logger.info(
-                    f"Episode {episode + 1} completed - "
-                    f"No trades executed, Balance: ${self.virtual_balance:.2f}"
-                )
-                
         except Exception as e:
             self.logger.error(f"Error printing episode summary: {str(e)}")
-            print("\n⚠️ Error printing episode summary")
+
+    def _calculate_trade_statistics(self, trades_this_episode: int) -> Dict:
+        """Calculate detailed trade statistics"""
+        try:
+            if trades_this_episode == 0:
+                return {
+                    'win_rate': 0,
+                    'avg_profit': 0,
+                    'total_profit': 0,
+                    'roi': 0
+                }
+                
+            win_trades = len([t for t in self.trade_history if t['profit'] > 0])
+            total_profit = sum(t['profit'] for t in self.trade_history)
+            avg_profit = total_profit / trades_this_episode
+            roi = (self.virtual_balance - self.initial_balance) / self.initial_balance * 100
+            
+            return {
+                'win_rate': (win_trades/trades_this_episode*100),
+                'avg_profit': avg_profit,
+                'total_profit': total_profit,
+                'roi': roi
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Error calculating trade statistics: {str(e)}")
+            return {
+                'win_rate': 0,
+                'avg_profit': 0,
+                'total_profit': 0,
+                'roi': 0
+            }
+
+    def _train_on_batch(self, memory: deque, batch_size: int, gamma: float) -> None:
+        """Train model on a batch of experiences"""
+        try:
+            # Random sample from memory
+            batch = random.sample(list(memory), batch_size)
+            
+            # Prepare arrays for training
+            states = np.array([x['state'] for x in batch])
+            next_states = np.array([x['next_state'] for x in batch])
+            
+            # Get current Q values for all states
+            current_q = self.model.predict(states, verbose=0)
+            
+            # Get future Q values for next states
+            future_q = self.model.predict(next_states, verbose=0)
+            
+            # Update Q values for actions taken
+            for i, transition in enumerate(batch):
+                if transition['reward'] != 0:  # If we got a reward
+                    current_q[i][transition['action']] = transition['reward'] + \
+                        gamma * np.max(future_q[i])
+            
+            # Train model on the batch
+            self.model.fit(
+                states, 
+                current_q,
+                batch_size=batch_size,
+                epochs=1,
+                verbose=0
+            )
+            
+        except Exception as e:
+            self.logger.error(f"Error in batch training: {str(e)}")
+
+    def _execute_episode_trade(self, state: np.ndarray, epsilon: float) -> Optional[Tuple]:
+        """Execute trade during training episode"""
+        if np.random.random() < epsilon:
+            action = np.random.choice(len(self.strategies))
+        else:
+            q_values = self.model.predict(
+                state.reshape(1, *state.shape), verbose=0)[0]
+            action = np.argmax(q_values)
+            
+        reward = self.execute_trade(action)
+        if reward != 0:
+            return (state, action, reward)
+        return None
+        
+    def _update_model(self, state: np.ndarray, trade_result: Tuple,
+                     gamma: float, memory: deque, batch_size: int) -> None:
+        """Update model with new experience"""
+        current_state, action, reward = trade_result
+        next_state = self._get_market_state()
+        
+        # Store experience
+        memory.append((current_state, action, reward, next_state))
+        
+        # Train on batch if enough samples
+        if len(memory) >= batch_size:
+            # Get random batch
+            indices = np.random.choice(len(memory), batch_size, replace=False)
+            states = []
+            targets = []
+            
+            for idx in indices:
+                s, a, r, n_s = memory[idx]
+                # Get current Q values
+                target = self.model.predict(
+                    s.reshape(1, *s.shape), verbose=0)[0]
+                # Get future Q values
+                Q_future = np.max(self.model.predict(
+                    n_s.reshape(1, *n_s.shape), verbose=0)[0])
+                # Update target for action taken
+                target[a] = r + gamma * Q_future
+                
+                states.append(s)
+                targets.append(target)
+            
+            # Batch train
+            states_array = np.array(states)
+            self.model.fit(states_array, np.array(targets),
+                          epochs=1, verbose=0, batch_size=batch_size)
+                          
+    def _handle_episode_completion(self, episode: int, episode_start: float,
+                                trades_this_episode: int, best_profit: float,
+                                best_episode: int) -> Tuple[float, int]:
+        """Handle end of training episode and save results"""
+        episode_time = time.time() - episode_start
+        episode_profit = self.virtual_balance - self.initial_balance
+        
+        # Calculate statistics
+        if trades_this_episode > 0:
+            win_trades = len([t for t in self.trade_history if t['profit'] > 0])
+            win_rate = (win_trades/trades_this_episode*100)
+            
+            print(f"\n{'='*50}")
+            print(f"📊 EPISODE {episode + 1} RESULTS:")
+            print(f"⏱️ Time: {episode_time:.1f}s")
+            print(f"💰 Balance: ${self.virtual_balance:.2f}")
+            print(f"📈 Profit: ${episode_profit:.2f}")
+            print(f"🎯 Trades: {trades_this_episode} (Win Rate: {win_rate:.1f}%)")
+            
+            # Check for improvement
+            if episode_profit > best_profit:
+                print("✨ New best profit!")
+                best_profit = episode_profit
+                best_episode = episode + 1
+                # Save model
+                self.save_model(f'models/best_model_episode_{episode + 1}.keras')
+                
+            self.logger.info(
+                f"Episode {episode + 1} completed - "
+                f"Balance: ${self.virtual_balance:.2f}, "
+                f"Profit: ${episode_profit:.2f}, "
+                f"Trades: {trades_this_episode}, "
+                f"Win Rate: {win_rate:.1f}%"
+            )
+        else:
+            print("\n⚠️ No trades executed in this episode")
+            self.logger.info(
+                f"Episode {episode + 1} completed - "
+                f"No trades executed, Balance: ${self.virtual_balance:.2f}"
+            )
+            
+        return best_profit, best_episode
+    
+    def execute_trade(self, action: int) -> float:
+        """Execute a trade with optimized decision making and logging"""
+        if self.current_index >= len(self.historical_data):
+            return 0
+            
+        strategies = list(self.strategies.keys())
+        if action >= len(strategies):
+            self.logger.error(f"Invalid action: {action}")
+            return 0
+            
+        strategy = strategies[action]
+        if not self.can_open_new_order(strategy):
+            return 0
+            
+        try:
+            window = self.historical_data[self.current_index-50:self.current_index]
+            current_price = self.historical_data[self.current_index]['close']
+            trade_time = datetime.fromtimestamp(self.historical_data[self.current_index]['time'])
+            
+            # Get trade parameters
+            trade_type = self._get_trade_type(strategy, current_price, window)
+            if not trade_type:
+                return 0
+                
+            atr = self.precomputed_indicators['atr'][self.current_index]
+            tp_points, sl_points = self.get_dynamic_tp_sl(strategy, atr)
+            volume = self.calculate_position_size(strategy, sl_points)
+            
+            if volume <= 0:
+                return 0
+                
+            # Create and execute position
+            position = self._create_position(
+                strategy, trade_type, volume, current_price,
+                tp_points, sl_points, trade_time
+            )
+            
+            self._log_trade_execution(position, trade_time)
+            
+            # Log trade execution
+            self.logger.info(
+                f"Opening {position['type']} order: "
+                f"Strategy={strategy}, "
+                f"Volume={volume:.2f}, "
+                f"Price={current_price:.5f}, "
+                f"TP={position['tp']:.5f}, "
+                f"SL={position['sl']:.5f}"
+            )
+            
+            self.open_positions.append(position)
+            self.last_order_times[strategy] = self.current_index
+            
+            expected_profit = self._calculate_expected_profit(position, current_price)
+            
+            # Clear memory cache periodically
+            if len(self.market_state_cache) > 500:
+                self.market_state_cache.clear()
+            
+            return expected_profit
+            
+        except Exception as e:
+            self.logger.error(f"Error executing trade: {str(e)}")
+            return 0
+            
+    def _get_trade_type(self, strategy: str, price: float, window: np.ndarray) -> Optional[str]:
+        """Determine trade type based on strategy and market conditions"""
+        try:
+            current_idx = self.current_index
+            rsi = self.precomputed_indicators['rsi'][current_idx]
+            ema_fast = self.precomputed_indicators['ema20'][current_idx]
+            ema_slow = self.precomputed_indicators['ema50'][current_idx]
+            ema200 = self.precomputed_indicators['ema200'][current_idx]
+            
+            volume_avg = np.mean(window['tick_volume'][-20:])
+            current_volume = window['tick_volume'][-1]
+            momentum = window['close'][-1] - window['close'][-5]
+            
+            if strategy == 'Scalping':
+                if (rsi < 30 and ema_fast > ema_slow and
+                    price > ema200 and momentum > 0 and
+                    current_volume > volume_avg):
+                    return 'buy'
+                elif (rsi > 70 and ema_fast < ema_slow and
+                      price < ema200 and momentum < 0 and
+                      current_volume > volume_avg):
+                    return 'sell'
+                    
+            elif strategy == 'Breakout':
+                highs = window['high'][-20:]
+                lows = window['low'][-20:]
+                resistance = np.max(highs[:-1])
+                support = np.min(lows[:-1])
+                atr = self.precomputed_indicators['atr'][current_idx]
+                
+                if (price > resistance + atr * 0.5 and
+                    current_volume > volume_avg * 1.2 and
+                    momentum > 0):
+                    return 'buy'
+                elif (price < support - atr * 0.5 and
+                      current_volume > volume_avg * 1.2 and
+                      momentum < 0):
+                    return 'sell'
+                    
+            elif strategy == 'OrderBlock':
+                if (price > ema200 and ema_fast > ema_slow and
+                    40 < rsi < 75 and momentum > 0 and
+                    current_volume > volume_avg and
+                    self.market_conditions['trend_strength'] == 1):
+                    return 'buy'
+                elif (price < ema200 and ema_fast < ema_slow and
+                      25 < rsi < 60 and momentum < 0 and
+                      current_volume > volume_avg and
+                      self.market_conditions['trend_strength'] == -1):
+                    return 'sell'
+                    
+            return None
+            
+        except Exception as e:
+            self.logger.error(f"Error in trade type calculation: {str(e)}")
+            return None
+        
+    def _get_market_state(self) -> np.ndarray:
+        """Get current market state using pre-computed indicators"""
+        try:
+            idx = self.current_index
+            window_start = max(0, idx-50)
+            
+            state = np.column_stack((
+                self.historical_data['open'][window_start:idx],
+                self.historical_data['high'][window_start:idx],
+                self.historical_data['low'][window_start:idx],
+                self.historical_data['close'][window_start:idx],
+                self.precomputed_indicators['ema50'][window_start:idx],
+                self.precomputed_indicators['rsi'][window_start:idx],
+                self.precomputed_indicators['atr'][window_start:idx],
+                self.precomputed_indicators['ema200'][window_start:idx]
+            ))
+            
+            return np.nan_to_num(state, nan=0.0)
+            
+        except Exception as e:
+            self.logger.error(f"Error getting market state: {str(e)}")
+            return np.zeros((50, 8))
+        
+    def _calculate_expected_profit(self, position: Dict, current_price: float) -> float:
+        """Calculate expected profit for position"""
+        if position['type'] == 'buy':
+            return (position['tp'] - current_price) * position['volume'] * 100000
+        else:
+            return (current_price - position['tp']) * position['volume'] * 100000
+            
+    def _log_trade_execution(self, position: Dict, trade_time: datetime) -> None:
+        """Log details of executed trade"""
+        print(f"\n{'='*50}")
+        print(f"🔄 NEW ORDER #{position['ticket']} | {trade_time}")
+        print(f"🎯 Strategy: {position['strategy']}")
+        print(f"📈 Type: {position['type'].upper()}")
+        print(f"📦 Volume: {position['volume']:.2f} lot")
+        print(f"💰 Entry: {position['price']:.5f}")
+        print(f"🎯 Take Profit: {position['tp']:.5f}")
+        print(f"🛑 Stop Loss: {position['sl']:.5f}")
+        print(f"💵 Risk Amount: ${position['risk_amount']:.2f}")
+        print(f"⚖️ Current Balance: ${self.virtual_balance:.2f}")
+
+    def _batch_check_positions(self) -> float:
+        """Check multiple positions efficiently"""
+        if not self.open_positions:
+            return 0
+            
+        total_profit = 0
+        current_price = self.historical_data[self.current_index]['close']
+        current_time = datetime.fromtimestamp(self.historical_data[self.current_index]['time'])
+        positions_to_close = []
+        
+        for pos in self.open_positions:
+            profit = self._calculate_position_profit(pos, current_price)
+            close_reason = self._check_close_conditions(pos, current_price)
+            
+            if close_reason:
+                total_profit += profit
+                self.virtual_balance += profit
+                positions_to_close.append((pos, profit, close_reason))
+                
+        # Process closed positions
+        for pos, profit, reason in positions_to_close:
+            self._process_closed_position(pos, profit, reason, current_price, current_time)
+
+    def can_open_new_order(self, strategy: str) -> bool:
+        """Check if new order can be opened with improved conditions"""
+        try:
+            # Check maximum open positions
+            if len(self.open_positions) >= 5:  # Global limit
+                return False
+                
+            # Check strategy-specific positions
+            strategy_positions = [pos for pos in self.open_positions 
+                                if pos['strategy'] == strategy]
+            if len(strategy_positions) >= self.strategies[strategy]['max_orders']:
+                return False
+                
+            # Check minimum interval between orders
+            if self.current_index - self.last_order_times[strategy] < self.strategies[strategy]['interval']:
+                return False
+                
+            # Check total risk exposure
+            total_risk = sum(pos['risk_amount'] for pos in self.open_positions)
+            max_risk_percent = 30  # Maximum 30% risk exposure
+            if total_risk >= self.virtual_balance * (max_risk_percent / 100):
+                return False
+                
+            # Market condition checks
+            market = self.market_conditions
+            volume_condition = market['volume_ratio'] > 1.0
+            
+            # Strategy specific conditions
+            if strategy == 'Scalping':
+                return (market['volatility'] < 2 and
+                    market['session_activity'] > 0 and
+                    volume_condition and
+                    abs(market['trend_strength']) > 0)
+                    
+            elif strategy == 'Breakout':
+                return (market['volatility'] > 0 and
+                    market['session_activity'] > 1 and
+                    volume_condition and
+                    market['volume_ratio'] > 1.5)
+                    
+            elif strategy == 'OrderBlock':
+                return (abs(market['trend_strength']) == 1 and
+                    market['session_activity'] > 0 and
+                    volume_condition and
+                    market['volatility'] < 2)
+                    
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"Error checking order conditions: {str(e)}")
+            return False
+        
+    def calculate_position_size(self, strategy: str, sl_points: float) -> float:
+        """Calculate optimal position size with risk management"""
+        try:
+            strategy_params = self.strategies[strategy]
+            
+            # Base risk calculation
+            base_risk = strategy_params['risk_percent'] / 100
+            
+            # Adjust risk based on market conditions
+            market = self.market_conditions
+            trend_strength = abs(market['trend_strength'])
+            volatility = market['volatility']
+            volume_ratio = market['volume_ratio']
+            session = market['session_activity']
+            
+            # Risk multiplier based on conditions
+            if trend_strength == 1 and session > 1:
+                risk_mult = 1.5
+            elif trend_strength == 1 or session > 1:
+                risk_mult = 1.2
+            else:
+                risk_mult = 1.0
+                
+            # Volatility adjustment
+            if volatility == 2:
+                risk_mult *= 0.7  # Reduce risk in high volatility
+            elif volatility == 1:
+                risk_mult *= 0.9  # Slightly reduce risk in medium volatility
+                
+            # Volume impact
+            if volume_ratio > 1.5:
+                risk_mult *= 1.2  # Increase risk with higher volume
+                
+            # Final risk calculation
+            adjusted_risk = base_risk * risk_mult
+            
+            # Check current exposure
+            open_risk = sum(pos['risk_amount'] for pos in self.open_positions)
+            max_risk = self.virtual_balance * 0.1  # Max 10% total risk
+            
+            if open_risk + adjusted_risk > max_risk:
+                adjusted_risk = max(0, max_risk - open_risk)
+                
+            # Calculate lot size
+            point_value = self.point_value if self.point_value > 0 else 0.0001
+            volume = round((self.virtual_balance * adjusted_risk) / (sl_points * point_value * 10), 2)
+            
+            # Apply min/max limits
+            volume = max(strategy_params['min_volume'],
+                    min(volume, strategy_params['max_volume']))
+            
+            return volume
+            
+        except Exception as e:
+            self.logger.error(f"Error calculating position size: {str(e)}")
+            return 0.01  # Return minimum volume on error
+
+    def calculate_dynamic_risk(self, strategy: str, market_conditions: Dict) -> float:
+        """Calculate dynamic risk percentage based on market conditions"""
+        try:
+            base_risk = self.strategies[strategy]['risk_percent']
+            trend = abs(market_conditions['trend_strength'])
+            volatility = market_conditions['volatility']
+            
+            # Adjust risk based on conditions
+            if trend == 1 and volatility < 2:
+                risk = base_risk * 1.2  # Increase risk in strong trend
+            elif trend == 0 or volatility == 2:
+                risk = base_risk * 0.8  # Reduce risk in no trend or high volatility
+            else:
+                risk = base_risk
+                
+            # Apply maximum risk limit
+            return min(risk, 5.0)  # Never risk more than 5% per trade
+            
+        except Exception as e:
+            self.logger.error(f"Error calculating dynamic risk: {str(e)}")
+            return 1.0  # Default to 1% risk
+
+    def get_position_exposure(self) -> float:
+        """Calculate total position exposure as percentage of balance"""
+        try:
+            total_exposure = sum(pos['risk_amount'] for pos in self.open_positions)
+            return (total_exposure / self.virtual_balance) * 100
+            
+        except Exception as e:
+            self.logger.error(f"Error calculating position exposure: {str(e)}")
+            return 0.0
+        
+    def _create_position(self, strategy: str, trade_type: str, volume: float,
+                     current_price: float, tp_points: float, sl_points: float,
+                     trade_time: datetime) -> Dict:
+        """Create a new position with calculated parameters"""
+        try:
+            point_value = self.point_value if self.point_value > 0 else 0.0001
+            
+            # Calculate TP and SL levels based on trade type
+            if trade_type == 'buy':
+                sl = current_price - (sl_points * point_value)
+                tp = current_price + (tp_points * point_value)
+            else:  # sell
+                sl = current_price + (sl_points * point_value)
+                tp = current_price - (tp_points * point_value)
+                
+            # Create position dictionary with all parameters
+            position = {
+                'ticket': len(self.open_positions) + 1,  # Unique identifier
+                'type': trade_type,
+                'volume': volume,
+                'price': current_price,
+                'sl': sl,
+                'tp': tp,
+                'strategy': strategy,
+                'open_time': trade_time,
+                'risk_amount': self.virtual_balance * (self.strategies[strategy]['risk_percent'] / 100)
+            }
+            
+            # Log position details
+            self.logger.info(
+                f"Position created: {strategy}, {trade_type.upper()}, "
+                f"Volume: {volume:.2f}, Price: {current_price:.5f}, "
+                f"SL: {sl:.5f}, TP: {tp:.5f}"
+            )
+            
+            return position
+            
+        except Exception as e:
+            self.logger.error(f"Error creating position: {str(e)}")
+            return None
+        
+    def _calculate_position_profit(self, position: Dict, current_price: float) -> float:
+        """Calculate position profit efficiently"""
+        try:
+            if position['type'] == 'buy':
+                points = current_price - position['price']
+            else:  # sell
+                points = position['price'] - current_price
+                
+            # Calculate profit using point value and volume
+            profit = points * position['volume'] * 100000
+            return profit
+            
+        except Exception as e:
+            self.logger.error(f"Error calculating position profit: {str(e)}")
+            return 0.0
+
+    def _check_close_conditions(self, position: Dict, current_price: float) -> Optional[str]:
+        """Check if position should be closed"""
+        try:
+            if position['type'] == 'buy':
+                if current_price >= position['tp']:
+                    return 'TP'
+                elif current_price <= position['sl']:
+                    return 'SL'
+            else:  # sell
+                if current_price <= position['tp']:
+                    return 'TP'
+                elif current_price >= position['sl']:
+                    return 'SL'
+            return None
+            
+        except Exception as e:
+            self.logger.error(f"Error checking close conditions: {str(e)}")
+            return None
+
+    def _process_closed_position(self, position: Dict, profit: float, 
+                            close_reason: str, current_price: float,
+                            current_time: datetime) -> None:
+        """Process and log closed position details"""
+        try:
+            roi = (profit / position['risk_amount']) * 100
+            
+            # Log position closure details
+            print(f"\n{'='*50}")
+            print(f"📍 ORDER #{position['ticket']} CLOSED | {current_time}")
+            print(f"📊 Strategy: {position['strategy']}")
+            print(f"📈 Type: {position['type'].upper()}")
+            print(f"📦 Volume: {position['volume']:.2f} lot")
+            print(f"💰 Entry → Exit: {position['price']:.5f} → {current_price:.5f}")
+            print(f"💵 P/L: ${profit:.2f} ({roi:.1f}% ROI)")
+            print(f"❗ Reason: {close_reason}")
+            print(f"⚖️ New Balance: ${self.virtual_balance:.2f}")
+            print(f"⏱️ Duration: {current_time - position['open_time']}")
+            
+            # Store trade history
+            self.trade_history.append({
+                **position,
+                'close_price': current_price,
+                'close_time': current_time,
+                'profit': profit,
+                'roi': roi,
+                'close_reason': close_reason
+            })
+            
+        except Exception as e:
+            self.logger.error(f"Error processing closed position: {str(e)}")
+
+    def _handle_closed_positions(self, current_price: float, current_time: datetime) -> None:
+        """Handle all closed positions efficiently"""
+        try:
+            if not self.open_positions:
+                return
+                
+            # Check all positions
+            positions_to_close = []
+            total_profit = 0
+            
+            for pos in self.open_positions:
+                profit = self._calculate_position_profit(pos, current_price)
+                close_reason = self._check_close_conditions(pos, current_price)
+                
+                if close_reason:
+                    total_profit += profit
+                    positions_to_close.append((pos, profit, close_reason))
+                    
+            # Process closed positions
+            for pos, profit, reason in positions_to_close:
+                self.virtual_balance += profit
+                self._process_closed_position(pos, profit, reason, current_price, current_time)
+                self.open_positions.remove(pos)
+                
+        except Exception as e:
+            self.logger.error(f"Error handling closed positions: {str(e)}")

@@ -1,0 +1,214 @@
+2025-01-05 18:26:40,315 - INFO - MT5 ishga tushdi
+2025-01-05 18:26:40,611 - INFO - Successfully loaded 8640 bars of historical data
+2025-01-05 18:26:40,755 - INFO - Starting episode 1
+2025-01-05 18:26:40,755 - ERROR - Error in episode 1: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,755 - INFO - Starting episode 2
+2025-01-05 18:26:40,755 - ERROR - Error in episode 2: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,755 - INFO - Starting episode 3
+2025-01-05 18:26:40,755 - ERROR - Error in episode 3: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,755 - INFO - Starting episode 4
+2025-01-05 18:26:40,756 - ERROR - Error in episode 4: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,757 - INFO - Starting episode 5
+2025-01-05 18:26:40,757 - ERROR - Error in episode 5: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,757 - INFO - Starting episode 6
+2025-01-05 18:26:40,757 - ERROR - Error in episode 6: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,757 - INFO - Starting episode 7
+2025-01-05 18:26:40,757 - ERROR - Error in episode 7: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,757 - INFO - Starting episode 8
+2025-01-05 18:26:40,757 - ERROR - Error in episode 8: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,758 - INFO - Starting episode 9
+2025-01-05 18:26:40,758 - ERROR - Error in episode 9: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,758 - INFO - Starting episode 10
+2025-01-05 18:26:40,758 - ERROR - Error in episode 10: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,758 - INFO - Starting episode 11
+2025-01-05 18:26:40,758 - ERROR - Error in episode 11: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,758 - INFO - Starting episode 12
+2025-01-05 18:26:40,758 - ERROR - Error in episode 12: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,758 - INFO - Starting episode 13
+2025-01-05 18:26:40,758 - ERROR - Error in episode 13: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,758 - INFO - Starting episode 14
+2025-01-05 18:26:40,758 - ERROR - Error in episode 14: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,758 - INFO - Starting episode 15
+2025-01-05 18:26:40,759 - ERROR - Error in episode 15: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,759 - INFO - Starting episode 16
+2025-01-05 18:26:40,759 - ERROR - Error in episode 16: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,759 - INFO - Starting episode 17
+2025-01-05 18:26:40,759 - ERROR - Error in episode 17: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,759 - INFO - Starting episode 18
+2025-01-05 18:26:40,759 - ERROR - Error in episode 18: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,759 - INFO - Starting episode 19
+2025-01-05 18:26:40,759 - ERROR - Error in episode 19: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,759 - INFO - Starting episode 20
+2025-01-05 18:26:40,759 - ERROR - Error in episode 20: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,759 - INFO - Starting episode 21
+2025-01-05 18:26:40,759 - ERROR - Error in episode 21: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,760 - INFO - Starting episode 22
+2025-01-05 18:26:40,760 - ERROR - Error in episode 22: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,760 - INFO - Starting episode 23
+2025-01-05 18:26:40,760 - ERROR - Error in episode 23: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,760 - INFO - Starting episode 24
+2025-01-05 18:26:40,760 - ERROR - Error in episode 24: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,760 - INFO - Starting episode 25
+2025-01-05 18:26:40,760 - ERROR - Error in episode 25: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,760 - INFO - Starting episode 26
+2025-01-05 18:26:40,760 - ERROR - Error in episode 26: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,760 - INFO - Starting episode 27
+2025-01-05 18:26:40,760 - ERROR - Error in episode 27: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,761 - INFO - Starting episode 28
+2025-01-05 18:26:40,761 - ERROR - Error in episode 28: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,761 - INFO - Starting episode 29
+2025-01-05 18:26:40,761 - ERROR - Error in episode 29: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,761 - INFO - Starting episode 30
+2025-01-05 18:26:40,761 - ERROR - Error in episode 30: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,761 - INFO - Starting episode 31
+2025-01-05 18:26:40,761 - ERROR - Error in episode 31: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,761 - INFO - Starting episode 32
+2025-01-05 18:26:40,761 - ERROR - Error in episode 32: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,761 - INFO - Starting episode 33
+2025-01-05 18:26:40,761 - ERROR - Error in episode 33: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,761 - INFO - Starting episode 34
+2025-01-05 18:26:40,762 - ERROR - Error in episode 34: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,762 - INFO - Starting episode 35
+2025-01-05 18:26:40,762 - ERROR - Error in episode 35: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,762 - INFO - Starting episode 36
+2025-01-05 18:26:40,762 - ERROR - Error in episode 36: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,762 - INFO - Starting episode 37
+2025-01-05 18:26:40,762 - ERROR - Error in episode 37: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,762 - INFO - Starting episode 38
+2025-01-05 18:26:40,762 - ERROR - Error in episode 38: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,762 - INFO - Starting episode 39
+2025-01-05 18:26:40,762 - ERROR - Error in episode 39: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,762 - INFO - Starting episode 40
+2025-01-05 18:26:40,762 - ERROR - Error in episode 40: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,762 - INFO - Starting episode 41
+2025-01-05 18:26:40,762 - ERROR - Error in episode 41: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,762 - INFO - Starting episode 42
+2025-01-05 18:26:40,762 - ERROR - Error in episode 42: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,762 - INFO - Starting episode 43
+2025-01-05 18:26:40,762 - ERROR - Error in episode 43: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,762 - INFO - Starting episode 44
+2025-01-05 18:26:40,763 - ERROR - Error in episode 44: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,763 - INFO - Starting episode 45
+2025-01-05 18:26:40,763 - ERROR - Error in episode 45: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,763 - INFO - Starting episode 46
+2025-01-05 18:26:40,763 - ERROR - Error in episode 46: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,763 - INFO - Starting episode 47
+2025-01-05 18:26:40,763 - ERROR - Error in episode 47: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,763 - INFO - Starting episode 48
+2025-01-05 18:26:40,763 - ERROR - Error in episode 48: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,763 - INFO - Starting episode 49
+2025-01-05 18:26:40,763 - ERROR - Error in episode 49: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,763 - INFO - Starting episode 50
+2025-01-05 18:26:40,764 - ERROR - Error in episode 50: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,764 - INFO - Starting episode 51
+2025-01-05 18:26:40,764 - ERROR - Error in episode 51: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,764 - INFO - Starting episode 52
+2025-01-05 18:26:40,764 - ERROR - Error in episode 52: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,764 - INFO - Starting episode 53
+2025-01-05 18:26:40,764 - ERROR - Error in episode 53: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,764 - INFO - Starting episode 54
+2025-01-05 18:26:40,764 - ERROR - Error in episode 54: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,764 - INFO - Starting episode 55
+2025-01-05 18:26:40,764 - ERROR - Error in episode 55: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,764 - INFO - Starting episode 56
+2025-01-05 18:26:40,764 - ERROR - Error in episode 56: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,764 - INFO - Starting episode 57
+2025-01-05 18:26:40,765 - ERROR - Error in episode 57: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,765 - INFO - Starting episode 58
+2025-01-05 18:26:40,765 - ERROR - Error in episode 58: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,765 - INFO - Starting episode 59
+2025-01-05 18:26:40,765 - ERROR - Error in episode 59: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,765 - INFO - Starting episode 60
+2025-01-05 18:26:40,765 - ERROR - Error in episode 60: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,765 - INFO - Starting episode 61
+2025-01-05 18:26:40,765 - ERROR - Error in episode 61: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,765 - INFO - Starting episode 62
+2025-01-05 18:26:40,765 - ERROR - Error in episode 62: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,765 - INFO - Starting episode 63
+2025-01-05 18:26:40,765 - ERROR - Error in episode 63: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,766 - INFO - Starting episode 64
+2025-01-05 18:26:40,766 - ERROR - Error in episode 64: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,766 - INFO - Starting episode 65
+2025-01-05 18:26:40,766 - ERROR - Error in episode 65: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,766 - INFO - Starting episode 66
+2025-01-05 18:26:40,766 - ERROR - Error in episode 66: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,766 - INFO - Starting episode 67
+2025-01-05 18:26:40,766 - ERROR - Error in episode 67: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,766 - INFO - Starting episode 68
+2025-01-05 18:26:40,766 - ERROR - Error in episode 68: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,766 - INFO - Starting episode 69
+2025-01-05 18:26:40,766 - ERROR - Error in episode 69: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,766 - INFO - Starting episode 70
+2025-01-05 18:26:40,767 - ERROR - Error in episode 70: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,767 - INFO - Starting episode 71
+2025-01-05 18:26:40,767 - ERROR - Error in episode 71: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,767 - INFO - Starting episode 72
+2025-01-05 18:26:40,767 - ERROR - Error in episode 72: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,767 - INFO - Starting episode 73
+2025-01-05 18:26:40,767 - ERROR - Error in episode 73: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,767 - INFO - Starting episode 74
+2025-01-05 18:26:40,767 - ERROR - Error in episode 74: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,767 - INFO - Starting episode 75
+2025-01-05 18:26:40,767 - ERROR - Error in episode 75: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,767 - INFO - Starting episode 76
+2025-01-05 18:26:40,767 - ERROR - Error in episode 76: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,767 - INFO - Starting episode 77
+2025-01-05 18:26:40,768 - ERROR - Error in episode 77: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,768 - INFO - Starting episode 78
+2025-01-05 18:26:40,768 - ERROR - Error in episode 78: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,768 - INFO - Starting episode 79
+2025-01-05 18:26:40,768 - ERROR - Error in episode 79: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,768 - INFO - Starting episode 80
+2025-01-05 18:26:40,768 - ERROR - Error in episode 80: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,768 - INFO - Starting episode 81
+2025-01-05 18:26:40,768 - ERROR - Error in episode 81: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,768 - INFO - Starting episode 82
+2025-01-05 18:26:40,768 - ERROR - Error in episode 82: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,768 - INFO - Starting episode 83
+2025-01-05 18:26:40,768 - ERROR - Error in episode 83: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,769 - INFO - Starting episode 84
+2025-01-05 18:26:40,769 - ERROR - Error in episode 84: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,769 - INFO - Starting episode 85
+2025-01-05 18:26:40,769 - ERROR - Error in episode 85: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,769 - INFO - Starting episode 86
+2025-01-05 18:26:40,769 - ERROR - Error in episode 86: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,769 - INFO - Starting episode 87
+2025-01-05 18:26:40,769 - ERROR - Error in episode 87: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,769 - INFO - Starting episode 88
+2025-01-05 18:26:40,769 - ERROR - Error in episode 88: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,769 - INFO - Starting episode 89
+2025-01-05 18:26:40,769 - ERROR - Error in episode 89: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,769 - INFO - Starting episode 90
+2025-01-05 18:26:40,770 - ERROR - Error in episode 90: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,770 - INFO - Starting episode 91
+2025-01-05 18:26:40,770 - ERROR - Error in episode 91: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,770 - INFO - Starting episode 92
+2025-01-05 18:26:40,770 - ERROR - Error in episode 92: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,770 - INFO - Starting episode 93
+2025-01-05 18:26:40,770 - ERROR - Error in episode 93: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,770 - INFO - Starting episode 94
+2025-01-05 18:26:40,770 - ERROR - Error in episode 94: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,770 - INFO - Starting episode 95
+2025-01-05 18:26:40,770 - ERROR - Error in episode 95: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,770 - INFO - Starting episode 96
+2025-01-05 18:26:40,770 - ERROR - Error in episode 96: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,771 - INFO - Starting episode 97
+2025-01-05 18:26:40,771 - ERROR - Error in episode 97: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,771 - INFO - Starting episode 98
+2025-01-05 18:26:40,771 - ERROR - Error in episode 98: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,771 - INFO - Starting episode 99
+2025-01-05 18:26:40,771 - ERROR - Error in episode 99: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,771 - INFO - Starting episode 100
+2025-01-05 18:26:40,771 - ERROR - Error in episode 100: BaseModel._get_action() takes 2 positional arguments but 3 were given
+2025-01-05 18:26:40,776 - ERROR - Kritik xatolik: 'HistoricalTrader' object has no attribute '_precompute_indicators'
+2025-01-05 18:26:40,777 - ERROR - Traceback (most recent call last):
+  File "D:\laragon\www\R-dev_treding_AI_Bot\main.py", line 45, in main
+    trader.train_on_historical(episodes=args.episodes)
+  File "D:\laragon\www\R-dev_treding_AI_Bot\historical_trader.py", line 305, in train_on_historical
+    self._precompute_indicators()  # Recompute for fresh start
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'HistoricalTrader' object has no attribute '_precompute_indicators'
+
+2025-01-05 18:26:40,777 - INFO - Dastur yakunlandi
+==================================================
+
