@@ -370,7 +370,7 @@ class HistoricalTrader(TradingModel):
         print(f"\n💾 Final model saved: {final_model_path}")
 
     def _run_training_episode(self, episode: int, epsilon: float, memory: deque,
-                            batch_size: int, gamma: float) -> Dict:
+                          batch_size: int, gamma: float) -> Dict:
         """Run single training episode with strategy optimization"""
         try:
             # Reset episode state

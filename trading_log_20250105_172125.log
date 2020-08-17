@@ -1,0 +1,11 @@
+2025-01-05 17:21:25,211 - INFO - MT5 ishga tushdi
+2025-01-05 17:21:26,360 - ERROR - Kritik xatolik: name 'os' is not defined
+2025-01-05 17:21:26,361 - ERROR - Traceback (most recent call last):
+  File "C:\Users\Win10_Game_OS\Documents\GitHub\R-dev_treding_AI_Bot\main.py", line 48, in main
+    if os.path.exists(args.model):
+       ^^
+NameError: name 'os' is not defined
+
+2025-01-05 17:21:26,361 - INFO - Dastur yakunlandi
+==================================================
+
