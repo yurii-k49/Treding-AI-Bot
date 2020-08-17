@@ -1,0 +1,128 @@
+2025-01-08 01:12:23,826 - INFO - MT5 ishga tushdi
+2025-01-08 01:12:24,339 - INFO - Successfully loaded 8640 bars of historical data
+2025-01-08 01:12:24,618 - INFO - Starting episode 1
+2025-01-08 01:12:24,663 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08167, SL: 1.08131, TP: 1.08277
+2025-01-08 01:12:24,667 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08167, TP=1.08277, SL=1.08131
+2025-01-08 01:12:24,671 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08177, SL: 1.08135, TP: 1.08303
+2025-01-08 01:12:24,674 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08177, TP=1.08303, SL=1.08135
+2025-01-08 01:12:24,710 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08127, SL: 1.08107, TP: 1.08189
+2025-01-08 01:12:24,714 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08127, TP=1.08189, SL=1.08107
+2025-01-08 01:12:24,731 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.08079, SL: 1.08095, TP: 1.08031
+2025-01-08 01:12:24,734 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.08079, TP=1.08031, SL=1.08095
+2025-01-08 01:12:24,741 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.08071, SL: 1.08093, TP: 1.08004
+2025-01-08 01:12:24,745 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.08071, TP=1.08004, SL=1.08093
+2025-01-08 01:12:24,825 - INFO - Position created: Breakout, BUY, Volume: 0.10, Price: 1.08412, SL: 1.08369, TP: 1.08520
+2025-01-08 01:12:24,829 - INFO - Opening buy order: Strategy=Breakout, Volume=0.10, Price=1.08412, TP=1.08520, SL=1.08369
+2025-01-08 01:12:24,835 - INFO - Position created: Breakout, BUY, Volume: 0.10, Price: 1.08486, SL: 1.08417, TP: 1.08658
+2025-01-08 01:12:24,837 - INFO - Opening buy order: Strategy=Breakout, Volume=0.10, Price=1.08486, TP=1.08658, SL=1.08417
+2025-01-08 01:12:24,858 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08515, SL: 1.08442, TP: 1.08735
+2025-01-08 01:12:24,861 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08515, TP=1.08735, SL=1.08442
+2025-01-08 01:12:24,914 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08572, SL: 1.08530, TP: 1.08698
+2025-01-08 01:12:24,918 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08572, TP=1.08698, SL=1.08530
+2025-01-08 01:12:24,969 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08857, SL: 1.08840, TP: 1.08910
+2025-01-08 01:12:24,972 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08857, TP=1.08910, SL=1.08840
+2025-01-08 01:12:25,040 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08873, SL: 1.08839, TP: 1.08975
+2025-01-08 01:12:25,043 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08873, TP=1.08975, SL=1.08839
+2025-01-08 01:12:25,050 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08980, SL: 1.08950, TP: 1.09070
+2025-01-08 01:12:25,053 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08980, TP=1.09070, SL=1.08950
+2025-01-08 01:12:25,082 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.09027, SL: 1.08989, TP: 1.09143
+2025-01-08 01:12:25,086 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.09027, TP=1.09143, SL=1.08989
+2025-01-08 01:12:25,173 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.07805, SL: 1.07969, TP: 1.07313
+2025-01-08 01:12:25,176 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.07805, TP=1.07313, SL=1.07969
+2025-01-08 01:12:25,183 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.07341, SL: 1.07535, TP: 1.06757
+2025-01-08 01:12:25,186 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.07341, TP=1.06757, SL=1.07535
+2025-01-08 01:12:25,210 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.06933, SL: 1.07037, TP: 1.06619
+2025-01-08 01:12:25,213 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.06933, TP=1.06619, SL=1.07037
+2025-01-08 01:12:25,222 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.07137, SL: 1.07252, TP: 1.06790
+2025-01-08 01:12:25,225 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.07137, TP=1.06790, SL=1.07252
+2025-01-08 01:12:25,372 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.07069, SL: 1.07100, TP: 1.06990
+2025-01-08 01:12:25,376 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.07069, TP=1.06990, SL=1.07100
+2025-01-08 01:12:25,383 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.06814, SL: 1.06866, TP: 1.06683
+2025-01-08 01:12:25,387 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.06814, TP=1.06683, SL=1.06866
+2025-01-08 01:12:25,432 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.06472, SL: 1.06499, TP: 1.06404
+2025-01-08 01:12:25,436 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.06472, TP=1.06404, SL=1.06499
+2025-01-08 01:12:25,469 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.06186, SL: 1.06244, TP: 1.06011
+2025-01-08 01:12:25,472 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.06186, TP=1.06011, SL=1.06244
+2025-01-08 01:12:25,502 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.06117, SL: 1.06146, TP: 1.06030
+2025-01-08 01:12:25,505 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.06117, TP=1.06030, SL=1.06146
+2025-01-08 01:12:25,526 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.06044, SL: 1.06081, TP: 1.05932
+2025-01-08 01:12:25,530 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.06044, TP=1.05932, SL=1.06081
+2025-01-08 01:12:25,550 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.05845, SL: 1.05970, TP: 1.05533
+2025-01-08 01:12:25,553 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.05845, TP=1.05533, SL=1.05970
+2025-01-08 01:12:25,595 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.05446, SL: 1.05480, TP: 1.05343
+2025-01-08 01:12:25,599 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05446, TP=1.05343, SL=1.05480
+2025-01-08 01:12:25,635 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.05195, SL: 1.05265, TP: 1.04983
+2025-01-08 01:12:25,682 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05195, TP=1.04983, SL=1.05265
+2025-01-08 01:12:25,781 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.05658, SL: 1.05603, TP: 1.05823
+2025-01-08 01:12:25,784 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05658, TP=1.05823, SL=1.05603
+2025-01-08 01:12:25,787 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.05682, SL: 1.05626, TP: 1.05850
+2025-01-08 01:12:25,790 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05682, TP=1.05850, SL=1.05626
+2025-01-08 01:12:25,834 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.05371, SL: 1.05442, TP: 1.05194
+2025-01-08 01:12:25,839 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.05371, TP=1.05194, SL=1.05442
+2025-01-08 01:12:25,892 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.05794, SL: 1.05842, TP: 1.05674
+2025-01-08 01:12:25,896 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.05794, TP=1.05674, SL=1.05842
+2025-01-08 01:12:25,917 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.05220, SL: 1.05296, TP: 1.04990
+2025-01-08 01:12:25,920 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05220, TP=1.04990, SL=1.05296
+2025-01-08 01:12:25,963 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.05256, SL: 1.05307, TP: 1.05102
+2025-01-08 01:12:25,967 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05256, TP=1.05102, SL=1.05307
+2025-01-08 01:12:25,974 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.05149, SL: 1.05223, TP: 1.04927
+2025-01-08 01:12:25,977 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05149, TP=1.04927, SL=1.05223
+2025-01-08 01:12:26,023 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.04711, SL: 1.04744, TP: 1.04610
+2025-01-08 01:12:26,027 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04711, TP=1.04610, SL=1.04744
+2025-01-08 01:12:26,041 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.04650, SL: 1.04681, TP: 1.04556
+2025-01-08 01:12:26,045 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04650, TP=1.04556, SL=1.04681
+2025-01-08 01:12:26,093 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.04740, SL: 1.04670, TP: 1.04951
+2025-01-08 01:12:26,097 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.04740, TP=1.04951, SL=1.04670
+2025-01-08 01:12:26,116 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.04596, SL: 1.04648, TP: 1.04466
+2025-01-08 01:12:26,119 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.04596, TP=1.04466, SL=1.04648
+2025-01-08 01:12:26,138 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.05228, SL: 1.05145, TP: 1.05479
+2025-01-08 01:12:26,142 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05228, TP=1.05479, SL=1.05145
+2025-01-08 01:12:26,167 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.04520, SL: 1.04559, TP: 1.04422
+2025-01-08 01:12:26,171 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.04520, TP=1.04422, SL=1.04559
+2025-01-08 01:12:26,201 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.05073, SL: 1.04988, TP: 1.05328
+2025-01-08 01:12:26,206 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05073, TP=1.05328, SL=1.04988
+2025-01-08 01:12:26,259 - INFO - Position created: Breakout, BUY, Volume: 0.10, Price: 1.04971, SL: 1.04941, TP: 1.05047
+2025-01-08 01:12:26,263 - INFO - Opening buy order: Strategy=Breakout, Volume=0.10, Price=1.04971, TP=1.05047, SL=1.04941
+2025-01-08 01:12:26,269 - INFO - Position created: Breakout, BUY, Volume: 0.10, Price: 1.05302, SL: 1.05245, TP: 1.05445
+2025-01-08 01:12:26,272 - INFO - Opening buy order: Strategy=Breakout, Volume=0.10, Price=1.05302, TP=1.05445, SL=1.05245
+2025-01-08 01:12:26,282 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.05190, SL: 1.05121, TP: 1.05398
+2025-01-08 01:12:26,286 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05190, TP=1.05398, SL=1.05121
+2025-01-08 01:12:26,303 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.05779, SL: 1.05666, TP: 1.06120
+2025-01-08 01:12:26,306 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05779, TP=1.06120, SL=1.05666
+2025-01-08 01:12:26,380 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.05579, SL: 1.05548, TP: 1.05672
+2025-01-08 01:12:26,385 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05579, TP=1.05672, SL=1.05548
+2025-01-08 01:12:26,388 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.05647, SL: 1.05618, TP: 1.05734
+2025-01-08 01:12:26,391 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05647, TP=1.05734, SL=1.05618
+2025-01-08 01:12:26,392 - INFO - Position created: Breakout, BUY, Volume: 0.10, Price: 1.05647, SL: 1.05618, TP: 1.05719
+2025-01-08 01:12:26,395 - INFO - Opening buy order: Strategy=Breakout, Volume=0.10, Price=1.05647, TP=1.05719, SL=1.05618
+2025-01-08 01:12:26,459 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.05240, SL: 1.05283, TP: 1.05110
+2025-01-08 01:12:26,463 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05240, TP=1.05110, SL=1.05283
+2025-01-08 01:12:26,483 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.04971, SL: 1.05053, TP: 1.04723
+2025-01-08 01:12:26,486 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04971, TP=1.04723, SL=1.05053
+2025-01-08 01:12:26,503 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.05097, SL: 1.05176, TP: 1.04860
+2025-01-08 01:12:26,506 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05097, TP=1.04860, SL=1.05176
+2025-01-08 01:12:26,514 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.04725, SL: 1.04818, TP: 1.04446
+2025-01-08 01:12:26,517 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04725, TP=1.04446, SL=1.04818
+2025-01-08 01:12:26,522 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.04639, SL: 1.04729, TP: 1.04367
+2025-01-08 01:12:26,525 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04639, TP=1.04367, SL=1.04729
+2025-01-08 01:12:26,556 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.04924, SL: 1.04963, TP: 1.04807
+2025-01-08 01:12:26,560 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04924, TP=1.04807, SL=1.04963
+2025-01-08 01:12:26,566 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.04881, SL: 1.04920, TP: 1.04762
+2025-01-08 01:12:26,570 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04881, TP=1.04762, SL=1.04920
+2025-01-08 01:12:26,626 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.04999, SL: 1.05026, TP: 1.04916
+2025-01-08 01:12:26,629 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04999, TP=1.04916, SL=1.05026
+2025-01-08 01:12:26,639 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.05039, SL: 1.05078, TP: 1.04922
+2025-01-08 01:12:26,643 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05039, TP=1.04922, SL=1.05078
+2025-01-08 01:12:26,653 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.04927, SL: 1.04965, TP: 1.04813
+2025-01-08 01:12:26,656 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04927, TP=1.04813, SL=1.04965
+2025-01-08 01:12:26,941 - ERROR - Kritik xatolik: 'HistoricalTrader' object has no attribute '_optimize_strategy_parameters'
+2025-01-08 01:12:26,943 - ERROR - Traceback (most recent call last):
+  File "C:\Users\Win10_Game_OS\Documents\GitHub\R-dev_treding_AI_Bot\main.py", line 45, in main
+    trader.train_on_historical(episodes=args.episodes)
+  File "C:\Users\Win10_Game_OS\Documents\GitHub\R-dev_treding_AI_Bot\historical_trader.py", line 320, in train_on_historical
+    self._optimize_strategy_parameters(strategy_history)
+AttributeError: 'HistoricalTrader' object has no attribute '_optimize_strategy_parameters'
+
+2025-01-08 01:12:26,943 - INFO - Dastur yakunlandi
+==================================================
+

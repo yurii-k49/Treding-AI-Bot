@@ -1,0 +1,201 @@
+2025-01-08 01:06:18,238 - INFO - Successfully loaded 8640 bars of historical data
+2025-01-08 01:06:18,487 - INFO - Starting episode 1
+2025-01-08 01:06:18,534 - ERROR - Error in episode 1: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:18,534 - INFO - Starting episode 2
+2025-01-08 01:06:18,561 - ERROR - Error in episode 2: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:18,561 - INFO - Starting episode 3
+2025-01-08 01:06:18,589 - ERROR - Error in episode 3: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:18,589 - INFO - Starting episode 4
+2025-01-08 01:06:18,623 - ERROR - Error in episode 4: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:18,623 - INFO - Starting episode 5
+2025-01-08 01:06:18,650 - ERROR - Error in episode 5: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:18,650 - INFO - Starting episode 6
+2025-01-08 01:06:18,678 - ERROR - Error in episode 6: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:18,678 - INFO - Starting episode 7
+2025-01-08 01:06:18,711 - ERROR - Error in episode 7: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:18,711 - INFO - Starting episode 8
+2025-01-08 01:06:18,741 - ERROR - Error in episode 8: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:18,742 - INFO - Starting episode 9
+2025-01-08 01:06:18,772 - ERROR - Error in episode 9: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:18,773 - INFO - Starting episode 10
+2025-01-08 01:06:18,800 - ERROR - Error in episode 10: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:18,801 - INFO - Starting episode 11
+2025-01-08 01:06:18,831 - ERROR - Error in episode 11: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:18,832 - INFO - Starting episode 12
+2025-01-08 01:06:18,864 - ERROR - Error in episode 12: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:18,864 - INFO - Starting episode 13
+2025-01-08 01:06:18,891 - ERROR - Error in episode 13: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:18,892 - INFO - Starting episode 14
+2025-01-08 01:06:18,957 - ERROR - Error in episode 14: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:18,958 - INFO - Starting episode 15
+2025-01-08 01:06:18,998 - ERROR - Error in episode 15: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:18,999 - INFO - Starting episode 16
+2025-01-08 01:06:19,027 - ERROR - Error in episode 16: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,027 - INFO - Starting episode 17
+2025-01-08 01:06:19,056 - ERROR - Error in episode 17: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,056 - INFO - Starting episode 18
+2025-01-08 01:06:19,083 - ERROR - Error in episode 18: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,083 - INFO - Starting episode 19
+2025-01-08 01:06:19,112 - ERROR - Error in episode 19: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,112 - INFO - Starting episode 20
+2025-01-08 01:06:19,140 - ERROR - Error in episode 20: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,140 - INFO - Starting episode 21
+2025-01-08 01:06:19,167 - ERROR - Error in episode 21: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,167 - INFO - Starting episode 22
+2025-01-08 01:06:19,194 - ERROR - Error in episode 22: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,194 - INFO - Starting episode 23
+2025-01-08 01:06:19,225 - ERROR - Error in episode 23: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,225 - INFO - Starting episode 24
+2025-01-08 01:06:19,255 - ERROR - Error in episode 24: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,255 - INFO - Starting episode 25
+2025-01-08 01:06:19,287 - ERROR - Error in episode 25: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,287 - INFO - Starting episode 26
+2025-01-08 01:06:19,316 - ERROR - Error in episode 26: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,316 - INFO - Starting episode 27
+2025-01-08 01:06:19,346 - ERROR - Error in episode 27: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,346 - INFO - Starting episode 28
+2025-01-08 01:06:19,373 - ERROR - Error in episode 28: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,374 - INFO - Starting episode 29
+2025-01-08 01:06:19,403 - ERROR - Error in episode 29: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,403 - INFO - Starting episode 30
+2025-01-08 01:06:19,428 - ERROR - Error in episode 30: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,428 - INFO - Starting episode 31
+2025-01-08 01:06:19,456 - ERROR - Error in episode 31: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,456 - INFO - Starting episode 32
+2025-01-08 01:06:19,483 - ERROR - Error in episode 32: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,483 - INFO - Starting episode 33
+2025-01-08 01:06:19,511 - ERROR - Error in episode 33: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,511 - INFO - Starting episode 34
+2025-01-08 01:06:19,537 - ERROR - Error in episode 34: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,537 - INFO - Starting episode 35
+2025-01-08 01:06:19,563 - ERROR - Error in episode 35: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,564 - INFO - Starting episode 36
+2025-01-08 01:06:19,592 - ERROR - Error in episode 36: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,592 - INFO - Starting episode 37
+2025-01-08 01:06:19,619 - ERROR - Error in episode 37: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,619 - INFO - Starting episode 38
+2025-01-08 01:06:19,647 - ERROR - Error in episode 38: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,647 - INFO - Starting episode 39
+2025-01-08 01:06:19,675 - ERROR - Error in episode 39: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,675 - INFO - Starting episode 40
+2025-01-08 01:06:19,704 - ERROR - Error in episode 40: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,704 - INFO - Starting episode 41
+2025-01-08 01:06:19,731 - ERROR - Error in episode 41: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,732 - INFO - Starting episode 42
+2025-01-08 01:06:19,763 - ERROR - Error in episode 42: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,764 - INFO - Starting episode 43
+2025-01-08 01:06:19,791 - ERROR - Error in episode 43: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,792 - INFO - Starting episode 44
+2025-01-08 01:06:19,822 - ERROR - Error in episode 44: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,823 - INFO - Starting episode 45
+2025-01-08 01:06:19,850 - ERROR - Error in episode 45: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,850 - INFO - Starting episode 46
+2025-01-08 01:06:19,878 - ERROR - Error in episode 46: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,878 - INFO - Starting episode 47
+2025-01-08 01:06:19,905 - ERROR - Error in episode 47: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,905 - INFO - Starting episode 48
+2025-01-08 01:06:19,932 - ERROR - Error in episode 48: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,932 - INFO - Starting episode 49
+2025-01-08 01:06:19,961 - ERROR - Error in episode 49: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,962 - INFO - Starting episode 50
+2025-01-08 01:06:19,992 - ERROR - Error in episode 50: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:19,993 - INFO - Starting episode 51
+2025-01-08 01:06:20,022 - ERROR - Error in episode 51: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,022 - INFO - Starting episode 52
+2025-01-08 01:06:20,051 - ERROR - Error in episode 52: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,052 - INFO - Starting episode 53
+2025-01-08 01:06:20,084 - ERROR - Error in episode 53: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,085 - INFO - Starting episode 54
+2025-01-08 01:06:20,112 - ERROR - Error in episode 54: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,113 - INFO - Starting episode 55
+2025-01-08 01:06:20,140 - ERROR - Error in episode 55: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,140 - INFO - Starting episode 56
+2025-01-08 01:06:20,168 - ERROR - Error in episode 56: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,169 - INFO - Starting episode 57
+2025-01-08 01:06:20,195 - ERROR - Error in episode 57: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,195 - INFO - Starting episode 58
+2025-01-08 01:06:20,220 - ERROR - Error in episode 58: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,221 - INFO - Starting episode 59
+2025-01-08 01:06:20,244 - ERROR - Error in episode 59: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,245 - INFO - Starting episode 60
+2025-01-08 01:06:20,270 - ERROR - Error in episode 60: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,271 - INFO - Starting episode 61
+2025-01-08 01:06:20,297 - ERROR - Error in episode 61: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,297 - INFO - Starting episode 62
+2025-01-08 01:06:20,323 - ERROR - Error in episode 62: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,324 - INFO - Starting episode 63
+2025-01-08 01:06:20,351 - ERROR - Error in episode 63: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,352 - INFO - Starting episode 64
+2025-01-08 01:06:20,376 - ERROR - Error in episode 64: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,376 - INFO - Starting episode 65
+2025-01-08 01:06:20,401 - ERROR - Error in episode 65: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,401 - INFO - Starting episode 66
+2025-01-08 01:06:20,427 - ERROR - Error in episode 66: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,427 - INFO - Starting episode 67
+2025-01-08 01:06:20,452 - ERROR - Error in episode 67: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,452 - INFO - Starting episode 68
+2025-01-08 01:06:20,478 - ERROR - Error in episode 68: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,478 - INFO - Starting episode 69
+2025-01-08 01:06:20,504 - ERROR - Error in episode 69: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,504 - INFO - Starting episode 70
+2025-01-08 01:06:20,528 - ERROR - Error in episode 70: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,529 - INFO - Starting episode 71
+2025-01-08 01:06:20,554 - ERROR - Error in episode 71: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,554 - INFO - Starting episode 72
+2025-01-08 01:06:20,580 - ERROR - Error in episode 72: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,580 - INFO - Starting episode 73
+2025-01-08 01:06:20,606 - ERROR - Error in episode 73: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,606 - INFO - Starting episode 74
+2025-01-08 01:06:20,632 - ERROR - Error in episode 74: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,632 - INFO - Starting episode 75
+2025-01-08 01:06:20,656 - ERROR - Error in episode 75: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,656 - INFO - Starting episode 76
+2025-01-08 01:06:20,682 - ERROR - Error in episode 76: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,682 - INFO - Starting episode 77
+2025-01-08 01:06:20,709 - ERROR - Error in episode 77: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,709 - INFO - Starting episode 78
+2025-01-08 01:06:20,737 - ERROR - Error in episode 78: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,737 - INFO - Starting episode 79
+2025-01-08 01:06:20,766 - ERROR - Error in episode 79: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,766 - INFO - Starting episode 80
+2025-01-08 01:06:20,795 - ERROR - Error in episode 80: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,795 - INFO - Starting episode 81
+2025-01-08 01:06:20,827 - ERROR - Error in episode 81: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,827 - INFO - Starting episode 82
+2025-01-08 01:06:20,857 - ERROR - Error in episode 82: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,858 - INFO - Starting episode 83
+2025-01-08 01:06:20,888 - ERROR - Error in episode 83: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,888 - INFO - Starting episode 84
+2025-01-08 01:06:20,919 - ERROR - Error in episode 84: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,920 - INFO - Starting episode 85
+2025-01-08 01:06:20,947 - ERROR - Error in episode 85: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,949 - INFO - Starting episode 86
+2025-01-08 01:06:20,975 - ERROR - Error in episode 86: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:20,975 - INFO - Starting episode 87
+2025-01-08 01:06:21,000 - ERROR - Error in episode 87: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:21,000 - INFO - Starting episode 88
+2025-01-08 01:06:21,029 - ERROR - Error in episode 88: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:21,029 - INFO - Starting episode 89
+2025-01-08 01:06:21,055 - ERROR - Error in episode 89: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:21,055 - INFO - Starting episode 90
+2025-01-08 01:06:21,086 - ERROR - Error in episode 90: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:21,086 - INFO - Starting episode 91
+2025-01-08 01:06:21,114 - ERROR - Error in episode 91: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:21,115 - INFO - Starting episode 92
+2025-01-08 01:06:21,141 - ERROR - Error in episode 92: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:21,142 - INFO - Starting episode 93
+2025-01-08 01:06:21,170 - ERROR - Error in episode 93: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:21,170 - INFO - Starting episode 94
+2025-01-08 01:06:21,247 - ERROR - Error in episode 94: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:21,248 - INFO - Starting episode 95
+2025-01-08 01:06:21,276 - ERROR - Error in episode 95: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:21,276 - INFO - Starting episode 96
+2025-01-08 01:06:21,306 - ERROR - Error in episode 96: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:21,306 - INFO - Starting episode 97
+2025-01-08 01:06:21,335 - ERROR - Error in episode 97: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:21,335 - INFO - Starting episode 98
+2025-01-08 01:06:21,362 - ERROR - Error in episode 98: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:21,362 - INFO - Starting episode 99
+2025-01-08 01:06:21,387 - ERROR - Error in episode 99: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
+2025-01-08 01:06:21,387 - INFO - Starting episode 100
+2025-01-08 01:06:21,413 - ERROR - Error in episode 100: HistoricalTrader.execute_trade() takes 2 positional arguments but 3 were given
