@@ -1,9 +1,9 @@
 # main.py
 import asyncio
 import logging
-from datetime import datetime
 import sys
 import os
+from datetime import datetime
 
 from config.settings import Config
 from config.logging_config import setup_logging
@@ -11,22 +11,24 @@ from models.model_manager import ModelManager
 from analysis.analyzer import MainAnalyzer
 from trading.strategy import TradingStrategy
 from trading.broker import MT5Broker
-from trading.risk_manager import RiskManager
 from utils.data_loader import DataLoader
 from utils.preprocessing import DataPreprocessor
+
+# Setup root logger first
+root_logger = setup_logging()
 
 class TradingBot:
     def __init__(self):
         """Initialize trading bot"""
-        self.config = Config()
-        self.logger = self._setup_logging()
-        self.initialize_components()
-        
-    def _setup_logging(self):
-        """Setup logging configuration"""
-        trading_logger, _ = setup_logging()
-        return trading_logger
-        
+        try:
+            self.config = Config()
+            self.logger = logging.getLogger('trading')
+            self.initialize_components()
+            self.logger.info("Trading bot initialized successfully")
+        except Exception as e:
+            self.logger.error(f"Initialization error: {str(e)}")
+            raise
+
     def initialize_components(self):
         """Initialize all components"""
         try:
@@ -39,16 +41,15 @@ class TradingBot:
             self.analyzer = MainAnalyzer(self.config)
             
             # Trading components
-            self.risk_manager = RiskManager(self.config)
             self.strategy = TradingStrategy(self.config)
             self.broker = MT5Broker(self.config)
             
             self.logger.info("All components initialized successfully")
             
         except Exception as e:
-            self.logger.error(f"Initialization error: {str(e)}")
-            sys.exit(1)
-            
+            self.logger.error(f"Component initialization error: {str(e)}")
+            raise
+
     async def run(self):
         """Main trading loop"""
         self.logger.info(f"Starting trading bot in {self.config.MODE} mode")
@@ -75,29 +76,22 @@ class TradingBot:
                     processed_fundamental = self.preprocessor.prepare_fundamental_features(
                         fundamental_data
                     )
+                else:
+                    processed_fundamental = None
                 
                 # Run analysis
                 analysis_results = await self.analyzer.run_analysis({
                     'technical': processed_data,
-                    'fundamental': processed_fundamental if self.config.USE_FUNDAMENTAL_ANALYSIS else None
+                    'fundamental': processed_fundamental
                 })
                 
                 # Generate trading signals
                 signals = self.strategy.generate_signals(analysis_results)
                 
-                # Apply risk management
-                account_info = self.broker.get_account_info()
-                for signal in signals:
-                    if self.risk_manager.check_risk_limits(account_info, signal):
-                        # Calculate position size
-                        signal['lot_size'] = self.risk_manager.calculate_position_size(
-                            signal['strength'],
-                            account_info
-                        )
-                        
-                        # Execute trade
-                        await self.broker.execute_trades([signal])
-                    
+                # Execute trades if we have valid signals
+                if signals:
+                    await self.broker.execute_trades(signals)
+                
                 # Update models if needed
                 await self.model_manager.update_if_needed()
                 
@@ -117,12 +111,18 @@ class TradingBot:
             self.logger.error(f"Cleanup error: {str(e)}")
 
 if __name__ == "__main__":
-    bot = TradingBot()
+    # Get root logger for main script
+    main_logger = logging.getLogger('main')
+    
     try:
+        # Create and run bot
+        bot = TradingBot()
         asyncio.run(bot.run())
     except KeyboardInterrupt:
-        bot.logger.info("Bot stopped by user")
+        main_logger.info("Bot stopped by user")
         bot.cleanup()
     except Exception as e:
-        bot.logger.error(f"Bot crashed: {str(e)}")
-        bot.cleanup()
+        main_logger.error(f"Bot crashed: {str(e)}")
+        if 'bot' in locals():
+            bot.cleanup()
+        sys.exit(1)

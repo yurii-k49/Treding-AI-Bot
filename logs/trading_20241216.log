@@ -1,0 +1,55 @@
+2024-12-16 14:23:21,507 - trading - ERROR - Initialization error: name 'logging' is not defined
+2024-12-16 14:24:55,561 - trading_bot - ERROR - Component initialization error: name 'logging' is not defined
+2024-12-16 14:24:55,562 - trading_bot - ERROR - Initialization error: name 'logging' is not defined
+2024-12-16 14:24:55,562 - trading_bot - ERROR - Bot crashed: name 'logging' is not defined
+2024-12-16 14:29:05,974 - trading - ERROR - Initialization error: name 'logger' is not defined
+2024-12-16 14:34:08,323 - model.fundamental - INFO - Fundamental models initialized successfully
+2024-12-16 14:34:08,323 - model.sentiment - INFO - Sentiment model initialized: Traditional ML
+2024-12-16 14:34:08,323 - model.manager - INFO - All models initialized successfully
+2024-12-16 14:34:08,324 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-16 14:34:13,943 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-16 14:34:13,943 - trading - INFO - All components initialized successfully
+2024-12-16 14:34:13,945 - trading - INFO - Trading bot initialized successfully
+2024-12-16 14:34:13,949 - trading - INFO - Starting trading bot in demo mode
+2024-12-16 14:34:13,949 - trading - ERROR - Error in main loop: Failed to get market data
+2024-12-16 14:35:13,952 - trading - ERROR - Error in main loop: Failed to get market data
+2024-12-16 14:36:13,955 - trading - ERROR - Error in main loop: Failed to get market data
+2024-12-16 14:36:24,184 - trading.broker - INFO - MT5 connection closed
+2024-12-16 14:36:24,184 - trading - INFO - Cleanup completed successfully
+2024-12-16 14:36:42,468 - trading - ERROR - Component initialization error: MT5 initialization failed
+2024-12-16 14:36:42,468 - trading - ERROR - Initialization error: MT5 initialization failed
+2024-12-16 14:37:42,360 - model.fundamental - INFO - Fundamental models initialized successfully
+2024-12-16 14:37:42,360 - model.sentiment - INFO - Sentiment model initialized: Traditional ML
+2024-12-16 14:37:42,361 - model.manager - INFO - All models initialized successfully
+2024-12-16 14:37:42,363 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-16 14:37:42,370 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-16 14:37:42,370 - trading - INFO - All components initialized successfully
+2024-12-16 14:37:42,371 - trading - INFO - Trading bot initialized successfully
+2024-12-16 14:37:42,372 - trading - INFO - Starting trading bot in demo mode
+2024-12-16 14:37:42,471 - trading - ERROR - Error in main loop: 'DataLoader' object has no attribute 'get_fundamental_data'
+2024-12-16 14:38:42,572 - trading - ERROR - Error in main loop: 'DataLoader' object has no attribute 'get_fundamental_data'
+2024-12-16 14:39:42,626 - trading - ERROR - Error in main loop: 'DataLoader' object has no attribute 'get_fundamental_data'
+2024-12-16 14:40:42,683 - trading - ERROR - Error in main loop: 'DataLoader' object has no attribute 'get_fundamental_data'
+2024-12-16 14:41:23,061 - trading.broker - INFO - MT5 connection closed
+2024-12-16 14:41:23,061 - trading - INFO - Cleanup completed successfully
+2024-12-16 14:41:42,994 - model.fundamental - INFO - Fundamental models initialized successfully
+2024-12-16 14:41:42,995 - model.sentiment - INFO - Sentiment model initialized: Traditional ML
+2024-12-16 14:41:42,997 - model.manager - INFO - All models initialized successfully
+2024-12-16 14:41:42,999 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-16 14:41:43,006 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-16 14:41:43,007 - trading - INFO - All components initialized successfully
+2024-12-16 14:41:43,007 - trading - INFO - Trading bot initialized successfully
+2024-12-16 14:41:43,008 - trading - INFO - Starting trading bot in demo mode
+2024-12-16 14:41:43,078 - analysis.technical - ERROR - Error calculating indicators: 'close'
+2024-12-16 14:41:43,078 - analysis.technical - ERROR - Error generating signals: 'ema_9'
+2024-12-16 14:41:43,078 - analysis.technical - ERROR - Error in technical analysis: 'open'
+2024-12-16 14:41:43,079 - analysis.fundamental - ERROR - Error in macro analysis: 'FundamentalAnalyzer' object has no attribute '_get_interest_rates'
+2024-12-16 14:41:43,079 - analysis.fundamental - ERROR - Error in forex analysis: 'NoneType' object is not subscriptable
+2024-12-16 14:41:43,079 - analysis.fundamental - ERROR - Error in fundamental analysis: 'Config' object has no attribute 'USE_NEWS_ANALYSIS'
+2024-12-16 14:41:43,080 - analysis.sentiment - ERROR - Error in news sentiment analysis: 'SentimentAnalyzer' object has no attribute '_fetch_news'
+2024-12-16 14:41:43,080 - analysis.sentiment - ERROR - Error in social sentiment analysis: 'SentimentAnalyzer' object has no attribute '_fetch_social_posts'
+2024-12-16 14:41:43,080 - analysis.sentiment - ERROR - Error in market sentiment analysis: 'SentimentAnalyzer' object has no attribute '_fetch_market_indicators'
+2024-12-16 14:41:43,081 - analysis.main - INFO - Analysis completed: {'signal_direction': 'sell', 'signal_strength': 0.0, 'confidence': 0}
+2024-12-16 14:41:43,081 - trading - ERROR - Error in main loop: 'technical'
+2024-12-16 14:42:20,300 - trading.broker - INFO - MT5 connection closed
+2024-12-16 14:42:20,301 - trading - INFO - Cleanup completed successfully
