@@ -1,147 +1,148 @@
 # models/fundamental_model.py
 import numpy as np
 import pandas as pd
-from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
-from sklearn.preprocessing import StandardScaler
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout, LSTM
-import joblib
+from sklearn.ensemble import RandomForestClassifier
 import logging
+import joblib
+import os
 
 class FundamentalModel:
     def __init__(self, config):
         self.config = config
-        self.logger = logging.getLogger('model.fundamental')
-        self.scaler = StandardScaler()
+        self.logger = logging.getLogger('models.fundamental')
         self.setup_models()
-
+        
     def setup_models(self):
-        """Initialize all fundamental analysis models"""
+        """Initialize models for different aspects"""
         try:
-            if self.config.DEEP_LEARNING:
-                self.macro_model = self._create_deep_macro_model()
-                self.company_model = self._create_deep_company_model()
-                self.sector_model = self._create_deep_sector_model()
-            else:
-                self.macro_model = GradientBoostingRegressor(
-                    n_estimators=100,
-                    learning_rate=0.1,
-                    max_depth=5
-                )
-                self.company_model = RandomForestRegressor(
-                    n_estimators=100,
-                    max_depth=10
-                )
-                self.sector_model = GradientBoostingRegressor(
-                    n_estimators=100,
-                    learning_rate=0.1,
-                    max_depth=5
-                )
-
-            self.logger.info("Fundamental models initialized successfully")
-        except Exception as e:
-            self.logger.error(f"Error initializing models: {str(e)}")
-            raise
-
-    def _create_deep_macro_model(self):
-        """Create deep learning model for macroeconomic analysis"""
-        model = Sequential([
-            LSTM(64, input_shape=(None, 20), return_sequences=True),
-            Dropout(0.2),
-            LSTM(32, return_sequences=False),
-            Dense(16, activation='relu'),
-            Dense(1, activation='linear')
-        ])
-        model.compile(optimizer='adam', loss='mse', metrics=['mae'])
-        return model
-
-    def _create_deep_company_model(self):
-        """Create deep learning model for company analysis"""
-        model = Sequential([
-            Dense(64, input_dim=20, activation='relu'),
-            Dropout(0.3),
-            Dense(32, activation='relu'),
-            Dense(16, activation='relu'),
-            Dense(1, activation='linear')
-        ])
-        model.compile(optimizer='adam', loss='mse', metrics=['mae'])
-        return model
-
-    def _create_deep_sector_model(self):
-        """Create deep learning model for sector analysis"""
-        model = Sequential([
-            Dense(32, input_dim=15, activation='relu'),
-            Dropout(0.2),
-            Dense(16, activation='relu'),
-            Dense(1, activation='linear')
-        ])
-        model.compile(optimizer='adam', loss='mse', metrics=['mae'])
-        return model
-
-    async def train(self, data):
-        """Train all fundamental models"""
-        try:
-            # Prepare data
-            macro_data = self._prepare_macro_data(data.get('macro', {}))
-            company_data = self._prepare_company_data(data.get('company', {}))
-            sector_data = self._prepare_sector_data(data.get('sector', {}))
-
-            # Train models
-            if self.config.DEEP_LEARNING:
-                await self._train_deep_models(macro_data, company_data, sector_data)
-            else:
-                await self._train_traditional_models(macro_data, company_data, sector_data)
-
-            self.logger.info("Fundamental models trained successfully")
-        except Exception as e:
-            self.logger.error(f"Error training models: {str(e)}")
-            raise
-
-    async def predict(self, data):
-        """Make predictions using all fundamental models"""
-        try:
-            # Prepare prediction data
-            macro_features = self._prepare_macro_data(data.get('macro', {}))
-            company_features = self._prepare_company_data(data.get('company', {}))
-            sector_features = self._prepare_sector_data(data.get('sector', {}))
-
-            # Get predictions
-            macro_pred = self.macro_model.predict(macro_features)
-            company_pred = self.company_model.predict(company_features)
-            sector_pred = self.sector_model.predict(sector_features)
-
-            # Combine predictions
-            combined_score = self._combine_predictions(
-                macro_pred, company_pred, sector_pred
+            self.model = RandomForestClassifier(
+                n_estimators=100,
+                max_depth=10,
+                min_samples_split=10,
+                random_state=42
             )
-
-            return {
-                'combined_score': combined_score,
-                'macro_score': macro_pred[0],
-                'company_score': company_pred[0],
-                'sector_score': sector_pred[0]
-            }
+            self.logger.info("Fundamental model initialized")
         except Exception as e:
-            self.logger.error(f"Error making predictions: {str(e)}")
-            return None
-
-    def save_models(self):
-        """Save all fundamental models"""
-        try:
-            model_dir = 'data/models/fundamental'
-            os.makedirs(model_dir, exist_ok=True)
-
-            if self.config.DEEP_LEARNING:
-                self.macro_model.save(f"{model_dir}/macro_model")
-                self.company_model.save(f"{model_dir}/company_model")
-                self.sector_model.save(f"{model_dir}/sector_model")
-            else:
-                joblib.dump(self.macro_model, f"{model_dir}/macro_model.joblib")
-                joblib.dump(self.company_model, f"{model_dir}/company_model.joblib")
-                joblib.dump(self.sector_model, f"{model_dir}/sector_model.joblib")
-
-            self.logger.info("Fundamental models saved successfully")
-        except Exception as e:
-            self.logger.error(f"Error saving models: {str(e)}")
+            self.logger.error(f"Error initializing fundamental model: {str(e)}")
             raise
+            
+    async def train(self, data):
+        """Train the model"""
+        try:
+            if data is None:
+                raise Exception("No training data provided")
+                
+            # Prepare training data
+            X, y = self._prepare_training_data(data)
+            
+            if X is None or y is None:
+                raise Exception("Failed to prepare training data")
+                
+            # Train model
+            self.model.fit(X, y)
+            self.logger.info("Fundamental model trained successfully")
+            
+        except Exception as e:
+            self.logger.error(f"Error training fundamental model: {str(e)}")
+            raise
+            
+    def _prepare_training_data(self, data):
+        """Prepare data for training"""
+        try:
+            if data is None:
+                return None, None
+                
+            # Process economic indicators
+            economic_data = self._prepare_macro_data(data)
+            if economic_data is None:
+                return None, None
+                
+            # Create features
+            X = economic_data.values
+            
+            # Create targets (using simple strategy - if next day's value increases)
+            y = (economic_data.diff().shift(-1).iloc[:, 0] > 0).astype(int)
+            
+            # Remove last row (no future value)
+            X = X[:-1]
+            y = y[:-1]
+            
+            # Remove any remaining NaN
+            mask = ~np.isnan(X).any(axis=1) & ~np.isnan(y)
+            X = X[mask]
+            y = y[mask]
+            
+            return X, y
+            
+        except Exception as e:
+            self.logger.error(f"Error preparing training data: {str(e)}")
+            return None, None
+            
+    def _prepare_macro_data(self, data):
+        """Prepare macroeconomic data"""
+        try:
+            if data is None or 'economic' not in data:
+                return None
+                
+            # Convert economic indicators to DataFrame
+            df_list = []
+            for indicator, values in data['economic'].items():
+                temp_df = pd.DataFrame(values)
+                temp_df.set_index('date', inplace=True)
+                temp_df.columns = [indicator]
+                df_list.append(temp_df)
+                
+            if not df_list:
+                return None
+                
+            # Combine all indicators
+            return pd.concat(df_list, axis=1)
+            
+        except Exception as e:
+            self.logger.error(f"Error preparing macro data: {str(e)}")
+            return None
+            
+    async def predict(self, data):
+        """Make predictions"""
+        try:
+            if data is None:
+                return None
+                
+            # Prepare features
+            X = self._prepare_prediction_data(data)
+            
+            if X is None:
+                return None
+                
+            # Make prediction
+            predictions = self.model.predict_proba(X)[:, 1]
+            
+            return {
+                'signal': predictions[-1],  # Latest prediction
+                'confidence': np.abs(predictions[-1] - 0.5) * 2  # Convert to 0-1 scale
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Error making prediction: {str(e)}")
+            return None
+            
+    def _prepare_prediction_data(self, df):
+        """Prepare data for prediction"""
+        try:
+            return self._prepare_training_data(df)[0]
+        except Exception as e:
+            self.logger.error(f"Error preparing prediction data: {str(e)}")
+            return None
+            
+    def save_model(self):
+        """Save model to disk"""
+        try:
+            # Create directory if it doesn't exist
+            os.makedirs('data/models', exist_ok=True)
+            
+            # Save model
+            joblib.dump(self.model, 'data/models/fundamental_model.joblib')
+            self.logger.info("Fundamental model saved successfully")
+            
+        except Exception as e:
+            self.logger.error(f"Error saving model: {str(e)}")

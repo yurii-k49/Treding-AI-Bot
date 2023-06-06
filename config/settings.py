@@ -7,10 +7,10 @@ load_dotenv()
 
 
 class Config:
-  # MT5 settings
-    MT5_LOGIN = os.getenv('MT5_LOGIN')
-    MT5_PASSWORD = os.getenv('MT5_PASSWORD')
-    MT5_SERVER = os.getenv('MT5_SERVER')
+    # MT5 settings
+    MT5_LOGIN = int(os.getenv('MT5_LOGIN', '313025394'))
+    MT5_PASSWORD = os.getenv('MT5_PASSWORD', '5579187Er@')
+    MT5_SERVER = os.getenv('MT5_SERVER', 'XMGlobal-MT5 7')
     MODE = os.getenv('MODE', 'demo')
     
     # Trading settings

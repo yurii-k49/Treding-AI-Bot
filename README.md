@@ -70,6 +70,17 @@ Sun'iy intellekt yordamida texnik tahlil, fundamental tahlil va sentiment tahlil
 
 ## 🎯 Ishlatish
 
+
+### AI ni o'qitish
+```bash
+python main.py learn
+```
+
+### Model tayyor bo'lgach uni yangi data bilan validatsiya qilish
+```bash
+python main.py validate
+```
+
 ### Demo rejimda ishga tushirish
 ```bash
 python main.py

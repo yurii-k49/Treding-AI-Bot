@@ -1,0 +1,15 @@
+2024-12-19 00:55:06,054 - trading - ERROR - Component initialization error: MT5 initialization failed
+2024-12-19 00:55:06,055 - trading - ERROR - Initialization error: MT5 initialization failed
+2024-12-19 01:15:54,508 - trading - ERROR - Error in model training: 'DataLoader' object has no attribute 'get_training_data'
+2024-12-19 01:20:30,614 - trading - ERROR - Error in model training: Failed to get training data
+2024-12-19 01:21:58,028 - trading - ERROR - Error in model training: 'DataPreprocessor' object has no attribute 'prepare_sentiment_features'
+2024-12-19 01:22:27,898 - trading - ERROR - Error in model training: 'DataPreprocessor' object has no attribute 'prepare_sentiment_features'
+2024-12-19 01:30:10,495 - trading - ERROR - Error in model training: 'ModelManager' object has no attribute 'train_all_models'
+2024-12-19 01:31:40,263 - trading - ERROR - Error in model training: 'TechnicalModel' object has no attribute 'train'
+2024-12-19 01:32:11,348 - trading - ERROR - Error in model training: 'TechnicalModel' object has no attribute 'train'
+2024-12-19 01:33:39,650 - model.fundamental - ERROR - Error training models: 'FundamentalModel' object has no attribute '_prepare_macro_data'
+2024-12-19 01:33:39,651 - model.sentiment - ERROR - Error training sentiment model: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2024-12-19 01:33:39,652 - trading - ERROR - Error in model training: No training data provided
+2024-12-19 01:46:55,967 - trading - ERROR - Error in model training: name 'pd' is not defined
+2024-12-19 01:49:12,846 - trading - ERROR - Error in model training: name 'pd' is not defined
+2024-12-19 01:50:09,000 - trading - ERROR - Error in model training: Failed to prepare training data
