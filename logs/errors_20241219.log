@@ -13,3 +13,4 @@
 2024-12-19 01:46:55,967 - trading - ERROR - Error in model training: name 'pd' is not defined
 2024-12-19 01:49:12,846 - trading - ERROR - Error in model training: name 'pd' is not defined
 2024-12-19 01:50:09,000 - trading - ERROR - Error in model training: Failed to prepare training data
+2024-12-19 02:01:03,242 - trading - ERROR - Error in model training: Failed to prepare training data
