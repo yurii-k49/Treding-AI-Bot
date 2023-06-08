@@ -14,39 +14,44 @@ class DataPreprocessor:
         self.sentiment_scaler = MinMaxScaler()
 
     def prepare_technical_features(self, df):
-        """Prepare technical analysis features"""
+        """Enhanced technical features"""
         try:
-            if df is None:
-                return None
-                
-            # Basic price features
-            df['returns'] = df['close'].pct_change()
-            df['log_returns'] = np.log(df['close'] / df['close'].shift(1))
+            features = pd.DataFrame(index=df.index)
             
-            # Moving averages
-            for window in [9, 20, 50, 200]:
-                df[f'ma_{window}'] = df['close'].rolling(window=window).mean()
-                
-            # Volatility
-            df['daily_range'] = df['high'] - df['low']
-            df['body_size'] = abs(df['close'] - df['open'])
+            # Narx o'zgarishlari
+            features['returns'] = df['close'].pct_change()
+            features['log_returns'] = np.log(df['close'] / df['close'].shift(1))
             
+            # Moving averages va ularning signallari
+            for window in [5, 10, 20, 50, 100]:
+                features[f'ma_{window}'] = df['close'].rolling(window=window).mean()
+                features[f'ma_signal_{window}'] = (df['close'] > features[f'ma_{window}']).astype(int)
+            
+            # Volatility indikatorlari
             for window in [5, 10, 20]:
-                df[f'volatility_{window}'] = df['returns'].rolling(window).std()
+                features[f'volatility_{window}'] = df['close'].rolling(window).std()
                 
-            # Volume features
-            df['volume_ma'] = df['tick_volume'].rolling(window=20).mean()
-            df['volume_std'] = df['tick_volume'].rolling(window=20).std()
+            # RSI
+            delta = df['close'].diff()
+            gain = (delta.where(delta > 0, 0)).rolling(window=14).mean()
+            loss = (-delta.where(delta < 0, 0)).rolling(window=14).mean()
+            rs = gain / loss
+            features['rsi'] = 100 - (100 / (1 + rs))
             
-            # Clean and normalize
-            df = self._clean_data(df)
-            df = self._normalize_features(df, self.technical_scaler)
+            # MACD
+            exp1 = df['close'].ewm(span=12, adjust=False).mean()
+            exp2 = df['close'].ewm(span=26, adjust=False).mean()
+            features['macd'] = exp1 - exp2
+            features['macd_signal'] = features['macd'].ewm(span=9, adjust=False).mean()
             
-            return df
+            # NaN qiymatlarni to'ldirish
+            features = features.bfill().fillna(0)
             
+            return features
+        
         except Exception as e:
-            self.logger.error(f"Error in technical preprocessing: {str(e)}")
-            return None
+            self.logger.error(f"Error preparing technical features: {str(e)}")
+            return pd.DataFrame()
 
     def prepare_fundamental_features(self, data):
         """Prepare fundamental analysis features"""
@@ -196,3 +201,32 @@ class DataPreprocessor:
             df[numeric_columns] = scaler.fit_transform(df[numeric_columns])
         
         return df
+    
+    def prepare_market_features(self, market_df):
+        try:
+            if market_df is None or market_df.empty:
+                return pd.DataFrame()
+                
+            features = pd.DataFrame()
+            
+            # Add market features
+            if 'volatility' in market_df.columns:
+                features['market_volatility'] = market_df['volatility']
+            if 'volume_ma' in market_df.columns:
+                features['market_volume'] = market_df['volume_ma']
+            if 'spread_avg' in market_df.columns:
+                features['market_spread'] = market_df['spread_avg']
+                
+            # Add calculated features
+            if not features.empty:
+                features['volatility_ma'] = features['market_volatility'].rolling(window=20).mean()
+                features['volume_change'] = features['market_volume'].pct_change()
+                
+            # NaN qiymatlarni to'ldirish
+            features = features.bfill().fillna(0)  # fillna(method='bfill') o'rniga
+            
+            return features
+            
+        except Exception as e:
+            self.logger.error(f"Error preparing market features: {str(e)}")
+            return pd.DataFrame()

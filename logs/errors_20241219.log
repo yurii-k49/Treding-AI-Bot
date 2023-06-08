@@ -14,3 +14,20 @@
 2024-12-19 01:49:12,846 - trading - ERROR - Error in model training: name 'pd' is not defined
 2024-12-19 01:50:09,000 - trading - ERROR - Error in model training: Failed to prepare training data
 2024-12-19 02:01:03,242 - trading - ERROR - Error in model training: Failed to prepare training data
+2024-12-19 22:30:22,421 - trading - ERROR - Error in model training: Failed to prepare training data
+2024-12-19 22:40:15,856 - trading - ERROR - Component initialization error: DataLoader.__init__() missing 1 required positional argument: 'timeframe'
+2024-12-19 22:40:15,856 - trading - ERROR - Initialization error: DataLoader.__init__() missing 1 required positional argument: 'timeframe'
+2024-12-19 22:43:06,478 - trading - ERROR - Error in model training: DataLoader.get_training_data() got an unexpected keyword argument 'symbol'
+2024-12-19 22:48:32,053 - trading - ERROR - Error in model training: DataLoader.get_training_data() got an unexpected keyword argument 'symbol'
+2024-12-19 22:58:49,184 - trading - ERROR - Error in model training: DataLoader.get_training_data() got an unexpected keyword argument 'symbol'
+2024-12-19 23:01:13,724 - trading - ERROR - Error in model training: 'DataLoader' object has no attribute 'get_training_data'
+2024-12-19 23:02:24,071 - trading - ERROR - Error in model training: <built-in function copy_rates_from_pos> returned a result with an exception set
+2024-12-19 23:09:36,657 - trading - ERROR - Error in model training: Tarixiy ma'lumotlarni ololmadik
+2024-12-19 23:33:07,774 - trading - ERROR - Error in model training: 'fundamental'
+2024-12-19 23:35:58,145 - trading - ERROR - Error in model training: 'ModelManager' object has no attribute 'market_model'
+2024-12-19 23:38:25,573 - trading - ERROR - Error in model validation: 'DataLoader' object has no attribute 'get_validation_data'
+2024-12-19 23:48:33,780 - trading - ERROR - Error in model training: Failed to prepare training data
+2024-12-19 23:54:35,600 - trading - ERROR - Error in model training: unsupported format string passed to NoneType.__format__
+2024-12-19 23:56:34,711 - trading - ERROR - Error in model training: unsupported format string passed to NoneType.__format__
+2024-12-19 23:57:20,742 - trading - ERROR - Error in model training: unsupported format string passed to dict.__format__
+2024-12-19 23:59:31,351 - trading - ERROR - Error in model training: unsupported format string passed to dict.__format__
