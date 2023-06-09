@@ -1,63 +1,35 @@
-# requirements.txt
-
-# Core dependencies
-python-dotenv>=1.0.0
+# Core ML & Data Science
 numpy>=1.24.0
 pandas>=2.0.0
-scipy>=1.10.0
-
-# Machine Learning
 scikit-learn>=1.3.0
-tensorflow>=2.14.0
 torch>=2.0.0
-torchvision>=0.15.0
-torchaudio>=2.0.0
-transformers>=4.35.0
-textblob>=0.17.1
+tensorflow>=2.14.0  # Deep Learning support
 keras>=2.14.0
 
-# Technical Analysis
-ta>=0.10.0  # Asosiy texnik analiz kutubxonasi
-yfinance>=0.2.30
-mplfinance>=0.12.9b7
-
-# Trading
+# Trading & Technical Analysis
 MetaTrader5>=5.0.45
-ccxt>=4.0.0
-python-binance>=1.0.19
+ta>=0.10.0
+yfinance>=0.2.30
 
-# AsyncIO
+# Web & Async
 aiohttp>=3.9.0
 asyncio>=3.4.3
-aiofiles>=23.1.0
+python-dotenv>=1.0.0
 
-# Data Processing
+# Data Processing & Analysis
 beautifulsoup4>=4.12.0
 requests>=2.31.0
-lxml>=4.9.0
-html5lib>=1.1
-
-# Database
-sqlalchemy>=2.0.0
-pymongo>=4.5.0
+textblob>=0.17.1  # Sentiment analysis
 
 # Visualization
 plotly>=5.18.0
 matplotlib>=3.7.0
-seaborn>=0.12.0
 
 # Utilities
+joblib>=1.3.0  # Model saving/loading
+loguru>=0.7.0  # Better logging
 python-dateutil>=2.8.2
-pytz>=2023.3
-tqdm>=4.66.0
-joblib>=1.3.0
+tqdm>=4.66.0  # Progress bars
 
-# Development
-jupyter>=1.0.0
-pytest>=7.4.0
-black>=23.11.0
-flake8>=6.1.0
-
-# Monitoring & Logging
-loguru>=0.7.0
-
+# Development Tools
+jupyter>=1.0.0  # For development and testing

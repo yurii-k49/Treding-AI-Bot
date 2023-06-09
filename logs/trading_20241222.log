@@ -1,0 +1,186 @@
+2024-12-22 18:05:24,416 - trading - ERROR - Component initialization error: name 'NeuralModel' is not defined
+2024-12-22 18:05:24,417 - trading - ERROR - Initialization error: name 'NeuralModel' is not defined
+2024-12-22 18:12:14,279 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 18:12:19,160 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 18:12:19,161 - trading - INFO - All components initialized successfully
+2024-12-22 18:12:19,161 - trading - INFO - Trading bot initialized successfully
+2024-12-22 18:12:19,162 - trading - INFO - Starting model training
+2024-12-22 18:12:19,253 - trading.broker - INFO - MT5 connection closed
+2024-12-22 18:12:19,254 - trading - INFO - Cleanup completed successfully
+2024-12-22 18:12:37,173 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 18:12:37,192 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 18:12:37,193 - trading - INFO - All components initialized successfully
+2024-12-22 18:12:37,194 - trading - INFO - Trading bot initialized successfully
+2024-12-22 18:12:37,195 - trading.broker - INFO - MT5 connection closed
+2024-12-22 18:12:37,196 - trading - INFO - Cleanup completed successfully
+2024-12-22 18:15:33,816 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 18:15:33,841 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 18:15:33,842 - trading - INFO - All components initialized successfully
+2024-12-22 18:15:33,842 - trading - INFO - Trading bot initialized successfully
+2024-12-22 18:15:33,843 - trading.broker - INFO - MT5 connection closed
+2024-12-22 18:15:33,845 - trading - INFO - Cleanup completed successfully
+2024-12-22 18:16:17,811 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 18:16:17,836 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 18:16:17,837 - trading - INFO - All components initialized successfully
+2024-12-22 18:16:17,837 - trading - INFO - Trading bot initialized successfully
+2024-12-22 18:16:17,838 - trading.broker - INFO - MT5 connection closed
+2024-12-22 18:16:17,838 - trading - INFO - Cleanup completed successfully
+2024-12-22 18:20:16,200 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 18:20:16,225 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 18:20:16,226 - trading - INFO - All components initialized successfully
+2024-12-22 18:20:16,226 - trading - INFO - Trading bot initialized successfully
+2024-12-22 18:20:16,227 - trading - ERROR - Error starting web server: 'ModelManager' object has no attribute 'load_models'
+2024-12-22 18:20:16,227 - trading.broker - INFO - MT5 connection closed
+2024-12-22 18:20:16,228 - trading - INFO - Cleanup completed successfully
+2024-12-22 18:20:30,028 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 18:20:30,046 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 18:20:30,046 - trading - INFO - All components initialized successfully
+2024-12-22 18:20:30,047 - trading - INFO - Trading bot initialized successfully
+2024-12-22 18:20:30,048 - trading - INFO - Starting model training
+2024-12-22 18:20:34,247 - trading - INFO - Validation results: {'technical': {'accuracy': np.float64(0.5887755102040816), 'precision': 0.5753424657534246, 'recall': 0.7529880478087649, 'f1': 0.6522864538395168}}
+2024-12-22 18:20:34,249 - trading.broker - INFO - MT5 connection closed
+2024-12-22 18:20:34,250 - trading - INFO - Cleanup completed successfully
+2024-12-22 18:23:23,699 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 18:23:23,721 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 18:23:23,722 - trading - INFO - All components initialized successfully
+2024-12-22 18:23:23,722 - trading - INFO - Trading bot initialized successfully
+2024-12-22 18:23:23,723 - trading - INFO - Starting model training
+2024-12-22 18:23:35,730 - trading - INFO - Validation results: {'technical': {'accuracy': np.float64(0.5887755102040816), 'precision': 0.5753424657534246, 'recall': 0.7529880478087649, 'f1': 0.6522864538395168}}
+2024-12-22 18:23:35,732 - trading.broker - INFO - MT5 connection closed
+2024-12-22 18:23:35,733 - trading - INFO - Cleanup completed successfully
+2024-12-22 18:25:02,357 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 18:25:02,382 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 18:25:02,382 - trading - INFO - All components initialized successfully
+2024-12-22 18:25:02,383 - trading - INFO - Trading bot initialized successfully
+2024-12-22 18:25:02,383 - trading - INFO - Starting model training
+2024-12-22 18:26:59,407 - trading - ERROR - Error in model training: object bool can't be used in 'await' expression
+2024-12-22 18:26:59,408 - trading.broker - INFO - MT5 connection closed
+2024-12-22 18:26:59,408 - trading - INFO - Cleanup completed successfully
+2024-12-22 18:27:17,960 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 18:27:17,983 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 18:27:17,984 - trading - INFO - All components initialized successfully
+2024-12-22 18:27:17,984 - trading - INFO - Trading bot initialized successfully
+2024-12-22 18:27:17,985 - trading - INFO - Starting model training
+2024-12-22 18:28:56,940 - trading - ERROR - Error in model training: object bool can't be used in 'await' expression
+2024-12-22 18:28:56,941 - trading.broker - INFO - MT5 connection closed
+2024-12-22 18:28:56,941 - trading - INFO - Cleanup completed successfully
+2024-12-22 18:32:30,468 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 18:32:30,489 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 18:32:30,490 - trading - INFO - All components initialized successfully
+2024-12-22 18:32:30,490 - trading - INFO - Trading bot initialized successfully
+2024-12-22 18:32:30,491 - trading - INFO - Starting model training
+2024-12-22 18:36:06,920 - trading - INFO - Validation results: {'technical': {'accuracy': np.float64(0.5887755102040816), 'precision': 0.5753424657534246, 'recall': 0.7529880478087649, 'f1': 0.6522864538395168}}
+2024-12-22 18:36:06,921 - trading.broker - INFO - MT5 connection closed
+2024-12-22 18:36:06,921 - trading - INFO - Cleanup completed successfully
+2024-12-22 18:36:14,482 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 18:36:14,500 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 18:36:14,501 - trading - INFO - All components initialized successfully
+2024-12-22 18:36:14,501 - trading - INFO - Trading bot initialized successfully
+2024-12-22 18:36:14,502 - trading - INFO - Starting model training
+2024-12-22 18:36:14,548 - trading - ERROR - Error in model training: 'ModelManager' object has no attribute 'train_all_models'
+2024-12-22 18:36:14,549 - trading.broker - INFO - MT5 connection closed
+2024-12-22 18:36:14,550 - trading - INFO - Cleanup completed successfully
+2024-12-22 18:37:30,653 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 18:37:30,672 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 18:37:30,672 - trading - INFO - All components initialized successfully
+2024-12-22 18:37:30,672 - trading - INFO - Trading bot initialized successfully
+2024-12-22 18:37:30,673 - trading - INFO - Starting model training
+2024-12-22 18:37:42,513 - trading - INFO - Validation results: {'technical': {'accuracy': np.float64(0.5887755102040816), 'precision': 0.5753424657534246, 'recall': 0.7529880478087649, 'f1': 0.6522864538395168}}
+2024-12-22 18:37:42,514 - trading.broker - INFO - MT5 connection closed
+2024-12-22 18:37:42,515 - trading - INFO - Cleanup completed successfully
+2024-12-22 18:39:37,242 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 18:39:37,261 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 18:39:37,262 - trading - INFO - All components initialized successfully
+2024-12-22 18:39:37,262 - trading - INFO - Trading bot initialized successfully
+2024-12-22 18:39:37,263 - trading - INFO - Starting model training
+2024-12-22 18:41:01,568 - trading - INFO - Validation results: {'technical': {'accuracy': np.float64(0.5887755102040816), 'precision': 0.5753424657534246, 'recall': 0.7529880478087649, 'f1': 0.6522864538395168}}
+2024-12-22 18:41:01,569 - trading.broker - INFO - MT5 connection closed
+2024-12-22 18:41:01,570 - trading - INFO - Cleanup completed successfully
+2024-12-22 18:42:54,747 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 18:42:54,764 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 18:42:54,765 - trading - INFO - All components initialized successfully
+2024-12-22 18:42:54,765 - trading - INFO - Trading bot initialized successfully
+2024-12-22 18:42:54,766 - trading - INFO - Starting model training
+2024-12-22 18:44:19,350 - trading - INFO - Validation results: {'technical': {'accuracy': np.float64(0.5887755102040816), 'precision': 0.5753424657534246, 'recall': 0.7529880478087649, 'f1': 0.6522864538395168}}
+2024-12-22 18:44:19,350 - trading.broker - INFO - MT5 connection closed
+2024-12-22 18:44:19,352 - trading - INFO - Cleanup completed successfully
+2024-12-22 18:46:30,987 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 18:46:31,009 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 18:46:31,009 - trading - INFO - All components initialized successfully
+2024-12-22 18:46:31,010 - trading - INFO - Trading bot initialized successfully
+2024-12-22 18:46:31,010 - trading - INFO - Starting model training
+2024-12-22 18:46:31,011 - trading - INFO - Fetching training data...
+2024-12-22 18:46:31,061 - trading - INFO - 
+Data Overview:
+2024-12-22 18:46:31,061 - trading - INFO - Historical data shape: (10000, 8)
+2024-12-22 18:46:31,063 - trading - INFO - Market data shape: (10000, 9)
+2024-12-22 18:46:31,064 - trading - INFO - 
+Training models...
+2024-12-22 18:47:57,340 - trading - INFO - 
+Validating models...
+2024-12-22 18:47:57,376 - trading - INFO - Validation data received:
+2024-12-22 18:47:57,376 - trading - INFO - - Historical: (1000, 8)
+2024-12-22 18:47:57,378 - trading - INFO - - Market: (1, 21)
+2024-12-22 18:47:57,428 - trading - INFO - Validation results:
+2024-12-22 18:47:57,429 - trading.broker - INFO - MT5 connection closed
+2024-12-22 18:47:57,430 - trading - INFO - Cleanup completed successfully
+2024-12-22 18:57:21,953 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 18:57:21,976 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 18:57:21,978 - trading - INFO - All components initialized successfully
+2024-12-22 18:57:21,978 - trading - INFO - Trading bot initialized successfully
+2024-12-22 18:57:21,979 - trading - INFO - Starting model training
+2024-12-22 18:57:21,979 - trading - INFO - Fetching training data...
+2024-12-22 18:57:22,024 - trading - INFO - 
+Data Overview:
+2024-12-22 18:57:22,024 - trading - INFO - Historical data shape: (10000, 8)
+2024-12-22 18:57:22,026 - trading - INFO - Market data shape: (10000, 9)
+2024-12-22 18:57:22,027 - trading - INFO - 
+Training models...
+2024-12-22 18:59:05,581 - trading - INFO - 
+Validating models...
+2024-12-22 18:59:05,603 - trading - INFO - Validation data received:
+2024-12-22 18:59:05,603 - trading - INFO - - Historical: (1000, 8)
+2024-12-22 18:59:05,603 - trading - INFO - - Market: (0, 0)
+2024-12-22 18:59:05,667 - trading - INFO - Validation results:
+2024-12-22 18:59:05,667 - trading.broker - INFO - MT5 connection closed
+2024-12-22 18:59:05,669 - trading - INFO - Cleanup completed successfully
+2024-12-22 19:29:56,103 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 19:29:56,123 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 19:29:56,123 - trading - INFO - All components initialized successfully
+2024-12-22 19:29:56,124 - trading - INFO - Trading bot initialized successfully
+2024-12-22 19:29:56,124 - trading - INFO - Starting model training
+2024-12-22 19:29:56,125 - trading - INFO - Fetching training data...
+2024-12-22 19:29:56,209 - trading - INFO - 
+Data Overview:
+2024-12-22 19:29:56,209 - trading - INFO - Historical data shape: (10000, 7)
+2024-12-22 19:29:56,211 - trading - INFO - Market data shape: (10000, 16)
+2024-12-22 19:29:56,212 - trading - INFO - 
+Training models...
+2024-12-22 19:31:31,201 - trading - INFO - 
+Validating models...
+2024-12-22 19:31:31,236 - trading - INFO - Validation data received:
+2024-12-22 19:31:31,237 - trading - INFO - - Historical: (1000, 7)
+2024-12-22 19:31:31,238 - trading - INFO - - Market: (1000, 16)
+2024-12-22 19:31:31,295 - trading - INFO - Validation results:
+2024-12-22 19:31:31,296 - trading.broker - INFO - MT5 connection closed
+2024-12-22 19:31:31,297 - trading - INFO - Cleanup completed successfully
+2024-12-22 19:34:32,145 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 19:34:32,165 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 19:34:32,168 - trading - INFO - All components initialized successfully
+2024-12-22 19:34:32,168 - trading - INFO - Trading bot initialized successfully
+2024-12-22 19:34:32,198 - trading - INFO - Starting web server at http://localhost:8080
+2024-12-22 19:34:41,786 - trading - INFO - Generating trading history...
+2024-12-22 19:34:41,839 - trading - ERROR - Error generating history: Failed to prepare training data
+2024-12-22 19:34:41,840 - trading - ERROR - Error serving trading history: Failed to prepare training data
+2024-12-22 19:39:42,191 - trading - INFO - Generating trading history...
+2024-12-22 19:39:42,227 - trading - ERROR - Error generating history: Failed to prepare training data
+2024-12-22 19:39:42,229 - trading - ERROR - Error serving trading history: Failed to prepare training data
+2024-12-22 19:41:04,397 - trading.broker - INFO - MT5 connection closed
+2024-12-22 19:41:04,398 - trading - INFO - Cleanup completed successfully
+2024-12-22 19:51:14,830 - analysis.main - INFO - All analyzers initialized successfully
+2024-12-22 19:51:14,849 - trading.broker - INFO - MT5 initialized successfully in demo mode
+2024-12-22 19:51:14,850 - trading - INFO - All components initialized successfully
+2024-12-22 19:51:14,852 - trading - INFO - Trading bot initialized successfully
+2024-12-22 19:51:14,873 - trading - ERROR - Error starting web server: 'frontend/static' does not exist
+2024-12-22 19:51:14,874 - trading.broker - INFO - MT5 connection closed
+2024-12-22 19:51:14,874 - trading - INFO - Cleanup completed successfully

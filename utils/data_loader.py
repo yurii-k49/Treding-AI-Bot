@@ -1,9 +1,12 @@
 # utils/data_loader.py
+
 import pandas as pd
 import numpy as np
 import MetaTrader5 as mt5
 import logging
 from datetime import datetime, timedelta
+import asyncio
+from tqdm import tqdm
 
 class DataLoader:
     def __init__(self, config):
@@ -21,29 +24,30 @@ class DataLoader:
             'D1': mt5.TIMEFRAME_D1,
         }
         self.timeframe = self.timeframe_map.get(config.TIMEFRAME, mt5.TIMEFRAME_H1)
-        
+
     def _initialize_mt5(self):
-        """MT5 terminalini ishga tushirish"""
+        """Initialize MT5 connection"""
         try:
             if not mt5.initialize(
                 login=self.config.MT5_LOGIN,
                 password=self.config.MT5_PASSWORD,
                 server=self.config.MT5_SERVER
             ):
-                self.logger.error(f"MT5 ishga tushmadi: {mt5.last_error()}")
+                self.logger.error(f"MT5 initialization failed: {mt5.last_error()}")
                 return False
                 
             if not mt5.terminal_info().connected:
-                self.logger.error("MT5 serverga ulanmagan!")
+                self.logger.error("MT5 not connected to server!")
                 return False
                 
             return True
-        except Exception as e:
-            self.logger.error(f"MT5 ishga tushmadi: {str(e)}")
-            return False
             
+        except Exception as e:
+            self.logger.error(f"MT5 initialization error: {str(e)}")
+            return False
+
     async def get_historical_data(self, symbol=None, timeframe=None, bars=1000):
-        """Tarixiy narx ma'lumotlarini olish"""
+        """Get historical price data"""
         try:
             if not self._initialize_mt5():
                 return None
@@ -51,20 +55,29 @@ class DataLoader:
             symbol = symbol or self.symbol
             timeframe = timeframe or self.timeframe
             
+            self.logger.info(f"Fetching {bars} bars of historical data for {symbol}")
+            
             rates = mt5.copy_rates_from_pos(symbol, timeframe, 0, bars)
             if rates is None:
-                self.logger.error(f"Ma'lumotlarni ololmadik: {mt5.last_error()}")
+                self.logger.error(f"Failed to get historical data: {mt5.last_error()}")
                 return None
                 
             df = pd.DataFrame(rates)
             df['time'] = pd.to_datetime(df['time'], unit='s')
+            df.set_index('time', inplace=True)
+            
+            self.logger.info(f"Retrieved {len(df)} bars of historical data")
+            
             return df
             
+        except Exception as e:
+            self.logger.error(f"Error getting historical data: {str(e)}")
+            return None
         finally:
             mt5.shutdown()
-            
+
     async def get_market_data(self, symbol=None):
-        """Joriy bozor ma'lumotlarini olish"""
+        """Get current market data and info"""
         try:
             if not self._initialize_mt5():
                 return None
@@ -73,13 +86,13 @@ class DataLoader:
             symbol_info = mt5.symbol_info(symbol)
             
             if symbol_info is None:
+                self.logger.error(f"Failed to get symbol info for {symbol}")
                 return None
                 
             tick = mt5.symbol_info_tick(symbol)
             
             return {
                 'symbol': symbol,
-                # Asosiy narx ma'lumotlari
                 'bid': tick.bid,
                 'ask': tick.ask,
                 'last': tick.last,
@@ -87,8 +100,6 @@ class DataLoader:
                 'volume': tick.volume,
                 'volume_real': tick.volume_real,
                 'time': datetime.fromtimestamp(tick.time),
-                
-                # Symbol ma'lumotlari
                 'point': symbol_info.point,
                 'digits': symbol_info.digits,
                 'spread_float': symbol_info.spread_float,
@@ -99,17 +110,200 @@ class DataLoader:
                 'volume_step': symbol_info.volume_step,
                 'margin_initial': symbol_info.margin_initial,
                 'margin_maintenance': symbol_info.margin_maintenance,
-                'order_mode': symbol_info.order_mode,
                 'tick_value': symbol_info.trade_tick_value,
                 'tick_size': symbol_info.trade_tick_size
             }
             
+        except Exception as e:
+            self.logger.error(f"Error getting market data: {str(e)}")
+            return None
         finally:
             mt5.shutdown()
-    
+
+    async def get_training_data(self, symbol=None, timeframe=None, bars=10000):
+        """Get data for model training"""
+        try:
+            self.logger.info(f"Getting training data for {bars} bars...")
             
+            # Get historical data
+            historical_df = await self.get_historical_data(symbol, timeframe, bars)
+            if historical_df is None or historical_df.empty:
+                raise RuntimeError("Failed to get historical training data")
+                
+            # Calculate market indicators
+            market_indicators = await self._get_market_indicators(historical_df)
+            
+            # Log data info
+            self.logger.info(f"Training data shapes:")
+            self.logger.info(f"- Historical: {historical_df.shape}")
+            self.logger.info(f"- Market indicators: {market_indicators.shape}")
+            
+            return {
+                "historical": historical_df,
+                "market": market_indicators
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Error getting training data: {str(e)}")
+            raise
+
+    async def get_validation_data(self, symbol=None, timeframe=None, bars=1000):
+        """Get validation data"""
+        try:
+            self.logger.info("Getting validation data...")
+            
+            # Get historical data
+            historical_df = await self.get_historical_data(
+                symbol=symbol, 
+                timeframe=timeframe, 
+                bars=bars
+            )
+            
+            if historical_df is None or historical_df.empty:
+                raise RuntimeError("Failed to get historical validation data")
+                
+            # Calculate market indicators
+            market_indicators = await self._get_market_indicators(historical_df)
+            
+            # Log data shapes
+            self.logger.info(f"Validation data shapes:")
+            self.logger.info(f"- Historical: {historical_df.shape}")
+            self.logger.info(f"- Market indicators: {market_indicators.shape}")
+            
+            return {
+                "historical": historical_df,
+                "market": market_indicators
+            }
+                
+        except Exception as e:
+            self.logger.error(f"Error getting validation data: {str(e)}")
+            return None
+
+    async def _get_market_indicators(self, df):
+        """Calculate technical indicators"""
+        try:
+            self.logger.info("Calculating market indicators...")
+            indicators = pd.DataFrame(index=df.index)
+            
+            # Price based indicators
+            indicators['price_sma5'] = df['close'].rolling(window=5).mean()
+            indicators['price_sma20'] = df['close'].rolling(window=20).mean()
+            indicators['price_sma50'] = df['close'].rolling(window=50).mean()
+            
+            # Price ratios
+            indicators['price_ratio_sma5'] = df['close'] / indicators['price_sma5']
+            indicators['price_ratio_sma20'] = df['close'] / indicators['price_sma20']
+            
+            # Volatility indicators
+            indicators['volatility'] = df['close'].pct_change().rolling(window=20).std()
+            indicators['atr'] = await self._calculate_atr(df)
+            
+            # Volume indicators
+            indicators['volume_sma20'] = df['tick_volume'].rolling(window=20).mean()
+            indicators['volume_ratio'] = df['tick_volume'] / indicators['volume_sma20']
+            
+            # Momentum indicators
+            indicators['rsi'] = await self._calculate_rsi(df['close'])
+            indicators['macd'] = await self._calculate_macd(df['close'])
+            
+            # Price changes
+            indicators['returns'] = df['close'].pct_change()
+            indicators['log_returns'] = np.log(df['close'] / df['close'].shift(1))
+            
+            # High-Low range
+            indicators['hl_range'] = (df['high'] - df['low']) / df['close']
+            
+            # Time-based features
+            indicators['hour'] = pd.to_datetime(df.index).hour
+            indicators['day_of_week'] = pd.to_datetime(df.index).dayofweek
+            
+            # Fill missing values
+            indicators = indicators.ffill().bfill()
+            
+            # Remove any remaining NaN
+            indicators = indicators.fillna(0)
+            
+            self.logger.info(f"Calculated {len(indicators.columns)} market indicators")
+            return indicators
+            
+        except Exception as e:
+            self.logger.error(f"Error calculating market indicators: {str(e)}")
+            return pd.DataFrame()
+
+    async def _calculate_atr(self, df, period=14):
+        """Calculate Average True Range"""
+        try:
+            high = df['high']
+            low = df['low']
+            close = df['close']
+            
+            tr1 = high - low
+            tr2 = abs(high - close.shift())
+            tr3 = abs(low - close.shift())
+            
+            tr = pd.DataFrame({'TR1': tr1, 'TR2': tr2, 'TR3': tr3}).max(axis=1)
+            atr = tr.rolling(window=period).mean()
+            
+            return atr.bfill()
+            
+        except Exception as e:
+            self.logger.error(f"Error calculating ATR: {str(e)}")
+            return pd.Series(0, index=df.index)
+
+    async def _calculate_rsi(self, prices, period=14):
+        """Calculate Relative Strength Index"""
+        try:
+            # Calculate price changes
+            delta = prices.diff()
+            
+            # Separate gains and losses
+            gains = delta.where(delta > 0, 0)
+            losses = -delta.where(delta < 0, 0)
+            
+            # Calculate average gains and losses
+            avg_gains = gains.rolling(window=period).mean()
+            avg_losses = losses.rolling(window=period).mean()
+            
+            # Calculate RS and RSI
+            rs = avg_gains / avg_losses
+            rsi = 100 - (100 / (1 + rs))
+            
+            # Fill NaN values with neutral RSI
+            rsi = rsi.fillna(50)
+            
+            return rsi
+            
+        except Exception as e:
+            self.logger.error(f"Error calculating RSI: {str(e)}")
+            return pd.Series(50, index=prices.index)
+
+    async def _calculate_macd(self, prices, fast=12, slow=26, signal=9):
+        """Calculate MACD"""
+        try:
+            # Calculate EMAs
+            fast_ema = prices.ewm(span=fast, adjust=False).mean()
+            slow_ema = prices.ewm(span=slow, adjust=False).mean()
+            
+            # Calculate MACD line
+            macd_line = fast_ema - slow_ema
+            
+            # Calculate signal line
+            signal_line = macd_line.ewm(span=signal, adjust=False).mean()
+            
+            # Calculate MACD histogram
+            macd_hist = macd_line - signal_line
+            
+            # Fill NaN values
+            macd_hist = macd_hist.fillna(0)
+            
+            return macd_hist
+            
+        except Exception as e:
+            self.logger.error(f"Error calculating MACD: {str(e)}")
+            return pd.Series(0, index=prices.index)
+
     async def get_positions_data(self):
-        """Ochiq pozitsiyalar ma'lumotlarini olish"""
+        """Get open positions data"""
         try:
             if not self._initialize_mt5():
                 return None
@@ -127,10 +321,9 @@ class DataLoader:
                     'type': pos.type,  # 0=BUY, 1=SELL
                     'volume': pos.volume,
                     'price_open': pos.price_open,
-                    'sl': pos.sl,  # stop loss
-                    'tp': pos.tp,  # take profit
+                    'sl': pos.sl,
+                    'tp': pos.tp,
                     'price_current': pos.price_current,
-                    'comment': pos.comment,
                     'profit': pos.profit,
                     'swap': pos.swap,
                     'magic': pos.magic
@@ -138,156 +331,45 @@ class DataLoader:
                 
             return pd.DataFrame(positions_data)
             
+        except Exception as e:
+            self.logger.error(f"Error getting positions data: {str(e)}")
+            return pd.DataFrame()
         finally:
             mt5.shutdown()
-            
+
     async def get_orders_history(self, days=30):
-        """Order'lar tarixini olish"""
+        """Get orders history"""
         try:
             if not self._initialize_mt5():
                 return None
                 
             from_date = datetime.now() - timedelta(days=days)
             
-            # Savdo tarixi
-            deals = mt5.history_deals_get(from_date)
-            if deals is None:
+            # Get trade history
+            trades = mt5.history_deals_get(from_date)
+            if trades is None:
                 return pd.DataFrame()
                 
-            deals_data = []
-            for deal in deals:
-                deals_data.append({
-                    'ticket': deal.ticket,
-                    'time': datetime.fromtimestamp(deal.time),
-                    'symbol': deal.symbol,
-                    'type': deal.type,  # 0=BUY, 1=SELL
-                    'volume': deal.volume,
-                    'price': deal.price,
-                    'profit': deal.profit,
-                    'comment': deal.comment,
-                    'commission': deal.commission,
-                    'swap': deal.swap,
-                    'magic': deal.magic,
-                    'position_id': deal.position_id
+            trades_data = []
+            for trade in trades:
+                trades_data.append({
+                    'ticket': trade.ticket,
+                    'time': datetime.fromtimestamp(trade.time),
+                    'symbol': trade.symbol,
+                    'type': trade.type,
+                    'volume': trade.volume,
+                    'price': trade.price,
+                    'profit': trade.profit,
+                    'commission': trade.commission,
+                    'swap': trade.swap,
+                    'magic': trade.magic,
+                    'position_id': trade.position_id
                 })
                 
-            return pd.DataFrame(deals_data)
+            return pd.DataFrame(trades_data)
             
+        except Exception as e:
+            self.logger.error(f"Error getting orders history: {str(e)}")
+            return pd.DataFrame()
         finally:
             mt5.shutdown()
-        
-    async def get_training_data(self, symbol=None, timeframe=None, bars=10000):
-        """Model training uchun barcha ma'lumotlarni olish"""
-        try:
-            self.logger.info(f"{bars} bar uchun ma'lumotlar olinmoqda...")
-            
-            # Asosiy ma'lumotlar
-            historical_df = await self.get_historical_data(symbol, timeframe, bars)
-            if historical_df is None or historical_df.empty:
-                raise RuntimeError("Tarixiy ma'lumotlarni ololmadik")
-                
-            # Qo'shimcha ma'lumotlar
-            market_data = await self.get_market_data(symbol)
-            positions_data = await self.get_positions_data()
-            orders_history = await self.get_orders_history()
-            
-            # Market ma'lumotlarini DataFrame ga o'tkazish
-            market_df = pd.DataFrame([market_data]) if market_data else pd.DataFrame()
-            
-            # Bo'sh DataFrame lar yaratish
-            positions_df = positions_data if isinstance(positions_data, pd.DataFrame) else pd.DataFrame()
-            orders_df = orders_history if isinstance(orders_history, pd.DataFrame) else pd.DataFrame()
-            
-            self.logger.info(f"Ma'lumotlar olindi:")
-            self.logger.info(f"- Tarixiy ma'lumotlar: {len(historical_df)} qator")
-            self.logger.info(f"- Ochiq pozitsiyalar: {len(positions_df)} ta")
-            self.logger.info(f"- Orderlar tarixi: {len(orders_df)} ta")
-            
-            # Market va pozitsiyalar ma'lumotlaridan qo'shimcha indikatorlar yaratish
-            market_indicators = self._calculate_market_indicators(historical_df, market_df)
-            
-            return {
-                "historical": historical_df,
-                "market": market_indicators,
-                "positions": positions_df,
-                "orders_history": orders_df
-            }
-            
-        except Exception as e:
-            self.logger.error(f"Training ma'lumotlarini olishda xatolik: {str(e)}")
-            raise
-
-    def _calculate_market_indicators(self, historical_df, market_df):
-        """Bozor ma'lumotlaridan qo'shimcha indikatorlar hisoblash"""
-        try:
-            if historical_df.empty:
-                return pd.DataFrame()
-                
-            indicators = pd.DataFrame()
-            
-            # Asosiy indikatorlar
-            indicators['volatility_daily'] = historical_df['high'] - historical_df['low']
-            indicators['volume_ma'] = historical_df['tick_volume'].rolling(window=20).mean()
-            indicators['spread_avg'] = historical_df['spread'].rolling(window=20).mean()
-            
-            # Narx o'zgarishlari
-            indicators['price_change'] = historical_df['close'].pct_change()
-            indicators['price_change_ma'] = indicators['price_change'].rolling(window=20).mean()
-            
-            # Volatillik indikatorlari
-            indicators['volatility'] = indicators['price_change'].rolling(window=20).std()
-            indicators['volatility_ma'] = indicators['volatility'].rolling(window=20).mean()
-            
-            # Market ma'lumotlaridan indikatorlar
-            if not market_df.empty:
-                last_row = market_df.iloc[-1]
-                indicators['current_spread'] = last_row.get('spread', 0)
-                indicators['volume_current'] = last_row.get('volume', 0)
-            
-            return indicators
-            
-        except Exception as e:
-            self.logger.error(f"Indikatorlarni hisoblashda xatolik: {str(e)}")
-            return pd.DataFrame()
-        
-    async def get_validation_data(self, symbol=None, timeframe=None, bars=1000):
-        """Validatsiya uchun ma'lumotlarni olish"""
-        try:
-            self.logger.info("Validatsiya ma'lumotlari olinmoqda...")
-            
-            # Validatsiya uchun oxirgi 1000 ta ma'lumotni olish
-            historical_df = await self.get_historical_data(symbol, timeframe, bars)
-            if historical_df is None or historical_df.empty:
-                raise RuntimeError("Validatsiya uchun tarixiy ma'lumotlarni ololmadik")
-            
-            # Market ma'lumotlarini olish
-            market_data = await self.get_market_data(symbol)
-            market_df = pd.DataFrame([market_data]) if market_data else pd.DataFrame()
-            
-            # Positions va orders ma'lumotlarini olish
-            positions_data = await self.get_positions_data()
-            orders_history = await self.get_orders_history(days=7)
-            
-            self.logger.info(f"Validatsiya ma'lumotlari olindi:")
-            self.logger.info(f"- Tarixiy ma'lumotlar: {len(historical_df)} qator")
-            self.logger.info(f"- Ochiq pozitsiyalar: {len(positions_data)} ta")
-            self.logger.info(f"- Orderlar tarixi: {len(orders_history)} ta")
-            
-            return {
-                "historical": historical_df,
-                "market": market_df,
-                "positions": positions_data,
-                "orders_history": orders_history
-            }
-            
-        except Exception as e:
-            self.logger.error(f"Validatsiya ma'lumotlarini olishda xatolik: {str(e)}")
-            return None
-
-    async def get_validation_fundamental_data(self, symbol=None):
-        """Bu metod hozircha bo'sh DataFrame qaytaradi"""
-        return pd.DataFrame()
-
-    async def get_validation_sentiment_data(self, symbol=None):
-        """Bu metod hozircha bo'sh DataFrame qaytaradi"""
-        return pd.DataFrame()
