@@ -1,8 +1,21 @@
-numpy>=1.24.3,<1.25.0
-pandas>=2.0.3,<2.1.0
-tensorflow>=2.14.0,<2.15.0
-keras>=2.14.0,<2.15.0
-MetaTrader5>=5.0.45,<5.1.0
-scikit-learn>=1.3.0,<1.4.0
-python-dateutil>=2.8.2,<2.9.0
-joblib>=1.3.2,<1.4.0
+# AI Trading Bot Dependencies
+numpy>=1.24.0
+pandas>=2.0.0
+MetaTrader5>=5.0.45
+tensorflow>=2.13.0
+keras>=2.13.0
+scikit-learn>=1.3.0
+matplotlib>=3.7.0
+python-dotenv>=1.0.0
+
+# Utility packages
+logging>=0.5.1.2
+datetime
+argparse>=1.4.0
+multiprocessing
+json
+
+# Optional packages for analysis
+plotly>=5.17.0
+mplfinance>=0.12.10
+talib-binary>=0.4.24  # Technical analysis library
