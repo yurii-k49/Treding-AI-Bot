@@ -1,0 +1,41 @@
+2025-01-04 03:29:57,304 - INFO - Successfully loaded 8640 bars of historical data
+2025-01-04 03:29:57,305 - INFO - Starting episode 1
+2025-01-04 03:30:05,038 - INFO - Position closed with profit: $-3.00
+2025-01-04 03:31:08,321 - INFO - Position closed with profit: $1.00
+2025-01-04 03:31:12,791 - INFO - Position closed with profit: $2.90
+2025-01-04 03:31:16,270 - INFO - Position closed with profit: $-1.70
+2025-01-04 03:31:30,190 - INFO - Position closed with profit: $-2.50
+2025-01-04 03:31:35,278 - INFO - Position closed with profit: $1.60
+2025-01-04 03:31:37,233 - INFO - Position closed with profit: $-3.90
+2025-01-04 03:31:46,875 - INFO - Position closed with profit: $-1.10
+2025-01-04 03:31:59,461 - INFO - Position closed with profit: $1.00
+2025-01-04 03:32:09,714 - INFO - Position closed with profit: $1.20
+2025-01-04 03:32:11,018 - INFO - Position closed with profit: $-1.10
+2025-01-04 03:32:31,842 - INFO - Position closed with profit: $-2.70
+2025-01-04 03:32:53,483 - INFO - Position closed with profit: $-1.80
+2025-01-04 03:33:23,495 - INFO - Position closed with profit: $-9.30
+2025-01-04 03:33:27,795 - INFO - Position closed with profit: $-4.50
+2025-01-04 03:33:57,586 - INFO - Position closed with profit: $1.40
+2025-01-04 03:36:15,066 - INFO - Position closed with profit: $1.70
+2025-01-04 03:36:17,082 - INFO - Position closed with profit: $1.80
+2025-01-04 03:36:33,431 - INFO - Position closed with profit: $4.10
+2025-01-04 03:36:34,719 - INFO - Position closed with profit: $2.70
+2025-01-04 03:37:23,142 - INFO - Position closed with profit: $1.70
+2025-01-04 03:37:26,093 - INFO - Position closed with profit: $-7.30
+2025-01-04 03:37:42,564 - INFO - Position closed with profit: $-5.50
+2025-01-04 03:37:43,936 - INFO - Position closed with profit: $-9.00
+2025-01-04 03:38:04,646 - INFO - Position closed with profit: $-2.10
+2025-01-04 03:38:07,158 - INFO - Position closed with profit: $4.50
+2025-01-04 03:38:17,842 - INFO - Position closed with profit: $2.80
+2025-01-04 03:39:30,289 - INFO - Position closed with profit: $3.30
+2025-01-04 03:39:46,117 - INFO - Position closed with profit: $2.20
+2025-01-04 03:40:25,991 - INFO - Position closed with profit: $-1.00
+2025-01-04 03:40:47,169 - INFO - Position closed with profit: $-3.00
+2025-01-04 03:40:51,814 - INFO - Episode 1 completed - Balance: $74.40, Profit: $-25.60, Trades: 31, Win Rate: 48.4% if total_trades > 0 else 0
+2025-01-04 03:40:51,922 - INFO - Starting episode 2
+2025-01-04 03:51:54,401 - ERROR - Error printing episode summary: division by zero
+2025-01-04 03:51:54,402 - INFO - Starting episode 3
+2025-01-04 04:01:57,673 - INFO - Position closed with profit: $1.60
+2025-01-04 04:02:51,414 - INFO - Position closed with profit: $1.10
+2025-01-04 04:03:04,489 - INFO - Episode 3 completed - Balance: $102.70, Profit: $2.70, Trades: 2, Win Rate: 100.0% if total_trades > 0 else 0
+2025-01-04 04:03:04,489 - INFO - Starting episode 4
