@@ -1,0 +1,46 @@
+2025-01-05 18:59:28,959 - INFO - MT5 ishga tushdi
+2025-01-05 18:59:29,299 - INFO - Successfully loaded 8640 bars of historical data
+2025-01-05 18:59:29,445 - INFO - Starting episode 1
+2025-01-05 18:59:29,450 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.07900, SL: 1.07928, TP: 1.07815
+2025-01-05 18:59:29,457 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.07900, TP=1.07815, SL=1.07928
+2025-01-05 18:59:29,604 - INFO - Episode 1 completed - Balance: $-3.00, Profit: $-103.00, Trades: 1, Win Rate: 100.0%
+2025-01-05 18:59:29,613 - INFO - Starting episode 2
+2025-01-05 18:59:30,160 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08188, SL: 1.08152, TP: 1.08298
+2025-01-05 18:59:30,164 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08188, TP=1.08298, SL=1.08152
+2025-01-05 18:59:30,260 - INFO - Episode 2 completed - Balance: $-3.60, Profit: $-103.60, Trades: 1, Win Rate: 0.0%
+2025-01-05 18:59:30,275 - INFO - Starting episode 3
+2025-01-05 18:59:30,729 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08134, SL: 1.08114, TP: 1.08195
+2025-01-05 18:59:30,733 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08134, TP=1.08195, SL=1.08114
+2025-01-05 18:59:30,883 - INFO - Episode 3 completed - Balance: $-5.30, Profit: $-105.30, Trades: 1, Win Rate: 0.0%
+2025-01-05 18:59:30,896 - INFO - Starting episode 4
+2025-01-05 18:59:31,225 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.08102, SL: 1.08117, TP: 1.08057
+2025-01-05 18:59:31,228 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.08102, TP=1.08057, SL=1.08117
+2025-01-05 18:59:31,478 - INFO - Episode 4 completed - Balance: $-1.70, Profit: $-101.70, Trades: 1, Win Rate: 0.0%
+2025-01-05 18:59:31,489 - INFO - Starting episode 5
+2025-01-05 18:59:32,247 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.08071, SL: 1.08093, TP: 1.08004
+2025-01-05 18:59:32,255 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.08071, TP=1.08004, SL=1.08093
+2025-01-05 18:59:32,375 - INFO - Episode 5 completed - Balance: $-0.70, Profit: $-100.70, Trades: 1, Win Rate: 0.0%
+2025-01-05 18:59:32,375 - INFO - Starting episode 6
+2025-01-05 18:59:34,036 - INFO - Position created: Breakout, BUY, Volume: 0.10, Price: 1.08370, SL: 1.08330, TP: 1.08471
+2025-01-05 18:59:34,037 - INFO - Opening buy order: Strategy=Breakout, Volume=0.10, Price=1.08370, TP=1.08471, SL=1.08330
+2025-01-05 18:59:34,050 - INFO - Episode 6 completed - Balance: $-5.30, Profit: $-105.30, Trades: 1, Win Rate: 200.0%
+2025-01-05 18:59:34,051 - INFO - Starting episode 7
+2025-01-05 18:59:34,941 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08232, SL: 1.08196, TP: 1.08340
+2025-01-05 18:59:34,941 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08232, TP=1.08340, SL=1.08196
+2025-01-05 18:59:34,947 - INFO - Episode 7 completed - Balance: $-17.80, Profit: $-117.80, Trades: 1, Win Rate: 0.0%
+2025-01-05 18:59:34,949 - INFO - Starting episode 8
+2025-01-05 18:59:36,653 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08226, SL: 1.08202, TP: 1.08298
+2025-01-05 18:59:36,655 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08226, TP=1.08298, SL=1.08202
+2025-01-05 18:59:36,772 - INFO - Episode 8 completed - Balance: $-0.10, Profit: $-100.10, Trades: 1, Win Rate: 0.0%
+2025-01-05 18:59:36,773 - INFO - Starting episode 9
+2025-01-05 18:59:39,441 - INFO - Position created: Breakout, BUY, Volume: 0.10, Price: 1.08578, SL: 1.08550, TP: 1.08649
+2025-01-05 18:59:39,441 - INFO - Opening buy order: Strategy=Breakout, Volume=0.10, Price=1.08578, TP=1.08649, SL=1.08550
+2025-01-05 18:59:39,655 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.08585, SL: 1.08663, TP: 1.08389
+2025-01-05 18:59:39,655 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.08585, TP=1.08389, SL=1.08663
+2025-01-05 18:59:40,021 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08865, SL: 1.08847, TP: 1.08919
+2025-01-05 18:59:40,028 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08865, TP=1.08919, SL=1.08847
+2025-01-05 18:59:40,232 - INFO - Episode 9 completed - Balance: $-6.80, Profit: $-106.80, Trades: 3, Win Rate: 6900.0%
+2025-01-05 18:59:40,233 - INFO - Starting episode 10
+2025-01-05 18:59:43,934 - INFO - Dastur yakunlandi
+==================================================
+

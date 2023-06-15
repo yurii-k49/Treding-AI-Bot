@@ -1,0 +1,105 @@
+2025-01-05 18:21:58,518 - INFO - Successfully loaded 8640 bars of historical data
+2025-01-05 18:21:58,543 - INFO - Starting episode 1
+2025-01-05 18:21:58,553 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.07995, TP=1.07980, SL=1.08010
+2025-01-05 18:21:58,583 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.07896, TP=1.07881, SL=1.07911
+2025-01-05 18:21:58,623 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08237, TP=1.08252, SL=1.08222
+2025-01-05 18:21:58,633 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08179, TP=1.08194, SL=1.08164
+2025-01-05 18:21:58,696 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.07790, TP=1.07775, SL=1.07805
+2025-01-05 18:21:58,723 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08130, TP=1.08145, SL=1.08115
+2025-01-05 18:21:58,773 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08401, TP=1.08416, SL=1.08386
+2025-01-05 18:21:58,806 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08619, TP=1.08634, SL=1.08604
+2025-01-05 18:21:58,851 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08519, TP=1.08534, SL=1.08504
+2025-01-05 18:21:58,881 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08686, TP=1.08701, SL=1.08671
+2025-01-05 18:21:58,906 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08709, TP=1.08724, SL=1.08694
+2025-01-05 18:21:58,923 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08842, TP=1.08857, SL=1.08827
+2025-01-05 18:21:58,933 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08865, TP=1.08880, SL=1.08850
+2025-01-05 18:21:58,983 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.08352, TP=1.08337, SL=1.08367
+2025-01-05 18:21:59,013 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08889, TP=1.08904, SL=1.08874
+2025-01-05 18:21:59,033 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.09006, TP=1.09021, SL=1.08991
+2025-01-05 18:21:59,053 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.09050, TP=1.09065, SL=1.09035
+2025-01-05 18:21:59,063 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.09047, TP=1.09062, SL=1.09032
+2025-01-05 18:21:59,096 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.08764, TP=1.08749, SL=1.08779
+2025-01-05 18:21:59,130 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08872, TP=1.08887, SL=1.08857
+2025-01-05 18:21:59,143 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08906, TP=1.08921, SL=1.08891
+2025-01-05 18:21:59,153 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08995, TP=1.09010, SL=1.08980
+2025-01-05 18:21:59,173 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08964, TP=1.08979, SL=1.08949
+2025-01-05 18:21:59,215 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.07689, TP=1.07674, SL=1.07704
+2025-01-05 18:21:59,242 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.07315, TP=1.07300, SL=1.07330
+2025-01-05 18:21:59,308 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.07689, TP=1.07704, SL=1.07674
+2025-01-05 18:21:59,323 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.07742, TP=1.07757, SL=1.07727
+2025-01-05 18:21:59,341 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.07913, TP=1.07928, SL=1.07898
+2025-01-05 18:21:59,389 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.07764, TP=1.07749, SL=1.07779
+2025-01-05 18:21:59,413 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.07713, TP=1.07698, SL=1.07728
+2025-01-05 18:21:59,463 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.07129, TP=1.07114, SL=1.07144
+2025-01-05 18:21:59,473 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.07154, TP=1.07139, SL=1.07169
+2025-01-05 18:21:59,493 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.06854, TP=1.06839, SL=1.06869
+2025-01-05 18:21:59,513 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.06350, TP=1.06335, SL=1.06365
+2025-01-05 18:21:59,533 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.06502, TP=1.06487, SL=1.06517
+2025-01-05 18:21:59,563 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.06438, TP=1.06423, SL=1.06453
+2025-01-05 18:21:59,585 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.06388, TP=1.06373, SL=1.06403
+2025-01-05 18:21:59,596 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.06325, TP=1.06310, SL=1.06340
+2025-01-05 18:21:59,611 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.06143, TP=1.06128, SL=1.06158
+2025-01-05 18:21:59,633 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05964, TP=1.05949, SL=1.05979
+2025-01-05 18:21:59,663 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.06130, TP=1.06115, SL=1.06145
+2025-01-05 18:21:59,707 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.06284, TP=1.06299, SL=1.06269
+2025-01-05 18:21:59,743 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05591, TP=1.05576, SL=1.05606
+2025-01-05 18:21:59,757 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05484, TP=1.05469, SL=1.05499
+2025-01-05 18:21:59,773 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05427, TP=1.05412, SL=1.05442
+2025-01-05 18:21:59,783 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05420, TP=1.05405, SL=1.05435
+2025-01-05 18:21:59,833 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05194, TP=1.05179, SL=1.05209
+2025-01-05 18:21:59,845 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05296, TP=1.05281, SL=1.05311
+2025-01-05 18:21:59,883 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05690, TP=1.05705, SL=1.05675
+2025-01-05 18:21:59,902 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05845, TP=1.05860, SL=1.05830
+2025-01-05 18:21:59,923 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05317, TP=1.05302, SL=1.05332
+2025-01-05 18:21:59,963 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05470, TP=1.05485, SL=1.05455
+2025-01-05 18:21:59,993 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05670, TP=1.05685, SL=1.05655
+2025-01-05 18:22:00,013 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.06026, TP=1.06041, SL=1.06011
+2025-01-05 18:22:00,093 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.06038, TP=1.06053, SL=1.06023
+2025-01-05 18:22:00,123 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05840, TP=1.05825, SL=1.05855
+2025-01-05 18:22:00,143 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05552, TP=1.05537, SL=1.05567
+2025-01-05 18:22:00,188 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05501, TP=1.05516, SL=1.05486
+2025-01-05 18:22:00,209 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05350, TP=1.05335, SL=1.05365
+2025-01-05 18:22:00,223 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05247, TP=1.05232, SL=1.05262
+2025-01-05 18:22:00,265 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04680, TP=1.04665, SL=1.04695
+2025-01-05 18:22:00,299 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04426, TP=1.04411, SL=1.04441
+2025-01-05 18:22:00,323 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04025, TP=1.04010, SL=1.04040
+2025-01-05 18:22:00,353 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.04856, TP=1.04871, SL=1.04841
+2025-01-05 18:22:00,373 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.04849, TP=1.04864, SL=1.04834
+2025-01-05 18:22:00,394 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05228, TP=1.05243, SL=1.05213
+2025-01-05 18:22:00,458 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05420, TP=1.05435, SL=1.05405
+2025-01-05 18:22:00,483 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04609, TP=1.04594, SL=1.04624
+2025-01-05 18:22:00,507 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.04940, TP=1.04955, SL=1.04925
+2025-01-05 18:22:00,533 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05020, TP=1.05035, SL=1.05005
+2025-01-05 18:22:00,553 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05268, TP=1.05283, SL=1.05253
+2025-01-05 18:22:00,623 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05312, TP=1.05297, SL=1.05327
+2025-01-05 18:22:00,633 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05376, TP=1.05361, SL=1.05391
+2025-01-05 18:22:00,680 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05581, TP=1.05596, SL=1.05566
+2025-01-05 18:22:00,703 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05738, TP=1.05753, SL=1.05723
+2025-01-05 18:22:00,728 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05493, TP=1.05478, SL=1.05508
+2025-01-05 18:22:00,744 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05768, TP=1.05783, SL=1.05753
+2025-01-05 18:22:00,763 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05333, TP=1.05318, SL=1.05348
+2025-01-05 18:22:00,776 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05292, TP=1.05277, SL=1.05307
+2025-01-05 18:22:00,793 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05211, TP=1.05196, SL=1.05226
+2025-01-05 18:22:00,813 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05014, TP=1.04999, SL=1.05029
+2025-01-05 18:22:00,863 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04935, TP=1.04920, SL=1.04950
+2025-01-05 18:22:00,883 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05135, TP=1.05150, SL=1.05120
+2025-01-05 18:22:00,935 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04968, TP=1.04953, SL=1.04983
+2025-01-05 18:22:00,943 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05039, TP=1.05024, SL=1.05054
+2025-01-05 18:22:00,983 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05270, TP=1.05285, SL=1.05255
+2025-01-05 18:22:01,029 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05261, TP=1.05276, SL=1.05246
+2025-01-05 18:22:01,037 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05343, TP=1.05358, SL=1.05328
+2025-01-05 18:22:01,053 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05359, TP=1.05374, SL=1.05344
+2025-01-05 18:22:01,063 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05659, TP=1.05674, SL=1.05644
+2025-01-05 18:22:01,172 - INFO - Episode 1 completed - Balance: $84.30, Profit: $-15.70, Trades: 90, Win Rate: 46.7%
+2025-01-05 18:22:01,273 - INFO - Starting episode 2
+2025-01-05 18:22:05,968 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05836, TP=1.05851, SL=1.05821
+2025-01-05 18:22:06,103 - INFO - Episode 2 completed - Balance: $101.70, Profit: $1.70, Trades: 1, Win Rate: 100.0%
+2025-01-05 18:22:06,210 - INFO - Starting episode 3
+2025-01-05 18:22:13,404 - INFO - Episode 3 completed - No trades executed, Balance: $100.00
+2025-01-05 18:22:13,513 - INFO - Starting episode 4
+2025-01-05 18:22:23,748 - INFO - Episode 4 completed - No trades executed, Balance: $100.00
+2025-01-05 18:22:23,854 - INFO - Starting episode 5
+2025-01-05 18:22:35,087 - INFO - Episode 5 completed - No trades executed, Balance: $100.00
+2025-01-05 18:22:35,194 - INFO - Starting episode 6
+2025-01-05 18:22:50,600 - INFO - Episode 6 completed - No trades executed, Balance: $100.00
+2025-01-05 18:22:50,721 - INFO - Starting episode 7

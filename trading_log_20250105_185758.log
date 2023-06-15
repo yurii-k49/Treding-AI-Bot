@@ -1,0 +1,230 @@
+2025-01-05 18:57:58,816 - INFO - MT5 ishga tushdi
+2025-01-05 18:57:59,120 - INFO - Successfully loaded 8640 bars of historical data
+2025-01-05 18:57:59,262 - INFO - Starting episode 1
+2025-01-05 18:57:59,266 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.07938, SL: 1.07969, TP: 1.07843
+2025-01-05 18:57:59,270 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.07938, TP=1.07843, SL=1.07969
+2025-01-05 18:57:59,271 - ERROR - Error in episode 1: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:57:59,271 - INFO - Starting episode 2
+2025-01-05 18:57:59,282 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08157, SL: 1.08120, TP: 1.08268
+2025-01-05 18:57:59,286 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08157, TP=1.08268, SL=1.08120
+2025-01-05 18:57:59,287 - ERROR - Error in episode 2: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:57:59,287 - INFO - Starting episode 3
+2025-01-05 18:57:59,302 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08127, SL: 1.08107, TP: 1.08189
+2025-01-05 18:57:59,307 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08127, TP=1.08189, SL=1.08107
+2025-01-05 18:57:59,307 - ERROR - Error in episode 3: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:57:59,308 - INFO - Starting episode 4
+2025-01-05 18:57:59,323 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08160, SL: 1.08140, TP: 1.08220
+2025-01-05 18:57:59,327 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08160, TP=1.08220, SL=1.08140
+2025-01-05 18:57:59,327 - ERROR - Error in episode 4: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:57:59,329 - INFO - Starting episode 5
+2025-01-05 18:57:59,347 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.08067, SL: 1.08083, TP: 1.08017
+2025-01-05 18:57:59,350 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.08067, TP=1.08017, SL=1.08083
+2025-01-05 18:57:59,350 - ERROR - Error in episode 5: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:57:59,351 - INFO - Starting episode 6
+2025-01-05 18:57:59,371 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08232, SL: 1.08196, TP: 1.08340
+2025-01-05 18:57:59,375 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08232, TP=1.08340, SL=1.08196
+2025-01-05 18:57:59,375 - ERROR - Error in episode 6: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:57:59,375 - INFO - Starting episode 7
+2025-01-05 18:57:59,402 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08231, SL: 1.08208, TP: 1.08300
+2025-01-05 18:57:59,408 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08231, TP=1.08300, SL=1.08208
+2025-01-05 18:57:59,408 - ERROR - Error in episode 7: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:57:59,408 - INFO - Starting episode 8
+2025-01-05 18:57:59,437 - INFO - Position created: Breakout, BUY, Volume: 0.10, Price: 1.08397, SL: 1.08354, TP: 1.08505
+2025-01-05 18:57:59,441 - INFO - Opening buy order: Strategy=Breakout, Volume=0.10, Price=1.08397, TP=1.08505, SL=1.08354
+2025-01-05 18:57:59,441 - ERROR - Error in episode 8: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:57:59,441 - INFO - Starting episode 9
+2025-01-05 18:57:59,473 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08515, SL: 1.08442, TP: 1.08735
+2025-01-05 18:57:59,477 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08515, TP=1.08735, SL=1.08442
+2025-01-05 18:57:59,478 - ERROR - Error in episode 9: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:57:59,478 - INFO - Starting episode 10
+2025-01-05 18:57:59,519 - INFO - Position created: Breakout, BUY, Volume: 0.10, Price: 1.08796, SL: 1.08738, TP: 1.08941
+2025-01-05 18:57:59,524 - INFO - Opening buy order: Strategy=Breakout, Volume=0.10, Price=1.08796, TP=1.08941, SL=1.08738
+2025-01-05 18:57:59,524 - ERROR - Error in episode 10: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:57:59,524 - INFO - Starting episode 11
+2025-01-05 18:57:59,570 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08857, SL: 1.08840, TP: 1.08910
+2025-01-05 18:57:59,575 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08857, TP=1.08910, SL=1.08840
+2025-01-05 18:57:59,576 - ERROR - Error in episode 11: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:57:59,576 - INFO - Starting episode 12
+2025-01-05 18:57:59,616 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.08585, SL: 1.08663, TP: 1.08389
+2025-01-05 18:57:59,622 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.08585, TP=1.08389, SL=1.08663
+2025-01-05 18:57:59,622 - ERROR - Error in episode 12: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:57:59,622 - INFO - Starting episode 13
+2025-01-05 18:57:59,678 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.08877, SL: 1.08843, TP: 1.08981
+2025-01-05 18:57:59,682 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.08877, TP=1.08981, SL=1.08843
+2025-01-05 18:57:59,682 - ERROR - Error in episode 13: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:57:59,682 - INFO - Starting episode 14
+2025-01-05 18:57:59,743 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.09070, SL: 1.09028, TP: 1.09197
+2025-01-05 18:57:59,748 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.09070, TP=1.09197, SL=1.09028
+2025-01-05 18:57:59,748 - ERROR - Error in episode 14: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:57:59,749 - INFO - Starting episode 15
+2025-01-05 18:57:59,826 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.08079, SL: 1.08218, TP: 1.07730
+2025-01-05 18:57:59,831 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.08079, TP=1.07730, SL=1.08218
+2025-01-05 18:57:59,831 - ERROR - Error in episode 15: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:57:59,832 - INFO - Starting episode 16
+2025-01-05 18:57:59,908 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.07602, SL: 1.07789, TP: 1.07041
+2025-01-05 18:57:59,912 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.07602, TP=1.07041, SL=1.07789
+2025-01-05 18:57:59,912 - ERROR - Error in episode 16: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:57:59,912 - INFO - Starting episode 17
+2025-01-05 18:58:00,025 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.07058, SL: 1.07088, TP: 1.06981
+2025-01-05 18:58:00,028 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.07058, TP=1.06981, SL=1.07088
+2025-01-05 18:58:00,028 - ERROR - Error in episode 17: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:00,028 - INFO - Starting episode 18
+2025-01-05 18:58:00,108 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.06933, SL: 1.07037, TP: 1.06619
+2025-01-05 18:58:00,111 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.06933, TP=1.06619, SL=1.07037
+2025-01-05 18:58:00,112 - ERROR - Error in episode 18: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:00,112 - INFO - Starting episode 19
+2025-01-05 18:58:00,228 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.06508, SL: 1.06531, TP: 1.06450
+2025-01-05 18:58:00,231 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.06508, TP=1.06450, SL=1.06531
+2025-01-05 18:58:00,231 - ERROR - Error in episode 19: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:00,232 - INFO - Starting episode 20
+2025-01-05 18:58:00,354 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.06193, SL: 1.06245, TP: 1.06037
+2025-01-05 18:58:00,358 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.06193, TP=1.06037, SL=1.06245
+2025-01-05 18:58:00,358 - ERROR - Error in episode 20: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:00,358 - INFO - Starting episode 21
+2025-01-05 18:58:00,486 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.06118, SL: 1.06174, TP: 1.05949
+2025-01-05 18:58:00,490 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.06118, TP=1.05949, SL=1.06174
+2025-01-05 18:58:00,490 - ERROR - Error in episode 21: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:00,490 - INFO - Starting episode 22
+2025-01-05 18:58:00,622 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.05845, SL: 1.05970, TP: 1.05533
+2025-01-05 18:58:00,627 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.05845, TP=1.05533, SL=1.05970
+2025-01-05 18:58:00,627 - ERROR - Error in episode 22: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:00,628 - INFO - Starting episode 23
+2025-01-05 18:58:00,753 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.06117, SL: 1.06146, TP: 1.06030
+2025-01-05 18:58:00,758 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.06117, TP=1.06030, SL=1.06146
+2025-01-05 18:58:00,758 - ERROR - Error in episode 23: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:00,758 - INFO - Starting episode 24
+2025-01-05 18:58:00,892 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.06040, SL: 1.06091, TP: 1.05885
+2025-01-05 18:58:00,897 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.06040, TP=1.05885, SL=1.06091
+2025-01-05 18:58:00,897 - ERROR - Error in episode 24: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:00,897 - INFO - Starting episode 25
+2025-01-05 18:58:01,037 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.05446, SL: 1.05480, TP: 1.05343
+2025-01-05 18:58:01,041 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05446, TP=1.05343, SL=1.05480
+2025-01-05 18:58:01,042 - ERROR - Error in episode 25: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:01,042 - INFO - Starting episode 26
+2025-01-05 18:58:01,186 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.05195, SL: 1.05265, TP: 1.04983
+2025-01-05 18:58:01,191 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05195, TP=1.04983, SL=1.05265
+2025-01-05 18:58:01,191 - ERROR - Error in episode 26: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:01,192 - INFO - Starting episode 27
+2025-01-05 18:58:01,353 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.05630, SL: 1.05575, TP: 1.05796
+2025-01-05 18:58:01,358 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05630, TP=1.05796, SL=1.05575
+2025-01-05 18:58:01,358 - ERROR - Error in episode 27: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:01,358 - INFO - Starting episode 28
+2025-01-05 18:58:01,531 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.05371, SL: 1.05442, TP: 1.05194
+2025-01-05 18:58:01,533 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.05371, TP=1.05194, SL=1.05442
+2025-01-05 18:58:01,533 - ERROR - Error in episode 28: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:01,533 - INFO - Starting episode 29
+2025-01-05 18:58:01,713 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.05783, SL: 1.05831, TP: 1.05662
+2025-01-05 18:58:01,718 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.05783, TP=1.05662, SL=1.05831
+2025-01-05 18:58:01,718 - ERROR - Error in episode 29: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:01,718 - INFO - Starting episode 30
+2025-01-05 18:58:01,904 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.05206, SL: 1.05283, TP: 1.04974
+2025-01-05 18:58:01,907 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05206, TP=1.04974, SL=1.05283
+2025-01-05 18:58:01,907 - ERROR - Error in episode 30: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:01,908 - INFO - Starting episode 31
+2025-01-05 18:58:02,099 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.05256, SL: 1.05307, TP: 1.05102
+2025-01-05 18:58:02,104 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05256, TP=1.05102, SL=1.05307
+2025-01-05 18:58:02,104 - ERROR - Error in episode 31: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:02,104 - INFO - Starting episode 32
+2025-01-05 18:58:02,292 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.05191, SL: 1.05264, TP: 1.04972
+2025-01-05 18:58:02,297 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05191, TP=1.04972, SL=1.05264
+2025-01-05 18:58:02,297 - ERROR - Error in episode 32: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:02,297 - INFO - Starting episode 33
+2025-01-05 18:58:02,495 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.04736, SL: 1.04767, TP: 1.04642
+2025-01-05 18:58:02,499 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04736, TP=1.04642, SL=1.04767
+2025-01-05 18:58:02,499 - ERROR - Error in episode 33: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:02,500 - INFO - Starting episode 34
+2025-01-05 18:58:02,698 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.04650, SL: 1.04681, TP: 1.04556
+2025-01-05 18:58:02,702 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04650, TP=1.04556, SL=1.04681
+2025-01-05 18:58:02,703 - ERROR - Error in episode 34: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:02,704 - INFO - Starting episode 35
+2025-01-05 18:58:02,907 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.04426, SL: 1.04495, TP: 1.04253
+2025-01-05 18:58:02,912 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.04426, TP=1.04253, SL=1.04495
+2025-01-05 18:58:02,912 - ERROR - Error in episode 35: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:02,912 - INFO - Starting episode 36
+2025-01-05 18:58:03,125 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.04802, SL: 1.04731, TP: 1.05015
+2025-01-05 18:58:03,130 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.04802, TP=1.05015, SL=1.04731
+2025-01-05 18:58:03,131 - ERROR - Error in episode 36: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:03,131 - INFO - Starting episode 37
+2025-01-05 18:58:03,345 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.04690, SL: 1.04742, TP: 1.04559
+2025-01-05 18:58:03,349 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.04690, TP=1.04559, SL=1.04742
+2025-01-05 18:58:03,349 - ERROR - Error in episode 37: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:03,350 - INFO - Starting episode 38
+2025-01-05 18:58:03,564 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.05209, SL: 1.05123, TP: 1.05467
+2025-01-05 18:58:03,568 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05209, TP=1.05467, SL=1.05123
+2025-01-05 18:58:03,568 - ERROR - Error in episode 38: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:03,569 - INFO - Starting episode 39
+2025-01-05 18:58:03,846 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.04520, SL: 1.04559, TP: 1.04422
+2025-01-05 18:58:03,850 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.04520, TP=1.04422, SL=1.04559
+2025-01-05 18:58:03,850 - ERROR - Error in episode 39: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:03,850 - INFO - Starting episode 40
+2025-01-05 18:58:04,073 - INFO - Position created: Breakout, BUY, Volume: 0.10, Price: 1.05039, SL: 1.04983, TP: 1.05180
+2025-01-05 18:58:04,078 - INFO - Opening buy order: Strategy=Breakout, Volume=0.10, Price=1.05039, TP=1.05180, SL=1.04983
+2025-01-05 18:58:04,078 - ERROR - Error in episode 40: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:04,079 - INFO - Starting episode 41
+2025-01-05 18:58:04,318 - INFO - Position created: Breakout, BUY, Volume: 0.10, Price: 1.04971, SL: 1.04941, TP: 1.05047
+2025-01-05 18:58:04,325 - INFO - Opening buy order: Strategy=Breakout, Volume=0.10, Price=1.04971, TP=1.05047, SL=1.04941
+2025-01-05 18:58:04,325 - ERROR - Error in episode 41: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:04,326 - INFO - Starting episode 42
+2025-01-05 18:58:04,545 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.05073, SL: 1.04988, TP: 1.05328
+2025-01-05 18:58:04,549 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05073, TP=1.05328, SL=1.04988
+2025-01-05 18:58:04,549 - ERROR - Error in episode 42: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:04,550 - INFO - Starting episode 43
+2025-01-05 18:58:04,781 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.05717, SL: 1.05604, TP: 1.06057
+2025-01-05 18:58:04,786 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05717, TP=1.06057, SL=1.05604
+2025-01-05 18:58:04,786 - ERROR - Error in episode 43: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:04,787 - INFO - Starting episode 44
+2025-01-05 18:58:05,015 - INFO - Position created: Breakout, BUY, Volume: 0.10, Price: 1.05092, SL: 1.05049, TP: 1.05201
+2025-01-05 18:58:05,020 - INFO - Opening buy order: Strategy=Breakout, Volume=0.10, Price=1.05092, TP=1.05201, SL=1.05049
+2025-01-05 18:58:05,020 - ERROR - Error in episode 44: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:05,020 - INFO - Starting episode 45
+2025-01-05 18:58:05,310 - INFO - Position created: OrderBlock, BUY, Volume: 0.10, Price: 1.05581, SL: 1.05553, TP: 1.05665
+2025-01-05 18:58:05,315 - INFO - Opening buy order: Strategy=OrderBlock, Volume=0.10, Price=1.05581, TP=1.05665, SL=1.05553
+2025-01-05 18:58:05,315 - ERROR - Error in episode 45: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:05,316 - INFO - Starting episode 46
+2025-01-05 18:58:05,578 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.05240, SL: 1.05283, TP: 1.05110
+2025-01-05 18:58:05,583 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05240, TP=1.05110, SL=1.05283
+2025-01-05 18:58:05,583 - ERROR - Error in episode 46: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:05,583 - INFO - Starting episode 47
+2025-01-05 18:58:05,837 - INFO - Position created: Breakout, BUY, Volume: 0.10, Price: 1.05671, SL: 1.05639, TP: 1.05751
+2025-01-05 18:58:05,840 - INFO - Opening buy order: Strategy=Breakout, Volume=0.10, Price=1.05671, TP=1.05751, SL=1.05639
+2025-01-05 18:58:05,840 - ERROR - Error in episode 47: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:05,841 - INFO - Starting episode 48
+2025-01-05 18:58:06,100 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.05136, SL: 1.05199, TP: 1.04979
+2025-01-05 18:58:06,105 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.05136, TP=1.04979, SL=1.05199
+2025-01-05 18:58:06,105 - ERROR - Error in episode 48: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:06,105 - INFO - Starting episode 49
+2025-01-05 18:58:06,356 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.04965, SL: 1.05037, TP: 1.04784
+2025-01-05 18:58:06,365 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.04965, TP=1.04784, SL=1.05037
+2025-01-05 18:58:06,365 - ERROR - Error in episode 49: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:06,365 - INFO - Starting episode 50
+2025-01-05 18:58:06,626 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.05118, SL: 1.05197, TP: 1.04879
+2025-01-05 18:58:06,626 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05118, TP=1.04879, SL=1.05197
+2025-01-05 18:58:06,626 - ERROR - Error in episode 50: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:06,626 - INFO - Starting episode 51
+2025-01-05 18:58:06,890 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.05042, SL: 1.05122, TP: 1.04802
+2025-01-05 18:58:06,896 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05042, TP=1.04802, SL=1.05122
+2025-01-05 18:58:06,896 - ERROR - Error in episode 51: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:06,896 - INFO - Starting episode 52
+2025-01-05 18:58:07,160 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.04905, SL: 1.04943, TP: 1.04789
+2025-01-05 18:58:07,168 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.04905, TP=1.04789, SL=1.04943
+2025-01-05 18:58:07,168 - ERROR - Error in episode 52: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:07,168 - INFO - Starting episode 53
+2025-01-05 18:58:07,445 - INFO - Position created: OrderBlock, SELL, Volume: 0.10, Price: 1.05001, SL: 1.05040, TP: 1.04884
+2025-01-05 18:58:07,452 - INFO - Opening sell order: Strategy=OrderBlock, Volume=0.10, Price=1.05001, TP=1.04884, SL=1.05040
+2025-01-05 18:58:07,452 - ERROR - Error in episode 53: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:07,452 - INFO - Starting episode 54
+2025-01-05 18:58:07,722 - INFO - Position created: Breakout, BUY, Volume: 0.10, Price: 1.05225, SL: 1.05181, TP: 1.05337
+2025-01-05 18:58:07,725 - INFO - Opening buy order: Strategy=Breakout, Volume=0.10, Price=1.05225, TP=1.05337, SL=1.05181
+2025-01-05 18:58:07,725 - ERROR - Error in episode 54: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:07,725 - INFO - Starting episode 55
+2025-01-05 18:58:07,995 - INFO - Position created: Breakout, SELL, Volume: 0.10, Price: 1.05011, SL: 1.05077, TP: 1.04846
+2025-01-05 18:58:08,000 - INFO - Opening sell order: Strategy=Breakout, Volume=0.10, Price=1.05011, TP=1.04846, SL=1.05077
+2025-01-05 18:58:08,000 - ERROR - Error in episode 55: 'HistoricalTrader' object has no attribute '_calculate_position_profit'
+2025-01-05 18:58:08,001 - INFO - Starting episode 56
+2025-01-05 18:58:08,308 - INFO - Episode 56 completed - No trades executed, Balance: $100.00
+2025-01-05 18:58:08,309 - INFO - Starting episode 57
+2025-01-05 18:58:11,264 - INFO - Episode 57 completed - No trades executed, Balance: $100.00
+2025-01-05 18:58:11,269 - INFO - Starting episode 58
+2025-01-05 18:58:14,498 - INFO - Dastur yakunlandi
+==================================================
+

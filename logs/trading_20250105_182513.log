@@ -1,0 +1,1 @@
+2025-01-05 18:25:13,553 - ERROR - Error loading historical data: 'HistoricalTrader' object has no attribute '_precompute_indicators'
