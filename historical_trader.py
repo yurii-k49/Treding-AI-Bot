@@ -370,7 +370,7 @@ class HistoricalTrader(TradingModel):
         print(f"\n💾 Final model saved: {final_model_path}")
 
     def _run_training_episode(self, episode: int, epsilon: float, memory: deque,
-                          batch_size: int, gamma: float) -> Dict:
+                      batch_size: int, gamma: float) -> Dict:
         """Run single training episode with strategy optimization"""
         try:
             # Reset episode state
@@ -402,7 +402,7 @@ class HistoricalTrader(TradingModel):
                 if trades_this_episode >= 100:
                     print("✋ Maximum trades reached")
                     break
-                    
+                        
                 # Update market conditions periodically
                 if self.current_index - last_market_update >= 20:
                     self._update_market_conditions()
@@ -415,28 +415,23 @@ class HistoricalTrader(TradingModel):
                     
                     # Use epsilon-greedy for trading decision
                     if np.random.random() < epsilon:
-                        should_trade = True
+                        action = np.random.randint(len(self.strategies))
                     else:
                         # Use model prediction
                         q_values = self.model.predict(
                             current_state.reshape(1, 50, 8), 
                             verbose=0
                         )[0]
-                        should_trade = np.max(q_values) > 0.5
+                        action = np.argmax(q_values)
                     
                     # Execute trade if conditions are met
-                    if should_trade and self.can_open_new_order(strategy):
-                        window = self.historical_data[self.current_index-50:self.current_index]
-                        current_price = self.historical_data[self.current_index]['close']
+                    if self.can_open_new_order(strategy):
+                        result = self.execute_trade(strategy, action)
                         
-                        # Get trade parameters
-                        trade_type = self._get_trade_type(strategy, current_price, window)
-                        if trade_type:
+                        if result != 0:
                             trades_this_episode += 1
                             strategy_stats[strategy]['trades'] += 1
                             
-                            # Execute trade and track result
-                            result = self.execute_trade(strategy, trade_type)
                             if result > 0:
                                 strategy_stats[strategy]['wins'] += 1
                                 strategy_stats[strategy]['profit'] += result
@@ -448,7 +443,7 @@ class HistoricalTrader(TradingModel):
                             next_state = self._get_market_state()
                             memory.append({
                                 'state': current_state,
-                                'action': list(self.strategies.keys()).index(strategy),
+                                'action': action,
                                 'reward': result,
                                 'next_state': next_state
                             })
@@ -492,7 +487,7 @@ class HistoricalTrader(TradingModel):
                         print(f"  Profit: ${stats['profit']:.2f}")
                 
             return strategy_stats
-            
+                
         except Exception as e:
             self.logger.error(f"Error in episode {episode + 1}: {str(e)}")
             return None
@@ -544,26 +539,29 @@ class HistoricalTrader(TradingModel):
             self.logger.error(f"Error executing episode trade: {str(e)}")
             return None
 
-    def _update_model(self, state: np.ndarray, trade_result: Tuple,
-                    gamma: float, memory: deque, batch_size: int) -> None:
-        """Update model with new experience"""
+    def _execute_episode_trade(self, state: np.ndarray, epsilon: float) -> Optional[Tuple]:
+        """Execute trade during training episode with exploration"""
         try:
-            current_state, action, reward, next_state = trade_result
+            if np.random.random() < epsilon:
+                action = np.random.choice(len(self.strategies))
+            else:
+                q_values = self.model.predict(state.reshape(1, -1, 8), verbose=0)[0]
+                action = np.argmax(q_values)
             
-            # Store experience
-            memory.append({
-                'state': current_state,
-                'action': action,
-                'reward': reward,
-                'next_state': next_state
-            })
+            strategy = list(self.strategies.keys())[action]
+            reward = self.execute_trade(strategy, action)
             
-            # Train on batch if enough samples
-            if len(memory) >= batch_size:
-                self._train_on_batch(memory, batch_size, gamma)
+            if reward != 0:
+                current_state = self._get_market_state()
+                next_state = self._get_cached_state()
+                
+                return (current_state, action, reward, next_state)
+            
+            return None
             
         except Exception as e:
-            self.logger.error(f"Error updating model: {str(e)}")
+            self.logger.error(f"Error executing episode trade: {str(e)}")
+            return None
 
     def _print_episode_summary(self, episode: int, best_profit: float, 
                             best_episode: int) -> None:
@@ -777,20 +775,20 @@ class HistoricalTrader(TradingModel):
             
         return best_profit, best_episode
     
-    def execute_trade(self, action: int) -> float:
+    def execute_trade(self, strategy: str, action: int) -> float:
         """Execute a trade with optimized decision making and logging"""
         if self.current_index >= len(self.historical_data):
             return 0
-            
+                
         strategies = list(self.strategies.keys())
         if action >= len(strategies):
             self.logger.error(f"Invalid action: {action}")
             return 0
-            
+                
         strategy = strategies[action]
         if not self.can_open_new_order(strategy):
             return 0
-            
+                
         try:
             window = self.historical_data[self.current_index-50:self.current_index]
             current_price = self.historical_data[self.current_index]['close']
@@ -800,14 +798,14 @@ class HistoricalTrader(TradingModel):
             trade_type = self._get_trade_type(strategy, current_price, window)
             if not trade_type:
                 return 0
-                
+                    
             atr = self.precomputed_indicators['atr'][self.current_index]
             tp_points, sl_points = self.get_dynamic_tp_sl(strategy, atr)
             volume = self.calculate_position_size(strategy, sl_points)
             
             if volume <= 0:
                 return 0
-                
+                    
             # Create and execute position
             position = self._create_position(
                 strategy, trade_type, volume, current_price,
@@ -836,11 +834,11 @@ class HistoricalTrader(TradingModel):
                 self.market_state_cache.clear()
             
             return expected_profit
-            
+                
         except Exception as e:
             self.logger.error(f"Error executing trade: {str(e)}")
             return 0
-            
+
     def _get_trade_type(self, strategy: str, price: float, window: np.ndarray) -> Optional[str]:
         """Determine trade type based on strategy and market conditions"""
         try:
@@ -1239,3 +1237,101 @@ class HistoricalTrader(TradingModel):
                 
         except Exception as e:
             self.logger.error(f"Error handling closed positions: {str(e)}")
+
+    def _optimize_strategy_parameters(self, strategy_history: Dict) -> None:
+        """Optimize strategy parameters based on historical performance"""
+        try:
+            print("\n=== OPTIMIZING STRATEGY PARAMETERS ===")
+            for strategy, history in strategy_history.items():
+                if not history['win_rates'] or not history['profits']:
+                    continue
+                    
+                avg_win_rate = np.mean(history['win_rates'])
+                avg_profit = np.mean(history['profits'])
+                profit_std = np.std(history['profits'])
+                
+                # Get current parameters
+                params = self.strategies[strategy]
+                
+                # Optimize interval based on win rate
+                if avg_win_rate < 45:
+                    params['interval'] = min(24, params['interval'] + 2)
+                elif avg_win_rate > 65:
+                    params['interval'] = max(4, params['interval'] - 1)
+                
+                # Optimize risk percent based on profit stability
+                if profit_std > abs(avg_profit):
+                    params['risk_percent'] = max(0.5, params['risk_percent'] * 0.9)
+                elif avg_win_rate > 60 and profit_std < abs(avg_profit) * 0.5:
+                    params['risk_percent'] = min(5.0, params['risk_percent'] * 1.1)
+                
+                # Optimize TP and SL multipliers
+                if avg_win_rate > 55:
+                    params['tp_multiplier'] = min(4.0, params['tp_multiplier'] * 1.05)
+                    params['sl_multiplier'] = max(0.8, params['sl_multiplier'] * 0.95)
+                else:
+                    params['tp_multiplier'] = max(1.5, params['tp_multiplier'] * 0.95)
+                    params['sl_multiplier'] = min(1.5, params['sl_multiplier'] * 1.05)
+                
+                # Optimize position size limits based on profit
+                if avg_profit > 0:
+                    params['max_volume'] = min(0.5, params['max_volume'] * 1.1)
+                else:
+                    params['max_volume'] = max(0.05, params['max_volume'] * 0.9)
+                
+                # Optimize max orders based on overall performance
+                if avg_win_rate > 60 and avg_profit > 0:
+                    params['max_orders'] = min(4, params['max_orders'] + 1)
+                elif avg_win_rate < 40 or avg_profit < 0:
+                    params['max_orders'] = max(1, params['max_orders'] - 1)
+                
+                print(f"\n📊 {strategy} Optimization:")
+                print(f"  Win Rate: {avg_win_rate:.1f}%")
+                print(f"  Avg Profit: ${avg_profit:.2f}")
+                print(f"  New Parameters:")
+                print(f"    Interval: {params['interval']}")
+                print(f"    Risk %: {params['risk_percent']:.1f}%")
+                print(f"    TP Mult: {params['tp_multiplier']:.2f}")
+                print(f"    SL Mult: {params['sl_multiplier']:.2f}")
+                print(f"    Max Volume: {params['max_volume']:.2f}")
+                print(f"    Max Orders: {params['max_orders']}")
+                
+        except Exception as e:
+            self.logger.error(f"Error optimizing strategy parameters: {str(e)}")
+
+def get_dynamic_tp_sl(self, strategy: str, atr: float) -> Tuple[float, float]:
+    """Calculate dynamic take profit and stop loss points"""
+    try:
+        params = self.strategies[strategy]
+        
+        # Base TP and SL points using ATR
+        base_points = atr * 10  # Convert ATR to points
+        
+        # Apply strategy multipliers
+        tp_points = base_points * params['tp_multiplier']
+        sl_points = base_points * params['sl_multiplier']
+        
+        # Market condition adjustments
+        if self.market_conditions['volatility'] == 2:  # High volatility
+            tp_points *= 1.2
+            sl_points *= 1.1
+        elif self.market_conditions['volatility'] == 0:  # Low volatility
+            tp_points *= 0.8
+            sl_points *= 0.9
+            
+        # Trend strength adjustments
+        trend_strength = abs(self.market_conditions['trend_strength'])
+        if trend_strength == 1:
+            tp_points *= 1.1
+            sl_points *= 0.9
+            
+        # Session activity adjustments
+        if self.market_conditions['session_activity'] == 2:  # High activity
+            tp_points *= 1.1
+            sl_points *= 1.1
+            
+        return tp_points, sl_points
+        
+    except Exception as e:
+        self.logger.error(f"Error calculating TP/SL points: {str(e)}")
+        return 30.0, 15.0  # Default values
